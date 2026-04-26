@@ -252,9 +252,11 @@
       <p style="margin-top:10px;font-size:12px;color:#4B5563;">A project by <strong style="color:#818CF8;">Breon.ai</strong> &nbsp;·&nbsp; No spam, unsubscribe anytime.</p>
     </div>
     <div class="subscribe-form">
-      <!-- Replace FORM_ID below with your Formspree form ID after signing up at formspree.io -->
-      <form id="subscribe-form" action="https://formspree.io/f/FORM_ID" method="POST">
-        <input type="hidden" name="_subject" value="New subscriber: AI Design Trends 2026">
+      <form id="subscribe-form" action="https://formsubmit.co/brandonbreon@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New subscriber: AI Design Trends 2026 — Breon.ai">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://sooner2w.github.io/ai-design-trends/subscribed.html">
+        <input type="hidden" name="_template" value="table">
         <div class="form-row">
           <input type="email" name="email" placeholder="your@email.com" required>
           <button type="submit" class="btn-subscribe">Subscribe</button>
@@ -288,21 +290,14 @@
 </footer>
 
 <script>
-  // Show success message on form submit
   const form = document.getElementById('subscribe-form');
   const success = document.getElementById('form-success');
   if (form) {
-    form.addEventListener('submit', function(e) {
-      // Only intercept if Formspree ID hasn't been set yet
-      if (form.action.includes('FORM_ID')) {
-        e.preventDefault();
-        alert('Please set up Formspree first: see the setup instructions in the repo README.');
-        return;
-      }
+    form.addEventListener('submit', function() {
       setTimeout(function() {
         form.style.display = 'none';
         success.style.display = 'block';
-      }, 800);
+      }, 600);
     });
   }
 </script>
