@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Evolving UX Role in 2026 | Breon.ai</title>
+<meta name="description" content="How the UX and product designer's job is changing in 2026. Role comparison, in-demand skills, and emerging job titles.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .role-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0 36px;
+  }
+  .role-col {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .role-col-header {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--rule);
+  }
+  .role-col-header.before { background: var(--light); color: var(--muted); }
+  .role-col-header.after  { background: var(--accent); color: white; }
+  .role-col-list { list-style: none; padding: 16px 20px; margin: 0; }
+  .role-col-list li {
+    font-size: 13.5px;
+    color: var(--mid);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.45;
+  }
+  .role-col-list li:last-child { border-bottom: none; }
+  .role-col-list li.highlight { color: var(--dark2); font-weight: 600; }
+  @media (max-width: 580px) {
+    .role-compare { grid-template-columns: 1fr; }
+  }
+
+  .skills-numbered { counter-reset: skill; list-style: none; padding: 0; margin: 16px 0; }
+  .skills-numbered li {
+    counter-increment: skill;
+    padding: 12px 16px 12px 52px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .skills-numbered li::before {
+    content: counter(skill);
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    width: 24px; height: 24px;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .skills-numbered li:last-child { border-bottom: none; }
+
+  .title-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .title-card {
+    background: var(--light);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .title-card-name {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .title-card-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      Breon.ai
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="trends.html">Trends</a></li>
+      <li><a href="role-evolution.html" class="active">Role Evolution</a></li>
+      <li><a href="sources.html">Sources</a></li>
+      <li><span class="nav-badge">Updated Monthly</span></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bar"></div>
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">Deep Dive &nbsp;·&nbsp; 2026</p>
+    <h1>The Evolving Role</h1>
+    <p>What the UX and product designer's job actually looks like now — compared to where it was two years ago.</p>
+  </div>
+</div>
+
+<!-- ── Content ───────────────────────────────────────────────── -->
+<div class="page content" style="padding-bottom:80px;">
+
+  <!-- Then vs. Now -->
+  <h2>2023 vs. 2026 &mdash; Side by Side</h2>
+  <p>The most honest comparison of what changed and what didn't. Spoiler: the job isn't gone. It's different.</p>
+
+  <div class="role-compare">
+    <div class="role-col">
+      <div class="role-col-header before">2023 &mdash; The Designer's Job</div>
+      <ul class="role-col-list">
+        <li>Wireframes, mockups, prototypes as primary output</li>
+        <li>Days per design iteration</li>
+        <li>Visual craft + Figma mastery as the core skill</li>
+        <li>Manual research synthesis (sticky notes, Miro boards)</li>
+        <li>Hand-built flows in prototyping tools</li>
+        <li>Portfolio of pixel work as the proof of skill</li>
+        <li>Collaborated with engineers and PMs</li>
+        <li>Accessibility as a checklist at the end of a sprint</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-col-header after">2026 &mdash; The Designer's Job Now</div>
+      <ul class="role-col-list">
+        <li class="highlight">Design direction, decisions, and prompts as primary output</li>
+        <li class="highlight">Hours or minutes per iteration with AI</li>
+        <li class="highlight">Curation, judgment, and AI literacy as the core skill</li>
+        <li class="highlight">AI-assisted synthesis + human verification</li>
+        <li class="highlight">AI-generated flows, designer-refined and decision-led</li>
+        <li class="highlight">Portfolio of decisions + systems as proof of skill</li>
+        <li class="highlight">Collaborates with engineers, PMs, and AI agents</li>
+        <li class="highlight">Ethics and bias review are part of the design brief from day one</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    When AI generates 100 options in 30 minutes, <strong>the designer's job isn't production anymore — it's curation.</strong> Value shifts toward deciding what is good, what is safe, what is trustworthy, and what should happen next.
+    <br><br>— Designlab, State of AI in UX &amp; Product Design 2026
+  </div>
+
+  <hr>
+
+  <!-- What AI takes over -->
+  <h2>What AI Takes Over</h2>
+  <p>These are the tasks shifting primarily to AI tools in 2026. Designers who understand this can redirect their time to higher-leverage work.</p>
+
+  <ul>
+    <li>First-draft wireframes and layouts</li>
+    <li>Asset generation — icons, illustrations, stock visuals</li>
+    <li>Design system token documentation</li>
+    <li>Routine usability heuristic checks</li>
+    <li>Meeting transcription and synthesis</li>
+    <li>Responsive variant generation from a single design</li>
+    <li>Copy suggestions and microcopy first drafts</li>
+  </ul>
+
+  <h2>What Stays Human</h2>
+  <p>These are the things AI cannot do well — and the areas where designer value is actually increasing in 2026.</p>
+
+  <ul>
+    <li><strong>Strategic framing:</strong> What problem are we actually solving?</li>
+    <li><strong>Ethical judgment:</strong> What should this product <em>not</em> do?</li>
+    <li><strong>Empathy and user advocacy:</strong> Representing real people's needs in rooms where no users are present</li>
+    <li><strong>Stakeholder communication:</strong> Translating design decisions into business language</li>
+    <li><strong>Taste and originality:</strong> Making decisions only a human would make</li>
+    <li><strong>Deciding what AI output to ship:</strong> Curation is the new craft</li>
+  </ul>
+
+  <hr>
+
+  <!-- Skills shift chart -->
+  <h2>Skill Importance Shift: 2024 &rarr; 2026</h2>
+  <p>Based on aggregated job postings and practitioner surveys. Scale of 1–5.</p>
+
+  <div class="chart-block">
+    <p class="chart-title">UX Designer Skills: Importance in 2024 vs. 2026</p>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-name">AI Literacy</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:60%"></div></div><span class="skill-score">3/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Major increase</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Prompt Engineering</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:40%"></div></div><span class="skill-score">2/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; New requirement</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Ethical AI Awareness</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:60%"></div></div><span class="skill-score">3/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Now legally required</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Systems Thinking</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:80%"></div></div><span class="skill-score">4/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Increased</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Voice / Conv. Design</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:40%"></div></div><span class="skill-score">2/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:80%"></div></div><span class="skill-score">4/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Now mainstream</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Visual Craft (Figma)</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:60%"></div></div><span class="skill-score">3/5</span></div>
+        <div style="margin-top:6px;"><span style="font-size:10.5px;color:var(--muted);">&#8680; Still important, less differentiating</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Research Facilitation</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:80%"></div></div><span class="skill-score">4/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Increased</span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name">Strategic Communication</div>
+        <div class="skill-row"><span class="skill-year">2024</span><div class="skill-track"><div class="skill-bar-24" style="width:80%"></div></div><span class="skill-score">4/5</span></div>
+        <div class="skill-row"><span class="skill-year">2026</span><div class="skill-track"><div class="skill-bar-26" style="width:100%"></div></div><span class="skill-score">5/5</span></div>
+        <div style="margin-top:6px;"><span class="skill-delta">&#8679; Critical differentiator</span></div>
+      </div>
+
+    </div>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#C7D2FE"></div>2024 importance</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4F46E5"></div>2026 importance</div>
+    </div>
+    <p class="chart-caption">Visual craft remains important but decreases in relative weight as AI handles more production work.</p>
+  </div>
+
+  <hr>
+
+  <!-- Top 7 skills -->
+  <h2>The 7 Most In-Demand Skills for 2026</h2>
+  <p>From job postings, hiring manager interviews, and practitioner surveys published in 2025–2026.</p>
+
+  <ol class="skills-numbered">
+    <li><strong>AI Literacy</strong> — Understanding what tools can and can't do, and when to trust outputs. Not about coding — about confident decision-making with AI systems.</li>
+    <li><strong>Prompt Engineering</strong> — Writing precise design prompts is now as important as Figma shortcuts. Specificity is craft. Vagueness costs time.</li>
+    <li><strong>Systems Thinking</strong> — Designing rules that generate interfaces, not just static layouts. Design systems are now the product.</li>
+    <li><strong>Ethical AI &amp; Bias Awareness</strong> — Bias review as part of the design brief from day one. Required for EU compliance, not optional.</li>
+    <li><strong>Conversation &amp; Voice Design</strong> — Multimodal UX is now a mainstream hiring requirement. Voice and chat interfaces need dedicated design attention.</li>
+    <li><strong>AI-Augmented Research Facilitation</strong> — Directing AI tools to synthesize user data, verify outputs, and translate findings into actionable insights.</li>
+    <li><strong>Strategic Communication</strong> — Translating design decisions into business outcomes. As execution gets faster, strategic framing becomes the differentiator.</li>
+  </ol>
+
+  <hr>
+
+  <!-- Job titles -->
+  <h2>Emerging Job Titles</h2>
+  <p>The language companies are using to hire designers in 2026.</p>
+
+  <div class="title-cards">
+    <div class="title-card">
+      <div class="title-card-name">UX (AI) Designer</div>
+      <div class="title-card-desc">The new baseline. Practitioners who direct AI tools as part of their core workflow.</div>
+    </div>
+    <div class="title-card">
+      <div class="title-card-name">AX Designer</div>
+      <div class="title-card-desc">AI Experience Designer. Coined by John Maeda's Design in Tech Report 2026 for designers of AI-native products.</div>
+    </div>
+    <div class="title-card">
+      <div class="title-card-name">Conversation Designer</div>
+      <div class="title-card-desc">Dedicated role for voice, chat, and multimodal interfaces. High demand at AI-first companies.</div>
+    </div>
+    <div class="title-card">
+      <div class="title-card-name">Design Technologist</div>
+      <div class="title-card-desc">Bridge between design and engineering. Increasingly in demand as AI codegen expands.</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:32px;">
+    <strong>UX roles are projected to grow 16% through 2034</strong> (UX Design Institute, 2026). AI isn't removing UX roles — it's reshaping them. Designers who understand how to integrate AI into their workflows move faster and deliver greater value. The job market is growing. The skills required to stay relevant are changing.
+  </div>
+
+</div>
+
+<!-- ── Subscribe strip ────────────────────────────────────────── -->
+<section style="background:var(--accent);padding:32px 0;">
+  <div style="max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:16px;font-weight:700;color:white;margin-bottom:4px;">Get the monthly update from Breon.ai</p>
+      <p style="font-size:13px;color:#C7D2FE;">This data refreshes every 30 days. Subscribe to get changes in your inbox.</p>
+    </div>
+    <a href="index.html#subscribe" style="background:white;color:var(--accent);font-size:13px;font-weight:700;padding:11px 22px;border-radius:8px;white-space:nowrap;">Subscribe &rarr;</a>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Breon.ai</div>
+      <div class="footer-sub">AI Design Trends in UX for 2026</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="trends.html">Trends</a>
+      <a href="role-evolution.html">Role Evolution</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+  <div class="footer-updated">
+    Last updated: April 2026 &nbsp;·&nbsp; Next update: May 2026 &nbsp;·&nbsp; <a href="sources.html" style="color:#6B7280;">14 sources</a>
+  </div>
+</footer>
+
+</body>
+</html>

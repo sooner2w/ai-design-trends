@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6 AI Design Trends for 2026 | Breon.ai</title>
+<meta name="description" content="Six AI-driven trends reshaping UX and product design in 2026 — with data, tools, and what each means for your day-to-day work.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .trends-toc {
+    background: var(--light);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 52px;
+  }
+  .trends-toc-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .trends-toc-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+  }
+  .trends-toc-links a {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-lt);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: background 0.15s;
+  }
+  .trends-toc-links a:hover {
+    background: #DDD6FE;
+    text-decoration: none;
+  }
+  .tool-table { margin: 16px 0 24px; }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      Breon.ai
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="trends.html" class="active">Trends</a></li>
+      <li><a href="role-evolution.html">Role Evolution</a></li>
+      <li><a href="sources.html">Sources</a></li>
+      <li><span class="nav-badge">Updated Monthly</span></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Page Hero ─────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bar"></div>
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">AI Design Trends &nbsp;·&nbsp; 2026</p>
+    <h1>Six Trends Reshaping UX</h1>
+    <p>Data-backed, practical, jargon-free. What these shifts mean for your actual day-to-day work as a designer.</p>
+  </div>
+</div>
+
+<!-- ── Content ───────────────────────────────────────────────── -->
+<div class="page" style="padding-bottom: 80px;">
+
+  <!-- Table of contents -->
+  <div class="trends-toc">
+    <p class="trends-toc-title">Jump to a trend</p>
+    <ul class="trends-toc-links">
+      <li><a href="#trend-1">01 &mdash; AI as Co-Designer</a></li>
+      <li><a href="#trend-2">02 &mdash; Prompt-Driven Prototyping</a></li>
+      <li><a href="#trend-3">03 &mdash; Personalization at Scale</a></li>
+      <li><a href="#trend-4">04 &mdash; Multimodal Interfaces</a></li>
+      <li><a href="#trend-5">05 &mdash; Ethical AI Design</a></li>
+      <li><a href="#trend-6">06 &mdash; AI-Augmented Research</a></li>
+    </ul>
+  </div>
+
+  <!-- ── CHART: Tool Adoption ─────────────────────────────────── -->
+  <div class="chart-block">
+    <p class="chart-title">AI Tools Adopted by UX Design Teams (2026)</p>
+    <div class="hbar">
+      <div class="hbar-row">
+        <span class="hbar-label">ChatGPT / LLMs</span>
+        <div class="hbar-track"><div class="hbar-fill" style="width:93%"></div></div>
+        <span class="hbar-val">93%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Figma AI / Make</span>
+        <div class="hbar-track"><div class="hbar-fill" style="width:78%"></div></div>
+        <span class="hbar-val">78%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Midjourney / DALL·E</span>
+        <div class="hbar-track"><div class="hbar-fill" style="width:61%"></div></div>
+        <span class="hbar-val">61%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Adobe Firefly</span>
+        <div class="hbar-track"><div class="hbar-fill" style="width:54%"></div></div>
+        <span class="hbar-val">54%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">GitHub Copilot</span>
+        <div class="hbar-track"><div class="hbar-fill dim" style="width:42%"></div></div>
+        <span class="hbar-val">42%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Google Stitch</span>
+        <div class="hbar-track"><div class="hbar-fill dim" style="width:38%"></div></div>
+        <span class="hbar-val">38%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">UX Pilot / Flowstep</span>
+        <div class="hbar-track"><div class="hbar-fill dim" style="width:29%"></div></div>
+        <span class="hbar-val">29%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Runway (video AI)</span>
+        <div class="hbar-track"><div class="hbar-fill dim" style="width:22%"></div></div>
+        <span class="hbar-val">22%</span>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#4F46E5"></div>Majority adopted (&gt;50%)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#818CF8"></div>Growing adoption</div>
+    </div>
+    <p class="chart-caption">Estimated from industry surveys and practitioner reports (2025–2026).</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 1
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-1">
+    <span class="trend-tag">Trend 01</span>
+    <h2 class="trend-title">AI as Co-Designer</h2>
+    <p class="trend-intro">AI has crossed from experiment to infrastructure. In 2026, it sits inside every major design tool not as a plugin, but as a first-class participant in the design process.</p>
+
+    <ul>
+      <li>73% of designers say AI as a design collaborator will have the most impact on their work in 2026.</li>
+      <li>Figma Make generates production-ready UI directly inside your files based on your design system and a text description.</li>
+      <li>Google's Stitch (relaunched March 2026) creates high-fidelity UI from text prompts, sketches, voice commands, or uploaded images on an infinite canvas.</li>
+      <li>93% of designers are already implementing generative AI tools — the conversation has moved past "should we?" to "how do we do it well?"</li>
+    </ul>
+
+    <div class="callout">
+      <strong>The real risk isn't AI replacing you</strong> — it's AI-generated sameness. Because imitation is now effortless, originality and the decisions only a human would make are what create standout products.
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>Your role shifts toward directing AI outputs, not creating from scratch.</li>
+      <li>The ability to evaluate, edit, and reject AI-generated work is as important as the ability to create.</li>
+      <li>Teams that treat AI as a tool are being replaced by teams that treat AI as a partner.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 2
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-2">
+    <span class="trend-tag">Trend 02</span>
+    <h2 class="trend-title">Prompt-Driven Prototyping</h2>
+    <p class="trend-intro">What took 3–4 hours of wireframing now happens in minutes. This is the most operationally disruptive change for day-to-day design work in 2026.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>What it does</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Figma Make</td><td>Generates UI from text inside your existing file and design system</td><td>Widely adopted</td></tr>
+          <tr><td>Google Stitch</td><td>AI-native canvas: text, sketch, image, or voice &rarr; high-fidelity UI</td><td>Relaunched March 2026</td></tr>
+          <tr><td>UX Pilot / Flowstep</td><td>Complete user journeys from a single text description</td><td>Growing fast</td></tr>
+          <tr><td>Adobe Firefly</td><td>Image, video, and asset creation for mockups and exploration</td><td>Widely adopted</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Time shift chart -->
+    <div class="chart-block">
+      <p class="chart-title">Task Time: 2024 vs. 2026 with AI Assistance</p>
+      <div class="cbar">
+        <div>
+          <p class="cbar-group-label">Wireframing</p>
+          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:80%"></div></div><span class="cbar-val">4h</span></div>
+          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:15%"></div></div><span class="cbar-val">45m</span></div>
+        </div>
+        <div>
+          <p class="cbar-group-label">Research Synthesis</p>
+          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:100%"></div></div><span class="cbar-val">6h</span></div>
+          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:33%"></div></div><span class="cbar-val">2h</span></div>
+        </div>
+        <div>
+          <p class="cbar-group-label">Asset Creation</p>
+          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:58%"></div></div><span class="cbar-val">3.5h</span></div>
+          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:8%"></div></div><span class="cbar-val">30m</span></div>
+        </div>
+        <div>
+          <p class="cbar-group-label">Prototyping</p>
+          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:83%"></div></div><span class="cbar-val">5h</span></div>
+          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:25%"></div></div><span class="cbar-val">1.5h</span></div>
+        </div>
+        <div>
+          <p class="cbar-group-label">Handoff Documentation</p>
+          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:42%"></div></div><span class="cbar-val">2.5h</span></div>
+          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:12%"></div></div><span class="cbar-val">45m</span></div>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#C7D2FE"></div>2024 (before AI)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4F46E5"></div>2026 (with AI)</div>
+      </div>
+      <p class="chart-caption">Estimated averages from practitioner surveys. Individual results vary by tool proficiency.</p>
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>Prompt writing is a design skill — vague prompts produce vague outputs. Specificity is craft.</li>
+      <li>Speed is real, but 40% of designers still don't fully trust AI-generated outputs for production.</li>
+      <li>The critical skill is fast iteration + critical review, not raw production volume.</li>
+      <li>Prototypes are disposable. Decisions are not.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 3
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-3">
+    <span class="trend-tag">Trend 03</span>
+    <h2 class="trend-title">Personalization at Scale</h2>
+    <p class="trend-intro">AI is enabling a level of interface personalization that was previously only possible at the largest tech companies. Now it's table stakes.</p>
+
+    <ul>
+      <li>Interfaces now dynamically adapt based on user behavior — reordering menus, surfacing features, and changing layouts in real time.</li>
+      <li>By 2030, an estimated 90% of interfaces will use AI to customize experiences (Figma Design Statistics 2026).</li>
+      <li>Recommendation engines and behavioral models are being embedded at the component level, not just the platform level.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>You're no longer designing a layout.</strong> You're designing rules for generating layouts. Systems thinking becomes more important than pixel craft.
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>User research must account for dynamic interfaces — testing one version is no longer sufficient.</li>
+      <li>Design systems become the product, not just a tool. The rules your system defines are what users experience.</li>
+      <li>Personalization creates new accessibility challenges — adaptive interfaces can break assistive technologies.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 4
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-4">
+    <span class="trend-tag">Trend 04</span>
+    <h2 class="trend-title">Multimodal &amp; Voice-First Interfaces</h2>
+    <p class="trend-intro">Interaction design has expanded beyond the screen. Voice, gesture, haptic, and ambient input are now expected on product teams — not niche specializations.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Interface type</th><th>What it means</th><th>Design implication</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Multimodal</td><td>Combines voice, text, touch, images, and gestures fluidly</td><td>Design for mode-switching mid-task</td></tr>
+          <tr><td>Sentient</td><td>Reads facial expressions, tone, and context to anticipate needs</td><td>Design for AI inference, not just input</td></tr>
+          <tr><td>Zero-UI</td><td>No visible interface — ambient, wearable, spatial</td><td>Design behavior and feedback without screens</td></tr>
+          <tr><td>MX Design</td><td>AI agents navigating your product as users</td><td>Design for machines reading your UI</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>Conversation design and voice UX are now hiring criteria at major product companies.</li>
+      <li>Accessibility and multimodal design overlap significantly — designing for voice helps users with motor and visual impairments.</li>
+      <li>Spatial computing (AR/VR/XR) is accelerating demand for designers who think beyond 2D.</li>
+      <li>Machine Experience (MX) design is an emerging specialty — your UI needs to be machine-readable, not just human-readable.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 5
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-5">
+    <span class="trend-tag">Trend 05</span>
+    <h2 class="trend-title">Ethical AI &amp; Responsible Design</h2>
+    <p class="trend-intro">In 2026, ethical AI is no longer a values statement — it has legal and procurement weight. This is now a core design competency.</p>
+
+    <ul>
+      <li>The <strong>EU AI Act</strong> is in effect, requiring organizations to categorize AI systems by risk, publish transparency information, and conduct red-team tests.</li>
+      <li>The <strong>EU Accessibility Act</strong> ties accessibility directly to legal compliance and procurement requirements.</li>
+      <li>91% of organizations currently have only basic AI governance — designers who understand this gap are highly valuable.</li>
+      <li>Open-source bias auditing tools (e.g., BiasBuster from Stanford/MIT) are now used before model training.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Four design principles for ethical AI:</strong> Make uncertainty visible &nbsp;·&nbsp; Give users meaningful control &nbsp;·&nbsp; Surface trade-offs, not just outcomes &nbsp;·&nbsp; Design for accountability — who is responsible when the AI is wrong?
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>Bias review is now part of the design brief — not a post-launch audit.</li>
+      <li>Transparency must be designed in: uncertainty states, explainability, and meaningful user control over AI behavior.</li>
+      <li>Consent and data disclosure UX patterns are now a design specialty, not a legal add-on.</li>
+      <li>Designers who can translate compliance requirements into usable experiences are in high demand.</li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TREND 6
+  ════════════════════════════════════════════════════════════ -->
+  <section class="trend-section content" id="trend-6">
+    <span class="trend-tag">Trend 06</span>
+    <h2 class="trend-title">AI-Augmented Research</h2>
+    <p class="trend-intro">User research workflows are being restructured around AI. The bottleneck is no longer data collection — it's synthesis. And synthesis is now partially automated.</p>
+
+    <ul>
+      <li>AI tools now transcribe, code, and summarize user interviews automatically.</li>
+      <li>Survey analysis, pattern detection, and persona generation are increasingly AI-assisted.</li>
+      <li>Research timelines that took weeks can now compress to days.</li>
+      <li>Nielsen Norman Group notes AI is approaching "watershed moments" for research tasks — similar to what it already achieved for programming.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>The risk:</strong> synthetic research — AI-generated personas and fake user quotes without real validation. Human judgment for insight interpretation, edge cases, and nuance remains irreplaceable.
+    </div>
+
+    <h3>What it means for your day-to-day</h3>
+    <ul>
+      <li>Research is becoming accessible to smaller teams — you don't need a dedicated researcher to run a study.</li>
+      <li>Your job shifts to directing AI-augmented research: framing the right questions, verifying outputs, and translating findings into decisions.</li>
+      <li>Designers who can facilitate AI-augmented research become force multipliers for their teams.</li>
+      <li>Don't confuse faster synthesis with better insights. Speed without rigor produces confident errors.</li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- ── Subscribe strip ────────────────────────────────────────── -->
+<section style="background:var(--accent);padding:32px 0;">
+  <div style="max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:16px;font-weight:700;color:white;margin-bottom:4px;">Get the monthly update from Breon.ai</p>
+      <p style="font-size:13px;color:#C7D2FE;">New trends, updated stats, and emerging tools — in your inbox every 30 days.</p>
+    </div>
+    <a href="index.html#subscribe" style="background:white;color:var(--accent);font-size:13px;font-weight:700;padding:11px 22px;border-radius:8px;white-space:nowrap;">Subscribe &rarr;</a>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Breon.ai</div>
+      <div class="footer-sub">AI Design Trends in UX for 2026</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="trends.html">Trends</a>
+      <a href="role-evolution.html">Role Evolution</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+  <div class="footer-updated">
+    Last updated: April 2026 &nbsp;·&nbsp; Next update: May 2026 &nbsp;·&nbsp; <a href="sources.html" style="color:#6B7280;">14 sources</a>
+  </div>
+</footer>
+
+</body>
+</html>
