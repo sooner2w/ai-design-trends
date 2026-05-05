@@ -104,7 +104,7 @@ a:hover { text-decoration: underline; }
   text-transform: uppercase;
 }
 .nav-cta {
-  background: var(--accent) !important;
+  background: #FF6B35 !important;
   color: white !important;
   font-size: 13px !important;
   font-weight: 600 !important;
@@ -112,8 +112,9 @@ a:hover { text-decoration: underline; }
   border-radius: 7px !important;
   transition: background 0.15s !important;
   text-decoration: none !important;
+  margin-left: 16px !important;
 }
-.nav-cta:hover { background: #4338CA !important; }
+.nav-cta:hover { background: #E85A25 !important; }
 
 /* ── Page wrapper ────────────────────────────────────────────── */
 .page { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
