@@ -103,6 +103,17 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.nav-cta {
+  background: var(--accent) !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  border-radius: 7px !important;
+  transition: background 0.15s !important;
+  text-decoration: none !important;
+}
+.nav-cta:hover { background: #4338CA !important; }
 
 /* ── Page wrapper ────────────────────────────────────────────── */
 .page { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
