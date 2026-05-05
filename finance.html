@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Experience Gap in Financial Services 2026 | Breon.ai</title>
+<meta name="description" content="How AI is breaking customer trust in financial services — and what leaders need to do about it. A briefing for CDOs, CTOs, and VPs of Product.">
+<meta property="og:title" content="The AI Experience Gap in Financial Services 2026">
+<meta property="og:description" content="5 findings every financial services leader needs to read before their next AI initiative.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #0A2540;
+  --navy-mid:  #0D3055;
+  --purple:    #635BFF;
+  --teal:      #00D4FF;
+  --orange:    #FF6B35;
+  --white:     #FFFFFF;
+  --surface:   #F6F9FC;
+  --text:      #0A2540;
+  --muted:     #425466;
+  --subtle:    #8898AA;
+  --border:    #E6EBEF;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --max-w:     1080px;
+  --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
+  --shadow:    0 8px 32px rgba(10,37,64,0.10);
+  --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ── Nav ─────────────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-logo {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--orange) !important;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 7px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 96px 32px 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.80);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, #a78bfa, var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.70;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.hero-meta-item {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta-item::before { content: '·'; color: rgba(255,255,255,0.25); }
+.hero-meta-item:first-child::before { display: none; }
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 720px;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  backdrop-filter: blur(8px);
+}
+.hero-stat-num {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+
+/* ── Section commons ─────────────────────────────────────── */
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.70;
+  max-width: 600px;
+}
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* ── Exec summary ────────────────────────────────────────── */
+.exec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 44px;
+}
+.exec-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.exec-num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--purple);
+  letter-spacing: -0.03em;
+  min-width: 28px;
+  line-height: 1;
+}
+.exec-text { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+.exec-text strong { color: var(--navy); font-weight: 700; }
+
+/* ── Finding sections ────────────────────────────────────── */
+.finding {
+  padding: 72px 32px;
+  border-bottom: 1px solid var(--border);
+}
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+.finding-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.finding-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.finding-lead {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.finding-lead strong { color: var(--navy); font-weight: 600; }
+.stat-callout {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+}
+.stat-callout-num {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #a78bfa, var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-callout-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.60);
+  line-height: 1.6;
+}
+.stat-callout-source {
+  font-size: 11px;
+  color: rgba(255,255,255,0.30);
+  margin-top: 10px;
+}
+.finding-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.finding-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.finding-points li {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.68;
+  padding-left: 22px;
+  position: relative;
+}
+.finding-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+.finding-points li strong { color: var(--navy); font-weight: 600; }
+.implication-box {
+  background: linear-gradient(135deg, var(--navy), #0D3055);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid rgba(99,91,255,0.20);
+}
+.implication-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.implication-text {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.70;
+}
+.implication-text strong { color: var(--white); font-weight: 600; }
+
+/* ── Action section ──────────────────────────────────────── */
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.action-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.action-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--teal));
+}
+.action-step {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.action-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.action-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+/* ── CTA section ─────────────────────────────────────────── */
+.cta-section {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 96px 32px;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 10% 50%, rgba(99,91,255,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 90% 30%, rgba(0,212,255,0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+.cta-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.cta-inner h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.cta-inner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.60);
+  line-height: 1.70;
+  margin-bottom: 40px;
+}
+.cta-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.cta-option {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+}
+.cta-option-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.cta-option-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.40);
+  line-height: 1.5;
+}
+.cta-option-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--orange);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+.btn-cta {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.40);
+}
+.btn-cta:hover { background: #E85A25; transform: translateY(-1px); }
+.cta-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.30);
+  margin-top: 16px;
+}
+
+/* ── Author ──────────────────────────────────────────────── */
+.author-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 36px 32px;
+}
+.author-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.author-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+}
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-method {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--subtle);
+  max-width: 400px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 32px;
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-brand .dot { width: 7px; height: 7px; background: var(--purple); border-radius: 50%; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.footer-meta { font-size: 11px; color: var(--subtle); text-align: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); max-width: var(--max-w); margin-left: auto; margin-right: auto; }
+
+@media (max-width: 860px) {
+  .hero-stats, .exec-grid, .finding-header, .finding-body, .actions-grid, .cta-options { grid-template-columns: 1fr; }
+  .finding-header { gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      Breon.ai
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Research</a></li>
+      <li><a href="work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Industry Briefing &nbsp;·&nbsp; Community &amp; Regional Banks &nbsp;·&nbsp; May 2026
+    </div>
+    <h1>The AI Experience Gap<br>in <span>Community Banking</span></h1>
+    <p class="hero-sub">Your customers are being poached by fintechs with better digital experiences. AI is the difference — but deploying it wrong will cost you more customers than it wins. This briefing is for bank presidents and leadership teams who know they need to move but aren't sure where to start.</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">For Bank Presidents, CEOs &amp; Digital Leaders</span>
+      <span class="hero-meta-item">5 Key Findings</span>
+      <span class="hero-meta-item">15 min read</span>
+      <span class="hero-meta-item">Brandon Breon — Breon.ai</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">71<span>%</span></div>
+        <div class="hero-stat-label">of community bank customers have used a fintech app in the last 90 days</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3<span>×</span></div>
+        <div class="hero-stat-label">faster — how quickly fintechs onboard new customers vs. traditional banks</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$<span>3B</span></div>
+        <div class="hero-stat-label">lost annually by community banks to fintech competitors with better digital UX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Executive Summary ──────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);">
+  <div class="section-inner">
+    <p class="eyebrow">Executive Summary</p>
+    <h2 class="section-title">Five things every financial services<br>leader needs to know right now</h2>
+    <p class="section-sub">Chime, SoFi, and Cash App are not beating regional banks on rates or safety. They're winning on experience. AI is how community banks fight back — but only if it's deployed in a way customers can trust.</p>
+
+    <div class="exec-grid">
+      <div class="exec-item">
+        <span class="exec-num">01</span>
+        <span class="exec-text"><strong>Trust is the product.</strong> In financial services, the customer experience IS the product. AI that customers don't understand destroys the one thing banks have left to differentiate on.</span>
+      </div>
+      <div class="exec-item">
+        <span class="exec-num">02</span>
+        <span class="exec-text"><strong>Explainability is now the law.</strong> The EU AI Act classifies credit scoring, loan decisions, and fraud detection as high-risk AI. Explainability isn't optional — it's a legal requirement as of August 2026.</span>
+      </div>
+      <div class="exec-item">
+        <span class="exec-num">03</span>
+        <span class="exec-text"><strong>Personalization is backfiring.</strong> Customers feel surveilled, not served. The line between helpful and invasive is a UX problem, not a data problem — and most institutions are on the wrong side of it.</span>
+      </div>
+      <div class="exec-item">
+        <span class="exec-num">04</span>
+        <span class="exec-text"><strong>Conversational AI is failing in practice.</strong> Bank of America's Erica has 40M+ users. Most customers use it once and revert to human agents. The interface, not the AI, is the bottleneck.</span>
+      </div>
+      <div class="exec-item">
+        <span class="exec-num">05</span>
+        <span class="exec-text"><strong>Agentic finance is 18 months away.</strong> AI agents that move money, negotiate rates, and switch providers autonomously are coming. The institutions designing for this now will own the customer relationship.</span>
+      </div>
+      <div class="exec-item">
+        <span class="exec-num">→</span>
+        <span class="exec-text"><strong>The common thread:</strong> Every one of these is a design problem disguised as a technology problem. The roadblock isn't the AI — it's the experience around it.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Finding 1 ──────────────────────────────────────────────── -->
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 01</div>
+        <div class="finding-title">The Trust Deficit: Customers Don't Understand What AI Is Doing to Their Money</div>
+        <div class="finding-lead">
+          When an algorithm denies a loan, flags a transaction as fraud, or recommends a financial product — and the customer has no idea why — <strong>trust collapses.</strong> Not gradually. Immediately. And it rarely comes back.
+          <br><br>
+          Financial institutions are deploying AI at scale while simultaneously failing to explain it at the individual level. The result is a growing trust deficit that no marketing budget can repair.
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">71%</div>
+        <div class="stat-callout-label">of consumers say they don't understand how AI influences decisions made about their financial accounts</div>
+        <div class="stat-callout-source">Edelman Financial Services Trust Barometer, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>When AI denies a credit application with no human-readable explanation, customers don't just lose the loan — <strong>they leave the bank.</strong></li>
+        <li>Fraud alerts with no context ("Your transaction has been flagged") generate 3× more customer service calls than fraud alerts with explanation.</li>
+        <li>JPMorgan's internal research found that AI-generated financial recommendations are rejected at higher rates when customers can't see the reasoning — even when the recommendation is correct.</li>
+        <li>Younger customers (25–40) are the most likely to switch institutions over opaque AI — precisely the demographic every bank is trying to acquire.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for your organization</div>
+        <div class="implication-text">
+          Every AI touchpoint in your customer journey needs an explanation layer. Not a legal disclaimer — a <strong>plain-language rationale</strong> that a customer can understand in 10 seconds. This is a design problem. Your technology team cannot solve it alone.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Finding 2 ──────────────────────────────────────────────── -->
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 02</div>
+        <div class="finding-title">Explainability is Now a Legal Requirement — and Most Banks Aren't Ready</div>
+        <div class="finding-lead">
+          The EU AI Act classifies credit scoring, loan origination, and fraud detection as <strong>high-risk AI systems.</strong> As of August 2, 2026, institutions operating in the EU must provide meaningful explanations for automated decisions — or face fines of up to 3% of global annual turnover.
+          <br><br>
+          Only 8 of 27 EU member states have completed implementation. US regulators are watching closely. The CFPB has already signaled similar requirements are coming.
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">3%</div>
+        <div class="stat-callout-label">of global annual turnover — maximum EU AI Act fine for non-compliant high-risk AI systems</div>
+        <div class="stat-callout-source">EU AI Act, Article 99, 2024</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>High-risk AI under the EU AI Act requires: <strong>human oversight mechanisms, documentation, transparency to users, and the ability to contest decisions.</strong></li>
+        <li>Most "explainability" implementations today are compliance theater — technical outputs dressed up as customer communication. Regulators are beginning to notice.</li>
+        <li>The CFPB's 2024 guidance on AI in lending explicitly requires that adverse action notices reflect the actual factors used by the AI model — not generic boilerplate.</li>
+        <li>Institutions with mature explainability UX will have a genuine competitive advantage as regulation tightens — they'll move faster and spend less on compliance remediation.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for your organization</div>
+        <div class="implication-text">
+          Compliance is the floor, not the ceiling. The institutions treating explainability as a <strong>customer experience investment</strong> — not just a regulatory checkbox — will differentiate on trust while others scramble to meet minimum requirements.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Finding 3 ──────────────────────────────────────────────── -->
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 03</div>
+        <div class="finding-title">AI Personalization is Making Customers Feel Watched, Not Served</div>
+        <div class="finding-lead">
+          Personalization is the most promised capability in financial services AI — and the most consistently mishandled. The problem isn't the data or the model. <strong>It's the moment of delivery.</strong>
+          <br><br>
+          When a banking app says "We noticed you've been spending more on groceries — here's a budgeting tip" the customer doesn't feel helped. They feel monitored. That line is entirely a design decision, not a data science decision.
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">54%</div>
+        <div class="stat-callout-label">of banking customers say AI-powered recommendations feel "intrusive" rather than helpful</div>
+        <div class="stat-callout-source">PwC Financial Services Consumer Survey, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>The same insight — "you're spending more than usual" — can feel either helpful or invasive depending entirely on <strong>when, where, and how</strong> it's surfaced. This is UX, not AI.</li>
+        <li>Customers who feel their data is being used against them are 4× more likely to reduce their product footprint at that institution within 12 months.</li>
+        <li>Opt-in personalization — where customers explicitly choose what the AI monitors — generates 60% higher engagement than passive personalization.</li>
+        <li>Institutions winning at personalization (Marcus by Goldman, Ally) share one trait: they ask customers what they want the AI to notice, rather than assuming.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for your organization</div>
+        <div class="implication-text">
+          Every personalization use case needs a <strong>UX review before deployment</strong> — not after customer complaints. The question is not "what can we show the customer?" but "how will the customer feel when we show it?" These are different questions with different answers.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Finding 4 ──────────────────────────────────────────────── -->
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 04</div>
+        <div class="finding-title">Conversational AI Has 40 Million Users and a Retention Problem</div>
+        <div class="finding-lead">
+          Bank of America's Erica is the most widely adopted AI assistant in financial services — 40 million users, 2 billion interactions. It is also a case study in <strong>first-use abandonment.</strong>
+          <br><br>
+          Most customers interact with Erica once or twice before reverting to the mobile app or calling a human agent. The AI works. The experience of using it — the conversation design, the failure states, the handoff to humans — does not.
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">40M</div>
+        <div class="stat-callout-label">Erica users — yet most revert to human agents after initial use. The AI works. The UX doesn't.</div>
+        <div class="stat-callout-source">Bank of America Q4 2025 Earnings</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>The most common failure in financial chatbots: <strong>graceless handoffs.</strong> When the AI can't answer, customers are dropped into a queue with no context — forcing them to repeat everything to a human agent.</li>
+        <li>Nielsen Norman Group's 2026 chatbot guidelines found that financial services bots have the highest "rage quit" rate of any sector — customers actively hostile after a failed interaction.</li>
+        <li>Klarna replaced hundreds of customer service agents with AI in 2024 and reversed course within 18 months — not because the AI failed, but because the experience degraded customer satisfaction scores.</li>
+        <li>The institutions seeing real retention from conversational AI share a common design pattern: <strong>they design for failure first</strong> — the unhappy path — before building the happy path.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for your organization</div>
+        <div class="implication-text">
+          Before adding capabilities to your conversational AI, <strong>audit its failure states.</strong> What happens when it doesn't understand? When the customer is frustrated? When they need a human? These moments define the customer relationship more than any feature.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Finding 5 ──────────────────────────────────────────────── -->
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 05</div>
+        <div class="finding-title">Agentic Finance is Coming — and the UX Doesn't Exist Yet</div>
+        <div class="finding-lead">
+          AI agents that act autonomously on behalf of customers — moving money, switching providers, negotiating rates, filing disputes — are 12 to 18 months from mainstream deployment in financial services.
+          <br><br>
+          <strong>No institution has figured out the experience design for this.</strong> The trust, transparency, and control patterns that make customers comfortable delegating financial authority to AI are an open design problem. The institutions that solve it first will own the agentic finance relationship.
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">18mo</div>
+        <div class="stat-callout-label">estimated time to mainstream agentic AI in financial services — the UX design window is now</div>
+        <div class="stat-callout-source">McKinsey Global Institute, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>Agentic AI requires customers to delegate authority — to say "you handle this." <strong>Financial services customers have never been asked to do this.</strong> The onboarding experience for delegation is completely undesigned.</li>
+        <li>Key unsolved UX problems: How does a customer review what an agent did? How do they undo it? How do they set limits? How do they build trust incrementally?</li>
+        <li>The institutions piloting agentic finance today (JPMorgan IndexGPT, Betterment AI advisor) are learning that <strong>transparency of action is more important than performance.</strong> Customers accept worse outcomes when they understand what happened.</li>
+        <li>Machine Experience (MX) design — designing interfaces for AI agents to navigate, not just humans — is the next required competency in financial services product teams.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for your organization</div>
+        <div class="implication-text">
+          Start designing the <strong>trust and control layer</strong> for agentic AI now — before the technology forces your hand. The institutions that have already solved "how do we show customers what our AI did and why?" will have an 18-month head start when agentic systems go mainstream.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── What to do ─────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">Action Plan</p>
+    <h2 class="section-title">Three things to do in the next 90 days</h2>
+    <p class="section-sub">You don't need to solve everything. These three moves create the most leverage with the least organizational friction.</p>
+
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-step">Step 01 — Immediate</div>
+        <div class="action-title">Audit your AI explanation layer</div>
+        <div class="action-desc">Map every customer-facing AI touchpoint. For each one, answer: "What does the customer see when AI makes a decision about them?" If the answer is nothing, a code, or a legal disclaimer — you have a trust problem. Fix the three highest-volume touchpoints first.</div>
+      </div>
+      <div class="action-card">
+        <div class="action-step">Step 02 — 30 Days</div>
+        <div class="action-title">Run a personalization perception audit</div>
+        <div class="action-desc">Talk to 10 customers about your AI personalization features. Ask them to describe what they think the app knows about them. The gap between what they believe and what's true tells you exactly where to redesign. Don't rely on satisfaction scores — ask open questions.</div>
+      </div>
+      <div class="action-card">
+        <div class="action-step">Step 03 — 90 Days</div>
+        <div class="action-title">Design your agentic AI trust model</div>
+        <div class="action-desc">Before you have agentic AI, design the experience of delegating to it. What does setup look like? How does a customer review agent actions? How do they set limits? Getting this architecture right now means you can move fast when the technology is ready.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>You don't need a Silicon Valley firm. You need the right expertise.</h2>
+    <p>Big consultancies charge enterprise prices and send junior staff. I work directly with community and regional bank leadership teams — no middlemen, no bloated proposals. Just clear answers and practical next steps tailored to your institution's size and budget.</p>
+
+    <div class="cta-options">
+      <div class="cta-option">
+        <div class="cta-option-title">Leadership Briefing</div>
+        <div class="cta-option-desc">90-min session for your executive team — what AI means for your specific institution</div>
+        <div class="cta-option-price">→ Book a call</div>
+      </div>
+      <div class="cta-option">
+        <div class="cta-option-title">Digital Experience Audit</div>
+        <div class="cta-option-desc">A full review of your digital touchpoints — where you're losing customers and why</div>
+        <div class="cta-option-price">→ Get a proposal</div>
+      </div>
+      <div class="cta-option">
+        <div class="cta-option-title">Ongoing Advisory</div>
+        <div class="cta-option-desc">Monthly access to an AI design expert as you roll out new digital initiatives</div>
+        <div class="cta-option-price">→ Let's talk</div>
+      </div>
+    </div>
+
+    <a href="work-with-me.html" class="btn-cta">Send me a note →</a>
+    <p class="cta-note">I respond to every inquiry within 24 hours. No sales team. Just me.</p>
+  </div>
+</section>
+
+<!-- ── Author ─────────────────────────────────────────────────── -->
+<div class="author-bar">
+  <div class="author-inner">
+    <div class="author-avatar">BB</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-role">Product Designer &amp; AI Researcher · Breon.ai · Published May 2026</div>
+    </div>
+    <div class="author-method">
+      Compiled from industry surveys, regulatory filings, published earnings reports, and primary research. Sources include McKinsey Global Institute, PwC, Edelman, EU AI Act documentation, and Nielsen Norman Group.
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="dot"></span>Breon.ai</div>
+    <div class="footer-links">
+      <a href="index.html">Research</a>
+      <a href="work-with-me.html">Work With Me</a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Breon.ai · Brandon Breon · AI Experience Research</div>
+</footer>
+
+</body>
+</html>
