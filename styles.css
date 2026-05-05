@@ -206,13 +206,13 @@ a:hover { text-decoration: underline; }
 .stat-num {
   font-size: 32px;
   font-weight: 800;
-  color: var(--accent2);
+  color: #FFFFFF;
   line-height: 1.1;
   display: block;
 }
 .stat-label {
   font-size: 11px;
-  color: #C7D2FE;
+  color: #FFFFFF;
   margin-top: 4px;
   line-height: 1.4;
 }
@@ -220,7 +220,7 @@ a:hover { text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--accent);
+  background: #FF6B35;
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -229,7 +229,7 @@ a:hover { text-decoration: underline; }
   transition: background 0.15s, transform 0.15s;
 }
 .hero-cta:hover {
-  background: #4338CA;
+  background: #E85A25;
   text-decoration: none;
   transform: translateY(-1px);
 }
