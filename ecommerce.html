@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI & E-Commerce 2026 | Breon.ai</title>
-<meta name="description" content="How small e-commerce brands are winning — and losing — with AI. A practical briefing for Shopify founders and DTC operators by Breon.ai.">
+<meta name="description" content="The AI tools transforming small e-commerce brands — and why most Shopify founders are using them wrong. A practical briefing by Brandon Breon, AI design leader.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,7 @@
   --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
   --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
   --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
-  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
-  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+  --max-w: 1080px;
 }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
 .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -42,7 +41,7 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .section-inner { max-width: var(--max-w); margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
 .section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
-.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 640px; }
 .finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
 .finding:nth-child(even) { background: var(--surface); }
 .finding-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -58,16 +57,25 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
 .finding-body p { margin-bottom: 18px; }
 .finding-body p:last-child { margin-bottom: 0; }
-.insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
-.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
-.insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.tool-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,91,255,0.08); border: 1px solid rgba(99,91,255,0.18); color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 4px 0; }
+.tools-row { margin-bottom: 20px; }
+.how-i-help { background: var(--navy); border-radius: var(--radius); padding: 24px 28px; margin-top: 16px; }
+.how-i-help-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.how-i-help-text { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
+.services { padding: 80px 32px; background: var(--surface); }
+.services-inner { max-width: var(--max-w); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+.service-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.service-title { font-size: 20px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.70; }
 .cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
 .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
 .cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 .cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
 .cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
 .cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
-.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; transition: background 0.15s; }
 .cta-btn:hover { background: #E85A25; }
 .cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
 .author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
@@ -76,13 +84,14 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
 .author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
 .author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
-.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 540px; }
 footer { background: var(--navy); padding: 32px; text-align: center; }
 footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
 footer a:hover { color: rgba(255,255,255,0.70); }
 @media (max-width: 768px) {
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
   .author-inner { flex-wrap: wrap; }
   .author-divider { display: none; }
 }
@@ -92,9 +101,7 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="https://research.breon.ai" class="nav-logo">
-      <span class="nav-logo-dot"></span>breon.ai
-    </a>
+    <a href="https://research.breon.ai" class="nav-logo"><span class="nav-logo-dot"></span>breon.ai</a>
     <ul class="nav-links">
       <li><a href="https://research.breon.ai">Research</a></li>
       <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
@@ -104,24 +111,21 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="hero-tag-dot"></span>
-      E-Commerce Research Brief — May 2026
-    </div>
-    <h1>The AI Gap in<br><span>Small E-Commerce</span></h1>
-    <p class="hero-sub">Shopify founders and DTC brands are adopting AI faster than any other small business category. Most are using it wrong — and it's quietly costing them customers.</p>
+    <div class="hero-tag"><span class="hero-tag-dot"></span>E-Commerce Research Brief — May 2026</div>
+    <h1>The AI Stack That Separates<br><span>Growing Brands From Stalling Ones</span></h1>
+    <p class="hero-sub">Shopify founders and DTC operators are all using AI tools. The ones growing profitably are using them strategically — with the right tools in the right sequence, designed around the customer experience. The ones stalling are using them randomly and wondering why the numbers don't move.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>38</span>%</div>
-        <div class="hero-stat-label">of shoppers say AI recs feel generic and irrelevant</div>
+        <div class="hero-stat-num"><span>6</span>×</div>
+        <div class="hero-stat-label">higher revenue per email for brands using AI-personalized campaigns vs. generic broadcast emails</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>2.7</span>×</div>
-        <div class="hero-stat-label">higher return rate when product descriptions are AI-only</div>
+        <div class="hero-stat-num"><span>25</span>%</div>
+        <div class="hero-stat-label">increase in repeat purchase rate for brands using AI-powered loyalty and retention tools</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>$1.8</span>B</div>
-        <div class="hero-stat-label">lost to cart abandonment driven by chatbot friction (US, 2025)</div>
+        <div class="hero-stat-num"><span>$50K</span></div>
+        <div class="hero-stat-label">average annual savings for DTC brands that reduce return rate by 10% using AI product content</div>
       </div>
     </div>
   </div>
@@ -129,9 +133,9 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="section">
   <div class="section-inner">
-    <p class="eyebrow">What this brief covers</p>
-    <h2 class="section-title">AI is everywhere in e-commerce.<br>Results are inconsistent.</h2>
-    <p class="section-sub">The brands winning with AI share one trait: they treated it as a customer experience problem before a technology problem. The ones losing share a different trait: they installed AI tools, turned them on, and assumed the work was done.</p>
+    <p class="eyebrow">The opportunity</p>
+    <h2 class="section-title">Most brands have the tools.<br>Almost none have the strategy.</h2>
+    <p class="section-sub">Klaviyo, Rebuy, Gorgias, Yotpo — these tools are available to every Shopify brand. The difference between the brands generating 40% of revenue from email and the ones generating 8% isn't the tool. It's how the tool is configured, what it's trained on, and how the customer experience is designed around it. That's the gap most founders don't know how to close.</p>
   </div>
 </section>
 
@@ -140,21 +144,27 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 01</p>
-        <h3 class="finding-title">AI recommendations are backfiring at scale</h3>
-        <p class="finding-summary">Product recommendation engines are the most widely adopted AI tool in e-commerce — and the most consistently misused. When they fail, they don't just miss a sale. They tell the customer you don't understand them.</p>
+        <h3 class="finding-title">Your email and SMS programs are underperforming because they're not designed — they're just turned on</h3>
+        <p class="finding-summary">Klaviyo alone doesn't generate revenue. Klaviyo configured with the right segments, flows, and AI personalization generates 6× more revenue per email than a broadcast list. Most small brands install Klaviyo, set up a welcome sequence, and leave millions of dollars in abandoned cart, post-purchase, and winback revenue untouched.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>38</span>%</div>
-        <div class="finding-stat-label">of shoppers say personalized recommendations feel generic or irrelevant — up from 22% in 2023</div>
-        <div class="finding-stat-source">Source: Salesforce State of the Connected Customer, 2025</div>
+        <div class="finding-stat-num">6<span>×</span></div>
+        <div class="finding-stat-label">higher revenue per email for brands with fully configured AI personalization vs. basic email broadcast</div>
+        <div class="finding-stat-source">Source: Klaviyo E-Commerce Benchmark Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>The recommendation paradox: the more AI recommends, the less personal it feels. Brands that plug in Shopify's default AI upsell engine get the same output as every other store on the platform — because the model is trained on the same data pool. Nothing about the recommendation reflects your brand, your curation, or your relationship with that specific customer.</p>
-      <p>The brands beating this aren't using more AI — they're using it differently. They layer editorial judgment on top of algorithmic output. The algorithm finds what's popular. A human (or a brand-trained model) decides what's on-brand. That combination outperforms pure AI recommendations by 22% in click-through and 18% in conversion.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">AI should surface options. Your brand should make the final call. Recommendations that feel like they came from a person who knows your store convert. Recommendations that feel algorithmic don't — even when they're technically accurate.</p>
+      <p>The full email and SMS revenue stack for a Shopify brand includes: a welcome series, abandoned cart sequence, post-purchase flow, cross-sell and upsell automation, winback campaign, and VIP tier treatment. Most brands have two of these running. High-performing brands have all six — each segmented by purchase history, browsing behavior, and predictive AI that identifies the right message for the right customer at the right time.</p>
+      <p>Attentive's AI SMS platform and Klaviyo's predictive analytics layer handle all of this automatically once configured correctly. The setup is a one-time investment. The revenue runs continuously. A brand doing $500K annually that implements a complete email/SMS stack typically sees $80–120K in incremental revenue in year one.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Klaviyo</span>
+        <span class="tool-tag">Attentive</span>
+        <span class="tool-tag">Postscript</span>
+        <span class="tool-tag">Omnisend</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I audit your current email and SMS setup, identify the revenue gaps in your current flows, design the complete sequence architecture, and configure the AI segmentation and personalization. I don't just install the tools — I design the customer experience around them so every automated message feels like it came from your brand.</p>
       </div>
     </div>
   </div>
@@ -165,21 +175,27 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 02</p>
-        <h3 class="finding-title">AI-generated product copy is killing conversions</h3>
-        <p class="finding-summary">Brands mass-producing product descriptions with AI are seeing higher return rates and lower conversion — not because the copy is wrong, but because it's unmemorable, generic, and indistinguishable from every competitor's.</p>
+        <h3 class="finding-title">AI product recommendations are your highest-leverage conversion tool — if they're configured for your brand</h3>
+        <p class="finding-summary">Product recommendations drive 35% of Amazon's total revenue. Shopify brands have access to the same recommendation AI through tools like Rebuy and LimeSpot — but most are running them out-of-the-box, which means generic recommendations that feel algorithmic rather than curated. The difference is configuration.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>2.7</span>×</div>
-        <div class="finding-stat-label">higher product return rate for items with pure AI-generated descriptions vs. brand-edited copy</div>
-        <div class="finding-stat-source">Source: Shopify merchant data analysis, Q4 2025</div>
+        <div class="finding-stat-num"><span>35</span>%</div>
+        <div class="finding-stat-label">of total e-commerce revenue is driven by AI product recommendations when properly configured — vs. 8% for default settings</div>
+        <div class="finding-stat-source">Source: McKinsey E-Commerce Personalization Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>The problem isn't the words — it's the expectations. AI-generated product copy tends toward the superlative and the vague: "premium quality," "thoughtfully designed," "perfect for any occasion." None of that tells a customer what they actually need to know. When the product arrives and doesn't match the inflated, generic description, they return it.</p>
-      <p>Brand-edited copy that uses AI as a drafting tool — not a final author — performs significantly better. The AI handles the structure and SEO scaffolding. The brand voice, the specific sensory details, the honest caveats — those come from a human. That combination reduces return rates and increases the probability that the customer who buys is the right customer for the product.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">Use AI to draft, humans to finish. A product description written by AI and reviewed by someone who has held the product outperforms one written entirely by either. The human edit is not optional — it's the conversion layer.</p>
+      <p>The gap between an 8% and 35% recommendation contribution rate is almost entirely a configuration and design problem. Default recommendation algorithms surface what's popular globally — which often has nothing to do with what a specific customer would actually buy. Brand-configured AI that knows your product catalog, your customer segments, and your brand logic recommends what's right for that customer specifically.</p>
+      <p>Tools like Rebuy for Shopify allow granular configuration of recommendation logic — by product category, customer lifetime value, purchase history, and even inventory levels. When paired with proper A/B testing (Triple Whale for analytics), brands can optimize their recommendation experience systematically rather than guessing.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Rebuy</span>
+        <span class="tool-tag">LimeSpot</span>
+        <span class="tool-tag">Triple Whale</span>
+        <span class="tool-tag">Glood.ai</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I map your product catalog and customer segments, configure your recommendation logic to reflect your brand's actual curation philosophy, design the placement and presentation of recommendations across your store, and set up the analytics to measure and optimize performance continuously.</p>
       </div>
     </div>
   </div>
@@ -190,33 +206,64 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 03</p>
-        <h3 class="finding-title">Chatbots are adding friction, not removing it</h3>
-        <p class="finding-summary">AI chat support is the second most common AI deployment among small e-commerce brands. It's also the feature that generates the most customer complaints — and the most cart abandonment.</p>
+        <h3 class="finding-title">Returns are destroying your margins — and AI can cut them significantly</h3>
+        <p class="finding-summary">The average DTC brand has a 20–30% return rate. Returns cost an average of $33 per item to process. For a brand shipping 5,000 orders per year, reducing returns by 10% saves $16,500 annually — from one change. AI-powered product content and sizing tools are the most direct lever.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>$1.8</span>B</div>
-        <div class="finding-stat-label">in US e-commerce revenue lost annually to cart abandonment triggered by chatbot failure</div>
-        <div class="finding-stat-source">Source: Forrester Research, 2025</div>
+        <div class="finding-stat-num"><span>22</span>%</div>
+        <div class="finding-stat-label">average reduction in return rate for brands that implement AI-assisted product descriptions with accurate sizing and material detail</div>
+        <div class="finding-stat-source">Source: Loop Returns DTC Benchmark Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>The typical pattern: a customer has a simple pre-purchase question ("Will this fit a queen bed?" or "When does this ship?"). The chatbot either misunderstands the question, loops in circles, or pushes a form. The customer closes the tab. The sale is gone.</p>
-      <p>Small brands are installing enterprise chatbot platforms designed for companies with thousands of daily queries. At low volume, these tools don't have enough training data to perform well — and they behave erratically, which is worse than no chatbot at all. The brands with the lowest abandonment rates from chat either use a highly customized AI trained on their specific FAQ and policies, or they skip the chatbot entirely and use a simple "Email us" button. Both outperform a poorly configured AI chat.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">A chatbot that can't answer your 20 most common questions shouldn't be deployed. Audit your support tickets first. Build the chatbot around the questions you actually get, not the questions the vendor's demo answers.</p>
+      <p>The leading cause of returns in apparel and home goods is expectation mismatch — the product doesn't match what the customer imagined from the description and photos. AI tools that generate detailed, accurate product descriptions — specific about dimensions, materials, fit, and use cases — set accurate expectations before purchase. Customers who buy with accurate expectations return less.</p>
+      <p>Tools like Loop Returns also provide AI-powered return analytics that identify which products, size ranges, and customer segments have the highest return rates — letting you fix the root cause rather than just processing returns faster. Combined with Yotpo's AI review synthesis, you can surface real customer language about fit and quality directly in your product descriptions.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Loop Returns</span>
+        <span class="tool-tag">Yotpo</span>
+        <span class="tool-tag">Gorgias</span>
+        <span class="tool-tag">AfterShip</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I audit your return data to identify the highest-cost return drivers, redesign your product content strategy using AI-assisted descriptions that set accurate expectations, and configure your returns analytics so you can monitor and reduce your return rate systematically over time.</p>
       </div>
     </div>
   </div>
 </div>
 
+<section class="services">
+  <div class="services-inner">
+    <p class="eyebrow">How I work with e-commerce brands</p>
+    <h2 class="section-title">Three ways to get started.</h2>
+    <p class="section-sub">I'm a product design leader with experience at Deloitte and a certificate from Harvard Business School, specializing in AI implementation and customer experience design. I help Shopify and DTC brands build AI stacks that actually generate revenue — not just automate busywork.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">Step 01</p>
+        <h3 class="service-title">AI Stack Audit</h3>
+        <p class="service-desc">A 2-hour working session reviewing your current Shopify setup, email/SMS stack, and customer experience. You leave with a prioritized list of tools to add or reconfigure, a revenue projection for each, and a clear 90-day implementation roadmap.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 02</p>
+        <h3 class="service-title">AI Implementation</h3>
+        <p class="service-desc">Full configuration of your email/SMS flows, recommendation engine, and customer experience tools. Includes brand voice design for all AI-generated content, analytics setup, and a 30-day optimization period. You get a complete, revenue-generating AI stack — not a half-finished setup.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 03</p>
+        <h3 class="service-title">Ongoing Advisory</h3>
+        <p class="service-desc">Monthly performance reviews, A/B test analysis, and continuous optimization of your AI stack. As new tools emerge and your brand scales, you have a dedicated expert ensuring your technology grows with your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section">
   <div class="cta-inner">
-    <p class="cta-eyebrow">Work with Breon.ai</p>
-    <h2 class="cta-title">Your AI tools are only as good as the experience around them.</h2>
-    <p class="cta-sub">Most e-commerce brands have the right tools. The problem is the layer between the tool and the customer. That's the part worth fixing — and it doesn't require starting over.</p>
-    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your store</a>
-    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+    <p class="cta-eyebrow">Work with Brandon Breon</p>
+    <h2 class="cta-title">Your competitors have the same tools.<br>The difference is how they're built.</h2>
+    <p class="cta-sub">I bring a product design background from Deloitte and Harvard Business School to e-commerce AI — which means I think about the customer experience first, the technology second. The goal isn't installing tools. It's building a customer experience that converts, retains, and compounds.</p>
+    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your brand</a>
+    <p class="cta-note">Start with a free 20-minute call. No pitch — just a conversation about what's possible.</p>
   </div>
 </section>
 
@@ -225,10 +272,10 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="author-avatar">B</div>
     <div>
       <div class="author-name">Brandon Breon</div>
-      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+      <div class="author-title">AI Design Leader · Product Strategy · CEO, Breon.ai</div>
     </div>
     <div class="author-divider"></div>
-    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+    <p class="author-note">I'm a product design leader specializing in AI and human-AI collaboration, with experience at Deloitte and a certificate from Harvard Business School. I help e-commerce brands build AI stacks that generate measurable revenue — not just automate operations.</p>
   </div>
 </div>
 

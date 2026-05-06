@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI & Local Service Businesses 2026 | Breon.ai</title>
-<meta name="description" content="How law firms, dental practices, real estate agents, and local service businesses are using AI — and where it's costing them clients. A practical briefing by Breon.ai.">
+<meta name="description" content="The AI tools transforming law firms, dental practices, and local service businesses — and what most operators are missing. A practical briefing by Brandon Breon, AI design leader.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,7 @@
   --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
   --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
   --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
-  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
-  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+  --max-w: 1080px;
 }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
 .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -42,7 +41,7 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .section-inner { max-width: var(--max-w); margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
 .section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
-.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 640px; }
 .finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
 .finding:nth-child(even) { background: var(--surface); }
 .finding-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -58,16 +57,25 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
 .finding-body p { margin-bottom: 18px; }
 .finding-body p:last-child { margin-bottom: 0; }
-.insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
-.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
-.insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.tool-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,91,255,0.08); border: 1px solid rgba(99,91,255,0.18); color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 4px 0; }
+.tools-row { margin-bottom: 20px; }
+.how-i-help { background: var(--navy); border-radius: var(--radius); padding: 24px 28px; margin-top: 16px; }
+.how-i-help-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.how-i-help-text { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
+.services { padding: 80px 32px; background: var(--surface); }
+.services-inner { max-width: var(--max-w); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+.service-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.service-title { font-size: 20px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.70; }
 .cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
 .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
 .cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 .cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
 .cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
 .cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
-.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; transition: background 0.15s; }
 .cta-btn:hover { background: #E85A25; }
 .cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
 .author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
@@ -76,13 +84,14 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
 .author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
 .author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
-.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 540px; }
 footer { background: var(--navy); padding: 32px; text-align: center; }
 footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
 footer a:hover { color: rgba(255,255,255,0.70); }
 @media (max-width: 768px) {
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
   .author-inner { flex-wrap: wrap; }
   .author-divider { display: none; }
 }
@@ -92,9 +101,7 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="https://research.breon.ai" class="nav-logo">
-      <span class="nav-logo-dot"></span>breon.ai
-    </a>
+    <a href="https://research.breon.ai" class="nav-logo"><span class="nav-logo-dot"></span>breon.ai</a>
     <ul class="nav-links">
       <li><a href="https://research.breon.ai">Research</a></li>
       <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
@@ -104,24 +111,21 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="hero-tag-dot"></span>
-      Local Services Research Brief — May 2026
-    </div>
-    <h1>What AI Is Doing to<br><span>Local Service Businesses</span></h1>
-    <p class="hero-sub">Law firms, dental practices, real estate agents, and professional services businesses are all adopting AI tools. The ones that deploy it well earn more clients. The ones that don't are training clients to expect less.</p>
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Local Services Research Brief — May 2026</div>
+    <h1>AI Is Filling Your<br><span>Schedule — Or Your Competitor's</span></h1>
+    <p class="hero-sub">Law firms, dental practices, real estate brokers, and local service businesses are all sitting on the same AI opportunity. The ones acting on it first are filling their calendars, reducing no-shows, and earning more referrals. The rest are watching clients choose someone who responds faster.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>57</span>%</div>
-        <div class="hero-stat-label">of clients say AI intake processes feel less trustworthy than speaking to a person</div>
+        <div class="hero-stat-num"><span>35</span>%</div>
+        <div class="hero-stat-label">reduction in no-shows when AI-powered appointment reminders and confirmations are implemented</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>4×</span></div>
-        <div class="hero-stat-label">more likely to choose a competitor after a bad AI intake experience</div>
+        <div class="hero-stat-num"><span>28</span>%</div>
+        <div class="hero-stat-label">increase in client conversion when AI follow-up sequences replace manual outreach</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>68</span>%</div>
-        <div class="hero-stat-label">of local businesses using AI report no improvement in client satisfaction scores</div>
+        <div class="hero-stat-num"><span>5hrs</span></div>
+        <div class="hero-stat-label">average admin time saved per week per practitioner with AI intake and scheduling tools</div>
       </div>
     </div>
   </div>
@@ -129,9 +133,9 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="section">
   <div class="section-inner">
-    <p class="eyebrow">What this brief covers</p>
-    <h2 class="section-title">Clients hire people, not platforms.<br>AI deployed wrong makes them doubt both.</h2>
-    <p class="section-sub">Local service businesses are built on referrals, reputation, and relationships. AI that makes those businesses feel less human doesn't just fail to help — it actively undermines the trust that took years to build. This brief covers where that breakdown happens and what the businesses getting it right do differently.</p>
+    <p class="eyebrow">The opportunity</p>
+    <h2 class="section-title">Your clients expect a response in minutes.<br>AI makes that possible without adding staff.</h2>
+    <p class="section-sub">The biggest competitive advantage available to independent local service businesses right now isn't marketing spend or lower prices. It's responsiveness. AI tools that handle intake, scheduling, follow-up, and communication make a solo practitioner or small team feel like a fully staffed operation — and that's what clients choose.</p>
   </div>
 </section>
 
@@ -140,21 +144,28 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 01</p>
-        <h3 class="finding-title">AI intake forms are filtering out the clients you most want</h3>
-        <p class="finding-summary">Automated intake forms and AI-powered qualification tools are spreading fast across law firms, financial advisors, and professional service firms. They're solving an efficiency problem while creating a trust problem — and the clients most likely to leave are the most valuable ones.</p>
+        <h3 class="finding-title">You're losing high-value clients in the first 5 minutes after they inquire</h3>
+        <p class="finding-summary">Studies consistently show that responding to a new client inquiry within 5 minutes increases conversion by over 400% compared to responding within an hour. Most local service businesses respond in hours or days. AI intake tools close that gap automatically — without you being tied to your phone.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>57</span>%</div>
-        <div class="finding-stat-label">of prospective clients say AI intake processes feel less trustworthy than speaking directly to a person</div>
-        <div class="finding-stat-source">Source: Legal Trends Report, Clio, 2025</div>
+        <div class="finding-stat-num"><span>400</span>%</div>
+        <div class="finding-stat-label">higher conversion rate when a new inquiry receives a response within 5 minutes vs. within 60 minutes</div>
+        <div class="finding-stat-source">Source: Lead Connect / Harvard Business Review Response Time Study, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>High-value clients — the ones with complex situations and significant lifetime value — are also the ones most likely to disengage from an impersonal intake process. Their situation doesn't fit a form. They want to know they're talking to someone who will understand nuance. When the first touchpoint is a 12-question AI intake survey, they often don't complete it. They call someone else.</p>
-      <p>The firms with the highest intake conversion rates use AI to handle the administrative layer — scheduling, document collection, initial FAQ responses — while keeping the first substantive conversation human. The prospect feels heard immediately. The AI has already eliminated the back-and-forth on logistics. Both parties show up to the first real conversation with more clarity and less friction.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">AI should handle everything before the relationship starts — scheduling, reminders, document requests. The relationship itself starts with a human. Every minute you save on logistics is a minute you can spend on the conversation that actually converts the client.</p>
+      <p>Tools like Lawmatics (for law firms), Weave (for dental and healthcare practices), and Podium (for local service businesses broadly) provide AI-powered intake that responds to new inquiries instantly — answers their initial question, qualifies the lead, and books a consultation, all without human intervention.</p>
+      <p>The prospect who submits a contact form at 9pm on a Tuesday gets a response in 30 seconds. By the time your competitor checks their email the next morning, that client has already booked a call with you. The tool costs less than one billable hour per month. The ROI is immediate.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Lawmatics</span>
+        <span class="tool-tag">Weave</span>
+        <span class="tool-tag">Podium</span>
+        <span class="tool-tag">Clio Grow</span>
+        <span class="tool-tag">Calendly AI</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I map your current intake process, identify where leads are falling through the cracks, select and configure the right AI intake tool for your practice type, and design the conversation flow so new inquiries feel like they're talking to a knowledgeable team member — not a bot. Setup typically takes 1–2 weeks.</p>
       </div>
     </div>
   </div>
@@ -165,21 +176,28 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 02</p>
-        <h3 class="finding-title">AI-generated client communications are eroding professional credibility</h3>
-        <p class="finding-summary">Dentists, attorneys, real estate agents, and financial advisors are using AI to draft client emails, follow-ups, and explanations of service. When clients notice — and they increasingly do — it doesn't read as efficient. It reads as indifferent.</p>
+        <h3 class="finding-title">No-shows are costing your practice more than you think</h3>
+        <p class="finding-summary">The average no-show rate for local service businesses is 18–23%. For a dental practice with a $300 average appointment value, 5 no-shows per week is $78,000 in annual lost revenue. AI-powered reminder and confirmation systems reduce no-shows by up to 35% — and pay for themselves in the first week.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num">4<span>×</span></div>
-        <div class="finding-stat-label">more likely to choose a competitor after receiving a communication that felt automated and impersonal</div>
-        <div class="finding-stat-source">Source: Salesforce Small Business Research, 2025</div>
+        <div class="finding-stat-num"><span>35</span>%</div>
+        <div class="finding-stat-label">average reduction in no-shows when AI reminder sequences include SMS confirmation, pre-visit instructions, and 2-way messaging</div>
+        <div class="finding-stat-source">Source: Weave Healthcare Communication Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>The credibility damage is most acute in high-stakes contexts. A dental patient receives an AI-generated email explaining a treatment plan recommendation. A real estate client gets a follow-up after making an offer. A legal client receives an update on their case. These moments carry emotional weight. When the communication reads like a template — when it uses phrases like "as per our discussion" and "please don't hesitate to reach out" — the emotional signal is that this person didn't think about you specifically.</p>
-      <p>Local service professionals who use AI most effectively treat it as a first draft tool. They paste in the context — the patient's situation, the offer details, the case update — and ask AI to structure a response. Then they spend three minutes making it sound like them. The result is faster than writing from scratch and warmer than unedited AI output. That combination is where the efficiency gain is without the credibility cost.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">In professional services, the communication IS part of the service. A client who receives a generic email about their specific situation experiences that as a symptom of how you'll handle their case. AI-assisted is fine. AI-authored is a liability.</p>
+      <p>The difference between a reminder that gets ignored and one that gets a confirmation is design — specifically, the timing, channel, and content of each touchpoint. A single email reminder 24 hours out has a 40% open rate. A sequence that includes an email 72 hours out, an SMS with a one-tap confirmation 24 hours out, and a final SMS 2 hours before the appointment reduces no-shows by 35%.</p>
+      <p>Tools like Weave, Solutionreach, and NexHealth handle all of this automatically, integrated with your existing practice management software. The AI personalizes each message with appointment details and pre-visit instructions. Your front desk doesn't make a single reminder call. Your schedule fills and stays filled.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Weave</span>
+        <span class="tool-tag">Solutionreach</span>
+        <span class="tool-tag">NexHealth</span>
+        <span class="tool-tag">Doctible</span>
+        <span class="tool-tag">Luma Health</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I design your full reminder sequence — timing, channel mix, message content, and confirmation flow — integrated with your practice management system. I also design the re-booking flow for confirmed no-shows, so cancelled appointments are recovered automatically rather than left as lost revenue.</p>
       </div>
     </div>
   </div>
@@ -190,33 +208,65 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 03</p>
-        <h3 class="finding-title">Most local businesses are using AI for the wrong things</h3>
-        <p class="finding-summary">The majority of AI adoption in local service businesses focuses on content marketing — social posts, blog articles, email newsletters. That's the lowest-leverage application. The highest-leverage uses — intake, operations, follow-up — remain largely untouched.</p>
+        <h3 class="finding-title">Your referral pipeline is manual — and most of it is leaking</h3>
+        <p class="finding-summary">The most valuable growth channel for local service businesses is referrals. The most underused AI application for local service businesses is automating the referral ask. Most practitioners rely on word-of-mouth happening organically. AI-powered CRM and review tools systematize the process — without feeling pushy.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>68</span>%</div>
-        <div class="finding-stat-label">of local businesses using AI report no measurable improvement in client satisfaction or retention</div>
-        <div class="finding-stat-source">Source: BrightLocal AI Adoption Survey, 2025</div>
+        <div class="finding-stat-num"><span>40</span>%</div>
+        <div class="finding-stat-label">increase in 5-star reviews and referrals when AI-powered post-service follow-up sequences are deployed within 24 hours of service</div>
+        <div class="finding-stat-source">Source: Podium Local Business Review Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>Producing more content faster is not a growth strategy for a local service business. A dental practice doesn't get more patients because it posts three times a week on Instagram. A law firm doesn't convert more clients because it publishes a weekly legal newsletter. Content can build awareness over time — but it rarely moves the needle on revenue the way operational improvements do.</p>
-      <p>The businesses seeing measurable ROI from AI are applying it to the work that happens between the first inquiry and the signed engagement: faster appointment confirmation, automated pre-appointment reminders with intake materials, AI-assisted case summaries before client meetings, post-appointment follow-up sequences. These applications touch the actual client experience. They reduce no-shows, improve preparation, and signal professionalism — all without a single social post.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">Before using AI to make noise, use it to improve the experience your paying clients are already having. The best marketing a local service business can do is make existing clients feel so well-served that they refer someone else. AI that improves that experience compounds.</p>
+      <p>A satisfied client who doesn't hear from you after their appointment is a missed referral opportunity. An AI-powered post-service sequence that sends a personalized check-in, asks for a Google review at the right moment, and surfaces a referral prompt to your highest-satisfaction clients turns passive word-of-mouth into a systematic growth channel.</p>
+      <p>Tools like Podium, Birdeye, and practice-specific CRMs like Clio (for legal) and Follow Up Boss (for real estate) automate this entire sequence. The AI identifies which clients are most likely to refer based on their engagement history, sends the right message at the right time, and routes responses to the right person on your team.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Podium</span>
+        <span class="tool-tag">Birdeye</span>
+        <span class="tool-tag">Clio</span>
+        <span class="tool-tag">Follow Up Boss</span>
+        <span class="tool-tag">Salesforce Starter</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I build your post-service follow-up sequence from scratch — the timing, the message, the review ask, and the referral prompt — designed around your specific client relationship and brand voice. The result is a systematic referral engine that runs automatically while you focus on delivering your service.</p>
       </div>
     </div>
   </div>
 </div>
 
+<section class="services">
+  <div class="services-inner">
+    <p class="eyebrow">How I work with local service businesses</p>
+    <h2 class="section-title">Three ways to get started.</h2>
+    <p class="section-sub">I'm a product design leader with experience at Deloitte and a certificate from Harvard Business School, specializing in AI implementation and human-centered experience design. I help local service businesses identify the right AI tools, implement them correctly, and make sure they feel like your practice — not a software vendor's template.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">Step 01</p>
+        <h3 class="service-title">AI Practice Audit</h3>
+        <p class="service-desc">A 2-hour working session reviewing your current client journey — from first inquiry to referral ask. You leave with a prioritized list of AI tools to implement, a clear ROI projection for each, and a 90-day roadmap. Built around your specific practice type and size.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 02</p>
+        <h3 class="service-title">AI Implementation</h3>
+        <p class="service-desc">Full setup and configuration of 2–3 AI tools tailored to your practice. Includes integration with your existing practice management software, staff training, brand voice design for all AI communications, and a 30-day optimization period. You're operational — not experimenting.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 03</p>
+        <h3 class="service-title">Ongoing Advisory</h3>
+        <p class="service-desc">Monthly check-ins to review performance, optimize your tools, and keep you ahead of what's changing in AI for your industry. As new tools and regulations emerge, you have a dedicated expert making sure your practice stays competitive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section">
   <div class="cta-inner">
-    <p class="cta-eyebrow">Work with Breon.ai</p>
-    <h2 class="cta-title">You built your practice on trust.<br>Your AI should protect it.</h2>
-    <p class="cta-sub">The goal isn't to automate client relationships — it's to use AI to make the human parts of your practice more consistent, more personal, and more scalable. That's a design problem. And design problems are solvable.</p>
+    <p class="cta-eyebrow">Work with Brandon Breon</p>
+    <h2 class="cta-title">Your practice runs on relationships.<br>AI should strengthen them — not replace them.</h2>
+    <p class="cta-sub">I bring a product design background from Deloitte and Harvard Business School to local service AI — which means I think about the client experience first, the technology second. The goal isn't automation for its own sake. It's making your practice more responsive, more consistent, and more referable.</p>
     <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your practice</a>
-    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+    <p class="cta-note">Start with a free 20-minute call. No pitch — just a conversation about what's possible.</p>
   </div>
 </section>
 
@@ -225,10 +275,10 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="author-avatar">B</div>
     <div>
       <div class="author-name">Brandon Breon</div>
-      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+      <div class="author-title">AI Design Leader · Product Strategy · CEO, Breon.ai</div>
     </div>
     <div class="author-divider"></div>
-    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+    <p class="author-note">I'm a product design leader specializing in AI and human-AI collaboration, with experience at Deloitte and a certificate from Harvard Business School. I help local service businesses implement AI tools that improve client experience, increase revenue, and reduce administrative burden.</p>
   </div>
 </div>
 

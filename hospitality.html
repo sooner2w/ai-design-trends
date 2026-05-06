@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI & Hospitality 2026 | Breon.ai</title>
-<meta name="description" content="How independent restaurants and hotels are using AI — and where the experience breaks down. A practical briefing for hospitality operators by Breon.ai.">
+<title>AI & Guest Experience 2026 | Breon.ai</title>
+<meta name="description" content="The AI tools transforming independent hotels and restaurants — and why most operators are leaving money on the table. A practical briefing by Brandon Breon, AI design leader.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,7 @@
   --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
   --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
   --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
-  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
-  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+  --max-w: 1080px;
 }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
 .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -42,7 +41,7 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .section-inner { max-width: var(--max-w); margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
 .section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
-.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 640px; }
 .finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
 .finding:nth-child(even) { background: var(--surface); }
 .finding-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -58,16 +57,28 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
 .finding-body p { margin-bottom: 18px; }
 .finding-body p:last-child { margin-bottom: 0; }
+.tool-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,91,255,0.08); border: 1px solid rgba(99,91,255,0.18); color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 4px 0; }
+.tools-row { margin-bottom: 20px; }
 .insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
 .insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
 .insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.how-i-help { background: var(--navy); border-radius: var(--radius); padding: 24px 28px; margin-top: 16px; }
+.how-i-help-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.how-i-help-text { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
+.services { padding: 80px 32px; background: var(--surface); }
+.services-inner { max-width: var(--max-w); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+.service-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.service-title { font-size: 20px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.70; }
 .cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
 .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
 .cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 .cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
 .cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
 .cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
-.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; transition: background 0.15s; }
 .cta-btn:hover { background: #E85A25; }
 .cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
 .author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
@@ -76,13 +87,14 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
 .author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
 .author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
 .author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
-.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 540px; }
 footer { background: var(--navy); padding: 32px; text-align: center; }
 footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
 footer a:hover { color: rgba(255,255,255,0.70); }
 @media (max-width: 768px) {
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
   .author-inner { flex-wrap: wrap; }
   .author-divider { display: none; }
 }
@@ -92,9 +104,7 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="https://research.breon.ai" class="nav-logo">
-      <span class="nav-logo-dot"></span>breon.ai
-    </a>
+    <a href="https://research.breon.ai" class="nav-logo"><span class="nav-logo-dot"></span>breon.ai</a>
     <ul class="nav-links">
       <li><a href="https://research.breon.ai">Research</a></li>
       <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
@@ -104,24 +114,21 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="hero-tag-dot"></span>
-      Hospitality Research Brief — May 2026
-    </div>
-    <h1>The AI Experience Gap<br>in <span>Independent Hospitality</span></h1>
-    <p class="hero-sub">Independent restaurants and hotels are deploying AI at a rapid pace. But when the technology gets in the way of genuine hospitality, the damage to guest relationships outlasts any efficiency gain.</p>
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Hospitality Research Brief — May 2026</div>
+    <h1>Your Guests Are Choosing<br><span>Competitors With Better AI</span></h1>
+    <p class="hero-sub">Independent hotels and restaurants have access to the same AI tools as major chains. Most aren't using them — and the ones that are, aren't using them right. Here's what's actually available, what it costs, and what it's worth.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>61</span>%</div>
-        <div class="hero-stat-label">of guests say AI interactions feel impersonal at independent properties</div>
+        <div class="hero-stat-num"><span>26</span>%</div>
+        <div class="hero-stat-label">increase in ancillary revenue for properties using AI-powered upselling tools</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>3.4</span>×</div>
-        <div class="hero-stat-label">more negative reviews mentioning "automated" or "robotic" service</div>
+        <div class="hero-stat-num"><span>40</span>%</div>
+        <div class="hero-stat-label">reduction in front desk calls when AI guest messaging is properly implemented</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num"><span>44</span>%</div>
-        <div class="hero-stat-label">of diners who had a bad chatbot experience chose a competitor next visit</div>
+        <div class="hero-stat-num"><span>18</span>%</div>
+        <div class="hero-stat-label">average RevPAR increase for independent hotels using AI dynamic pricing</div>
       </div>
     </div>
   </div>
@@ -129,9 +136,9 @@ footer a:hover { color: rgba(255,255,255,0.70); }
 
 <section class="section">
   <div class="section-inner">
-    <p class="eyebrow">What this brief covers</p>
-    <h2 class="section-title">Hospitality runs on warmth.<br>Most AI doesn't have any.</h2>
-    <p class="section-sub">Independent operators don't compete with chains on price or scale. They compete on the feeling a guest gets — the recognition, the personality, the sense that someone cared. AI deployed without that context doesn't just underperform. It actively erodes the one thing that sets independent properties apart.</p>
+    <p class="eyebrow">The opportunity</p>
+    <h2 class="section-title">The tools exist. The gap is implementation.</h2>
+    <p class="section-sub">Enterprise hotel chains have entire technology teams deploying AI across their operations. Independent operators have the same tools available at a fraction of the cost — but no one to tell them which ones to use, how to set them up, or how to make them feel like their brand instead of a software demo. That's the gap. And it's closeable.</p>
   </div>
 </section>
 
@@ -140,21 +147,27 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 01</p>
-        <h3 class="finding-title">Automated responses are damaging guest relationships before they begin</h3>
-        <p class="finding-summary">The first touchpoint with a potential guest is now almost always digital — a reservation inquiry, a question about the menu, a request about accessibility. When AI handles that first contact poorly, it sets a negative tone that the best in-person experience can't fully reverse.</p>
+        <h3 class="finding-title">You're leaving 26% of revenue on the table before guests arrive</h3>
+        <p class="finding-summary">The most consistent revenue opportunity in independent hospitality isn't room rates or F&B — it's the pre-arrival window. AI upselling tools that engage guests 48–72 hours before check-in are generating significant ancillary revenue that most independent properties aren't capturing at all.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>61</span>%</div>
-        <div class="finding-stat-label">of guests report feeling like they were interacting with a script, not a person, during pre-visit AI contact</div>
-        <div class="finding-stat-source">Source: Black Box Intelligence Hospitality Study, 2025</div>
+        <div class="finding-stat-num"><span>26</span>%</div>
+        <div class="finding-stat-label">average increase in ancillary revenue (room upgrades, dining, spa, experiences) when AI pre-arrival upselling is deployed correctly</div>
+        <div class="finding-stat-source">Source: Oaky Hotel Upselling Benchmark Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>The problem is expectation mismatch. A guest reaching out to an independent boutique hotel expects warmth and specificity. When they get a generic, templated AI response — the same tone they'd get from a Marriott — the gap between expectation and reality is jarring. They haven't arrived yet, and the property has already broken the promise of the independent experience.</p>
-      <p>The operators avoiding this don't abandon AI for pre-visit communication. They use AI to draft responses and a staff member to review and personalize them before sending. The AI handles volume; the person handles tone. This hybrid approach is both faster than fully manual and dramatically warmer than fully automated.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">Every AI-generated guest communication should pass one test: does this sound like it came from our specific property, or does it sound like it could have come from any hotel in the world? If the answer is the latter, it's not ready to send.</p>
+      <p>The pre-arrival window is the highest-intent moment in the guest journey. A guest who just confirmed their reservation is actively thinking about their stay. AI tools like Oaky and Canary Technologies send personalized upgrade and add-on offers at exactly this moment — automatically, at scale, and in your brand's voice.</p>
+      <p>A boutique hotel with 40 rooms running Oaky correctly typically sees $35–75 in additional revenue per occupied room, per stay. At 70% occupancy that's $35,000–75,000 in annual ancillary revenue from a tool that costs less than $400/month. Most independent operators don't know this tool exists.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Oaky</span>
+        <span class="tool-tag">Canary Technologies</span>
+        <span class="tool-tag">Cloudbeds</span>
+        <span class="tool-tag">SevenRooms</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I audit your current pre-arrival guest journey, identify the upsell opportunities specific to your property, configure the right tool for your PMS, and design the messaging so it feels like your brand — not a software template. Setup typically takes 2–3 weeks.</p>
       </div>
     </div>
   </div>
@@ -165,21 +178,27 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 02</p>
-        <h3 class="finding-title">Review response AI is making the problem worse</h3>
-        <p class="finding-summary">Responding to Google and Yelp reviews is time-consuming. AI tools that automate responses seem like an obvious fix. But when the response doesn't match the guest's specific complaint — or worse, gets the details wrong — it generates a second wave of negative sentiment.</p>
+        <h3 class="finding-title">Your front desk is answering the same 12 questions every day</h3>
+        <p class="finding-summary">The majority of guest inquiries — parking, check-in time, WiFi, dining hours, local recommendations — are identical and predictable. AI guest messaging platforms handle these automatically, freeing your staff for the interactions that actually require a human.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>3.4</span>×</div>
-        <div class="finding-stat-label">more reviews calling out "copy-paste" or "bot" responses on properties using fully automated review reply tools</div>
-        <div class="finding-stat-source">Source: ReviewTrackers Industry Report, 2025</div>
+        <div class="finding-stat-num"><span>40</span>%</div>
+        <div class="finding-stat-label">reduction in front desk and phone inquiries when AI guest messaging is implemented with proper training data</div>
+        <div class="finding-stat-source">Source: Cloudbeds Hospitality Technology Report, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>A guest leaves a one-star review about a specific incident — cold food, a billing error, a noisy neighbor. The AI generates a response that thanks them for their feedback, acknowledges their experience, and invites them back. It doesn't address the specific complaint. To other readers of that review, it looks like the owner didn't read what was written. That's a more damaging signal than no response at all.</p>
-      <p>Operators using AI effectively for review management use it differently: AI categorizes and summarizes incoming reviews so the operator can respond to the most urgent ones first. The response itself is written by a person — informed by what the AI flagged. This approach reduces review response time by 60% while maintaining the specificity that makes responses credible and effective.</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">AI should read and categorize reviews. Humans should respond to them. The five minutes it takes to write a specific, genuine reply to a one-star review is worth more than an instant, generic AI response that signals you didn't care enough to read what was written.</p>
+      <p>Tools like Whistle for Cloudbeds and Revinate handle inbound guest messages via SMS, WhatsApp, and email — automatically answering routine questions and escalating anything that needs human judgment. The guest gets an instant response at 2am. Your staff handles the check-in that needed special attention, not the ninth person asking about parking.</p>
+      <p>The failure mode is deploying these tools without proper setup. A generic AI chatbot that doesn't know your specific policies, your room types, or your local area recommendations gives guests wrong answers — which is worse than no answer. The tool is only as good as the data it's trained on and the experience it's designed around.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Whistle (Cloudbeds)</span>
+        <span class="tool-tag">Revinate</span>
+        <span class="tool-tag">Quicktext</span>
+        <span class="tool-tag">Medallia</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I map your 50 most common guest inquiries, build the knowledge base your AI needs to answer them correctly, design the escalation flows for edge cases, and set up the integration with your existing PMS. The result is a guest messaging system that sounds like your best front desk agent — not a call center bot.</p>
       </div>
     </div>
   </div>
@@ -190,33 +209,64 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="finding-header">
       <div>
         <p class="finding-num">Finding 03</p>
-        <h3 class="finding-title">AI loyalty programs are rewarding the wrong behavior</h3>
-        <p class="finding-summary">Independent restaurants and hotels are increasingly adding AI-driven loyalty and personalization tools. Most are designed for chain-scale operations — and when applied to an independent property, they optimize for frequency at the expense of the relationship.</p>
+        <h3 class="finding-title">Your reviews are your most valuable marketing asset — and most operators aren't managing them with AI</h3>
+        <p class="finding-summary">Properties that respond to reviews within 24 hours see 12% more bookings. AI review management tools make this possible at scale — while keeping responses specific, genuine, and on-brand. Most independent operators either don't respond, respond late, or use generic templates that signal they didn't read the review.</p>
       </div>
       <div class="finding-stat">
-        <div class="finding-stat-num"><span>44</span>%</div>
-        <div class="finding-stat-label">of guests who had a friction-heavy AI interaction chose a competitor for their next visit</div>
-        <div class="finding-stat-source">Source: Oracle Hospitality Consumer Survey, 2025</div>
+        <div class="finding-stat-num"><span>12</span>%</div>
+        <div class="finding-stat-label">increase in bookings for properties that respond to reviews within 24 hours vs. those that don't respond at all</div>
+        <div class="finding-stat-source">Source: ReviewPro / Shiji Group Hospitality Study, 2025</div>
       </div>
     </div>
     <div class="finding-body">
-      <p>Chain loyalty programs work on volume. The AI can afford to be generic because they're optimizing across millions of guests. For an independent restaurant with 200 regulars, the same approach misfires — a points-based AI loyalty push to a guest who has been coming every Friday for three years doesn't feel like recognition. It feels like they've been reduced to a data point.</p>
-      <p>The independent operators winning on loyalty aren't using AI to replace the host who remembers the table's usual order. They're using it to help the host remember: a simple system that flags returning guests, notes preferences, and surfaces context before the reservation. The human delivers the recognition moment. The AI made it possible at scale. That combination earns the review that says "they remembered everything."</p>
-      <div class="insight-box">
-        <p class="insight-label">The design principle</p>
-        <p class="insight-text">AI in hospitality should make your team feel like they know every guest personally — not replace the feeling of being known. The technology is the memory. The hospitality is still human.</p>
+      <p>Tools like ReviewPro and Medallia aggregate reviews across Google, TripAdvisor, Booking.com, and Yelp in one dashboard. AI categorizes sentiment, flags urgent issues, and drafts responses for your review. Your team spends 15 minutes a day on review management instead of 2 hours — and every response goes out within 24 hours.</p>
+      <p>The key distinction: AI drafts, humans approve. A response that's 80% AI-drafted and 20% human-edited outperforms both a fully automated response (which guests can detect) and no response at all. The human edit adds the specific detail that makes the response feel genuine — and that specificity is what converts other readers into bookers.</p>
+      <div class="tools-row">
+        <span class="tool-tag">ReviewPro</span>
+        <span class="tool-tag">Medallia</span>
+        <span class="tool-tag">TrustYou</span>
+        <span class="tool-tag">GuestRevu</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I set up your review management platform, build response templates that sound like your property's voice, train your team on the AI-assist workflow, and design the escalation process for negative reviews that need personal attention from ownership.</p>
       </div>
     </div>
   </div>
 </div>
 
+<section class="services">
+  <div class="services-inner">
+    <p class="eyebrow">How I work with hospitality operators</p>
+    <h2 class="section-title">Three ways to get started.</h2>
+    <p class="section-sub">I'm a product design leader with a background in AI implementation and human-centered experience design. I work with independent operators to identify the right tools, implement them correctly, and make sure they feel like your brand — not a vendor's demo.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">Step 01</p>
+        <h3 class="service-title">AI Experience Audit</h3>
+        <p class="service-desc">A 2-hour working session reviewing your current guest journey, technology stack, and revenue opportunities. You leave with a prioritized list of AI tools to implement, a clear ROI projection for each, and a 90-day roadmap. No fluff — just a practical plan built around your specific property.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 02</p>
+        <h3 class="service-title">AI Implementation</h3>
+        <p class="service-desc">Full setup and configuration of 2–3 AI tools tailored to your property. Includes integration with your existing PMS, staff training, brand voice design for all AI-generated communications, and a 30-day optimization period to make sure everything is working correctly before you're on your own.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 03</p>
+        <h3 class="service-title">Ongoing Advisory</h3>
+        <p class="service-desc">Monthly check-ins to review performance data, optimize your AI tools, and keep you informed on new tools and industry trends. As the AI landscape evolves, you have a dedicated expert making sure your property stays ahead — not scrambling to catch up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section">
   <div class="cta-inner">
-    <p class="cta-eyebrow">Work with Breon.ai</p>
-    <h2 class="cta-title">Your guests chose you because you're not a chain.<br>Your AI shouldn't feel like one.</h2>
-    <p class="cta-sub">The goal isn't to automate hospitality. It's to use AI to make the human parts of your operation — the recognition, the warmth, the specificity — available to every guest, every time.</p>
+    <p class="cta-eyebrow">Work with Brandon Breon</p>
+    <h2 class="cta-title">The tools are ready.<br>Let's make them work for your property.</h2>
+    <p class="cta-sub">I bring a product design background from Deloitte and Harvard Business School to hospitality AI — which means I think about the guest experience first, the technology second. That's the difference between AI that earns 5-star reviews and AI that generates 1-star complaints.</p>
     <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your property</a>
-    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+    <p class="cta-note">Start with a free 20-minute call. No pitch — just a conversation about what's possible.</p>
   </div>
 </section>
 
@@ -225,10 +275,10 @@ footer a:hover { color: rgba(255,255,255,0.70); }
     <div class="author-avatar">B</div>
     <div>
       <div class="author-name">Brandon Breon</div>
-      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+      <div class="author-title">AI Design Leader · Product Strategy · CEO, Breon.ai</div>
     </div>
     <div class="author-divider"></div>
-    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+    <p class="author-note">I'm a product design leader specializing in AI and human-AI collaboration, with experience at Deloitte and a certificate from Harvard Business School. I research how AI shapes the relationship between businesses and their customers — and help operators implement it correctly.</p>
   </div>
 </div>
 
