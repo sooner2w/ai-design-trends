@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Hospitality 2026 | Breon.ai</title>
+<meta name="description" content="How independent restaurants and hotels are using AI — and where the experience breaks down. A practical briefing for hospitality operators by Breon.ai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
+  --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
+  --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
+  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
+  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 6px; }
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 16px; border-radius: 7px; font-weight: 600 !important; }
+.hero { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.80); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: 24px; max-width: 780px; }
+.hero h1 span { background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.70; max-width: 600px; margin-bottom: 40px; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
+.hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 18px; }
+.hero-stat-num { font-size: 34px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 40px; }
+.finding-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.finding-title { font-size: clamp(22px, 2.8vw, 32px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+.finding-summary { font-size: 16px; color: var(--muted); line-height: 1.75; }
+.finding-stat { background: var(--navy); border-radius: var(--radius-lg); padding: 36px 32px; }
+.finding-stat-num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; color: var(--white); }
+.finding-stat-num span { color: var(--orange); }
+.finding-stat-label { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.finding-stat-source { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+.finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
+.finding-body p { margin-bottom: 18px; }
+.finding-body p:last-child { margin-bottom: 0; }
+.insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
+.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+.insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
+.cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn:hover { background: #E85A25; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
+.author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
+.author-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--purple), var(--teal)); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: white; }
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+footer { background: var(--navy); padding: 32px; text-align: center; }
+footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: rgba(255,255,255,0.70); }
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .author-inner { flex-wrap: wrap; }
+  .author-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://research.breon.ai" class="nav-logo">
+      <span class="nav-logo-dot"></span>breon.ai
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://research.breon.ai">Research</a></li>
+      <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Hospitality Research Brief — May 2026
+    </div>
+    <h1>The AI Experience Gap<br>in <span>Independent Hospitality</span></h1>
+    <p class="hero-sub">Independent restaurants and hotels are deploying AI at a rapid pace. But when the technology gets in the way of genuine hospitality, the damage to guest relationships outlasts any efficiency gain.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>61</span>%</div>
+        <div class="hero-stat-label">of guests say AI interactions feel impersonal at independent properties</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>3.4</span>×</div>
+        <div class="hero-stat-label">more negative reviews mentioning "automated" or "robotic" service</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>44</span>%</div>
+        <div class="hero-stat-label">of diners who had a bad chatbot experience chose a competitor next visit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">What this brief covers</p>
+    <h2 class="section-title">Hospitality runs on warmth.<br>Most AI doesn't have any.</h2>
+    <p class="section-sub">Independent operators don't compete with chains on price or scale. They compete on the feeling a guest gets — the recognition, the personality, the sense that someone cared. AI deployed without that context doesn't just underperform. It actively erodes the one thing that sets independent properties apart.</p>
+  </div>
+</section>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 01</p>
+        <h3 class="finding-title">Automated responses are damaging guest relationships before they begin</h3>
+        <p class="finding-summary">The first touchpoint with a potential guest is now almost always digital — a reservation inquiry, a question about the menu, a request about accessibility. When AI handles that first contact poorly, it sets a negative tone that the best in-person experience can't fully reverse.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>61</span>%</div>
+        <div class="finding-stat-label">of guests report feeling like they were interacting with a script, not a person, during pre-visit AI contact</div>
+        <div class="finding-stat-source">Source: Black Box Intelligence Hospitality Study, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The problem is expectation mismatch. A guest reaching out to an independent boutique hotel expects warmth and specificity. When they get a generic, templated AI response — the same tone they'd get from a Marriott — the gap between expectation and reality is jarring. They haven't arrived yet, and the property has already broken the promise of the independent experience.</p>
+      <p>The operators avoiding this don't abandon AI for pre-visit communication. They use AI to draft responses and a staff member to review and personalize them before sending. The AI handles volume; the person handles tone. This hybrid approach is both faster than fully manual and dramatically warmer than fully automated.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">Every AI-generated guest communication should pass one test: does this sound like it came from our specific property, or does it sound like it could have come from any hotel in the world? If the answer is the latter, it's not ready to send.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 02</p>
+        <h3 class="finding-title">Review response AI is making the problem worse</h3>
+        <p class="finding-summary">Responding to Google and Yelp reviews is time-consuming. AI tools that automate responses seem like an obvious fix. But when the response doesn't match the guest's specific complaint — or worse, gets the details wrong — it generates a second wave of negative sentiment.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>3.4</span>×</div>
+        <div class="finding-stat-label">more reviews calling out "copy-paste" or "bot" responses on properties using fully automated review reply tools</div>
+        <div class="finding-stat-source">Source: ReviewTrackers Industry Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>A guest leaves a one-star review about a specific incident — cold food, a billing error, a noisy neighbor. The AI generates a response that thanks them for their feedback, acknowledges their experience, and invites them back. It doesn't address the specific complaint. To other readers of that review, it looks like the owner didn't read what was written. That's a more damaging signal than no response at all.</p>
+      <p>Operators using AI effectively for review management use it differently: AI categorizes and summarizes incoming reviews so the operator can respond to the most urgent ones first. The response itself is written by a person — informed by what the AI flagged. This approach reduces review response time by 60% while maintaining the specificity that makes responses credible and effective.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">AI should read and categorize reviews. Humans should respond to them. The five minutes it takes to write a specific, genuine reply to a one-star review is worth more than an instant, generic AI response that signals you didn't care enough to read what was written.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 03</p>
+        <h3 class="finding-title">AI loyalty programs are rewarding the wrong behavior</h3>
+        <p class="finding-summary">Independent restaurants and hotels are increasingly adding AI-driven loyalty and personalization tools. Most are designed for chain-scale operations — and when applied to an independent property, they optimize for frequency at the expense of the relationship.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>44</span>%</div>
+        <div class="finding-stat-label">of guests who had a friction-heavy AI interaction chose a competitor for their next visit</div>
+        <div class="finding-stat-source">Source: Oracle Hospitality Consumer Survey, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>Chain loyalty programs work on volume. The AI can afford to be generic because they're optimizing across millions of guests. For an independent restaurant with 200 regulars, the same approach misfires — a points-based AI loyalty push to a guest who has been coming every Friday for three years doesn't feel like recognition. It feels like they've been reduced to a data point.</p>
+      <p>The independent operators winning on loyalty aren't using AI to replace the host who remembers the table's usual order. They're using it to help the host remember: a simple system that flags returning guests, notes preferences, and surfaces context before the reservation. The human delivers the recognition moment. The AI made it possible at scale. That combination earns the review that says "they remembered everything."</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">AI in hospitality should make your team feel like they know every guest personally — not replace the feeling of being known. The technology is the memory. The hospitality is still human.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Work with Breon.ai</p>
+    <h2 class="cta-title">Your guests chose you because you're not a chain.<br>Your AI shouldn't feel like one.</h2>
+    <p class="cta-sub">The goal isn't to automate hospitality. It's to use AI to make the human parts of your operation — the recognition, the warmth, the specificity — available to every guest, every time.</p>
+    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your property</a>
+    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+  </div>
+</section>
+
+<div class="author-strip">
+  <div class="author-inner">
+    <div class="author-avatar">B</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+    </div>
+    <div class="author-divider"></div>
+    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="https://research.breon.ai">research.breon.ai</a>
+  <a href="https://research.breon.ai/work-with-me.html">Work With Me</a>
+</footer>
+
+</body>
+</html>

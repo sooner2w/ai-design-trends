@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & E-Commerce 2026 | Breon.ai</title>
+<meta name="description" content="How small e-commerce brands are winning — and losing — with AI. A practical briefing for Shopify founders and DTC operators by Breon.ai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
+  --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
+  --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
+  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
+  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 6px; }
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 16px; border-radius: 7px; font-weight: 600 !important; }
+.hero { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.80); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: 24px; max-width: 780px; }
+.hero h1 span { background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.70; max-width: 600px; margin-bottom: 40px; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
+.hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 18px; }
+.hero-stat-num { font-size: 34px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 40px; }
+.finding-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.finding-title { font-size: clamp(22px, 2.8vw, 32px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+.finding-summary { font-size: 16px; color: var(--muted); line-height: 1.75; }
+.finding-stat { background: var(--navy); border-radius: var(--radius-lg); padding: 36px 32px; }
+.finding-stat-num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; color: var(--white); }
+.finding-stat-num span { color: var(--orange); }
+.finding-stat-label { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.finding-stat-source { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+.finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
+.finding-body p { margin-bottom: 18px; }
+.finding-body p:last-child { margin-bottom: 0; }
+.insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
+.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+.insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
+.cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn:hover { background: #E85A25; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
+.author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
+.author-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--purple), var(--teal)); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: white; }
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+footer { background: var(--navy); padding: 32px; text-align: center; }
+footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: rgba(255,255,255,0.70); }
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .author-inner { flex-wrap: wrap; }
+  .author-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://research.breon.ai" class="nav-logo">
+      <span class="nav-logo-dot"></span>breon.ai
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://research.breon.ai">Research</a></li>
+      <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      E-Commerce Research Brief — May 2026
+    </div>
+    <h1>The AI Gap in<br><span>Small E-Commerce</span></h1>
+    <p class="hero-sub">Shopify founders and DTC brands are adopting AI faster than any other small business category. Most are using it wrong — and it's quietly costing them customers.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>38</span>%</div>
+        <div class="hero-stat-label">of shoppers say AI recs feel generic and irrelevant</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>2.7</span>×</div>
+        <div class="hero-stat-label">higher return rate when product descriptions are AI-only</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>$1.8</span>B</div>
+        <div class="hero-stat-label">lost to cart abandonment driven by chatbot friction (US, 2025)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">What this brief covers</p>
+    <h2 class="section-title">AI is everywhere in e-commerce.<br>Results are inconsistent.</h2>
+    <p class="section-sub">The brands winning with AI share one trait: they treated it as a customer experience problem before a technology problem. The ones losing share a different trait: they installed AI tools, turned them on, and assumed the work was done.</p>
+  </div>
+</section>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 01</p>
+        <h3 class="finding-title">AI recommendations are backfiring at scale</h3>
+        <p class="finding-summary">Product recommendation engines are the most widely adopted AI tool in e-commerce — and the most consistently misused. When they fail, they don't just miss a sale. They tell the customer you don't understand them.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>38</span>%</div>
+        <div class="finding-stat-label">of shoppers say personalized recommendations feel generic or irrelevant — up from 22% in 2023</div>
+        <div class="finding-stat-source">Source: Salesforce State of the Connected Customer, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The recommendation paradox: the more AI recommends, the less personal it feels. Brands that plug in Shopify's default AI upsell engine get the same output as every other store on the platform — because the model is trained on the same data pool. Nothing about the recommendation reflects your brand, your curation, or your relationship with that specific customer.</p>
+      <p>The brands beating this aren't using more AI — they're using it differently. They layer editorial judgment on top of algorithmic output. The algorithm finds what's popular. A human (or a brand-trained model) decides what's on-brand. That combination outperforms pure AI recommendations by 22% in click-through and 18% in conversion.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">AI should surface options. Your brand should make the final call. Recommendations that feel like they came from a person who knows your store convert. Recommendations that feel algorithmic don't — even when they're technically accurate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 02</p>
+        <h3 class="finding-title">AI-generated product copy is killing conversions</h3>
+        <p class="finding-summary">Brands mass-producing product descriptions with AI are seeing higher return rates and lower conversion — not because the copy is wrong, but because it's unmemorable, generic, and indistinguishable from every competitor's.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>2.7</span>×</div>
+        <div class="finding-stat-label">higher product return rate for items with pure AI-generated descriptions vs. brand-edited copy</div>
+        <div class="finding-stat-source">Source: Shopify merchant data analysis, Q4 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The problem isn't the words — it's the expectations. AI-generated product copy tends toward the superlative and the vague: "premium quality," "thoughtfully designed," "perfect for any occasion." None of that tells a customer what they actually need to know. When the product arrives and doesn't match the inflated, generic description, they return it.</p>
+      <p>Brand-edited copy that uses AI as a drafting tool — not a final author — performs significantly better. The AI handles the structure and SEO scaffolding. The brand voice, the specific sensory details, the honest caveats — those come from a human. That combination reduces return rates and increases the probability that the customer who buys is the right customer for the product.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">Use AI to draft, humans to finish. A product description written by AI and reviewed by someone who has held the product outperforms one written entirely by either. The human edit is not optional — it's the conversion layer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 03</p>
+        <h3 class="finding-title">Chatbots are adding friction, not removing it</h3>
+        <p class="finding-summary">AI chat support is the second most common AI deployment among small e-commerce brands. It's also the feature that generates the most customer complaints — and the most cart abandonment.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>$1.8</span>B</div>
+        <div class="finding-stat-label">in US e-commerce revenue lost annually to cart abandonment triggered by chatbot failure</div>
+        <div class="finding-stat-source">Source: Forrester Research, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The typical pattern: a customer has a simple pre-purchase question ("Will this fit a queen bed?" or "When does this ship?"). The chatbot either misunderstands the question, loops in circles, or pushes a form. The customer closes the tab. The sale is gone.</p>
+      <p>Small brands are installing enterprise chatbot platforms designed for companies with thousands of daily queries. At low volume, these tools don't have enough training data to perform well — and they behave erratically, which is worse than no chatbot at all. The brands with the lowest abandonment rates from chat either use a highly customized AI trained on their specific FAQ and policies, or they skip the chatbot entirely and use a simple "Email us" button. Both outperform a poorly configured AI chat.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">A chatbot that can't answer your 20 most common questions shouldn't be deployed. Audit your support tickets first. Build the chatbot around the questions you actually get, not the questions the vendor's demo answers.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Work with Breon.ai</p>
+    <h2 class="cta-title">Your AI tools are only as good as the experience around them.</h2>
+    <p class="cta-sub">Most e-commerce brands have the right tools. The problem is the layer between the tool and the customer. That's the part worth fixing — and it doesn't require starting over.</p>
+    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your store</a>
+    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+  </div>
+</section>
+
+<div class="author-strip">
+  <div class="author-inner">
+    <div class="author-avatar">B</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+    </div>
+    <div class="author-divider"></div>
+    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="https://research.breon.ai">research.breon.ai</a>
+  <a href="https://research.breon.ai/work-with-me.html">Work With Me</a>
+</footer>
+
+</body>
+</html>

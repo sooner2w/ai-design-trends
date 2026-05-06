@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Local Service Businesses 2026 | Breon.ai</title>
+<meta name="description" content="How law firms, dental practices, real estate agents, and local service businesses are using AI — and where it's costing them clients. A practical briefing by Breon.ai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
+  --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
+  --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
+  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
+  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 6px; }
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 16px; border-radius: 7px; font-weight: 600 !important; }
+.hero { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.80); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: 24px; max-width: 780px; }
+.hero h1 span { background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.70; max-width: 600px; margin-bottom: 40px; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
+.hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 18px; }
+.hero-stat-num { font-size: 34px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 40px; }
+.finding-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.finding-title { font-size: clamp(22px, 2.8vw, 32px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+.finding-summary { font-size: 16px; color: var(--muted); line-height: 1.75; }
+.finding-stat { background: var(--navy); border-radius: var(--radius-lg); padding: 36px 32px; }
+.finding-stat-num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; color: var(--white); }
+.finding-stat-num span { color: var(--orange); }
+.finding-stat-label { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.finding-stat-source { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+.finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
+.finding-body p { margin-bottom: 18px; }
+.finding-body p:last-child { margin-bottom: 0; }
+.insight-box { background: linear-gradient(135deg, rgba(99,91,255,0.07), rgba(0,212,255,0.04)); border: 1px solid rgba(99,91,255,0.15); border-radius: var(--radius); padding: 24px 28px; margin-top: 28px; }
+.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+.insight-text { font-size: 15px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+.cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
+.cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s; }
+.cta-btn:hover { background: #E85A25; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
+.author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
+.author-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--purple), var(--teal)); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: white; }
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 480px; }
+footer { background: var(--navy); padding: 32px; text-align: center; }
+footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: rgba(255,255,255,0.70); }
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .author-inner { flex-wrap: wrap; }
+  .author-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://research.breon.ai" class="nav-logo">
+      <span class="nav-logo-dot"></span>breon.ai
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://research.breon.ai">Research</a></li>
+      <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Local Services Research Brief — May 2026
+    </div>
+    <h1>What AI Is Doing to<br><span>Local Service Businesses</span></h1>
+    <p class="hero-sub">Law firms, dental practices, real estate agents, and professional services businesses are all adopting AI tools. The ones that deploy it well earn more clients. The ones that don't are training clients to expect less.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>57</span>%</div>
+        <div class="hero-stat-label">of clients say AI intake processes feel less trustworthy than speaking to a person</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>4×</span></div>
+        <div class="hero-stat-label">more likely to choose a competitor after a bad AI intake experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>68</span>%</div>
+        <div class="hero-stat-label">of local businesses using AI report no improvement in client satisfaction scores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">What this brief covers</p>
+    <h2 class="section-title">Clients hire people, not platforms.<br>AI deployed wrong makes them doubt both.</h2>
+    <p class="section-sub">Local service businesses are built on referrals, reputation, and relationships. AI that makes those businesses feel less human doesn't just fail to help — it actively undermines the trust that took years to build. This brief covers where that breakdown happens and what the businesses getting it right do differently.</p>
+  </div>
+</section>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 01</p>
+        <h3 class="finding-title">AI intake forms are filtering out the clients you most want</h3>
+        <p class="finding-summary">Automated intake forms and AI-powered qualification tools are spreading fast across law firms, financial advisors, and professional service firms. They're solving an efficiency problem while creating a trust problem — and the clients most likely to leave are the most valuable ones.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>57</span>%</div>
+        <div class="finding-stat-label">of prospective clients say AI intake processes feel less trustworthy than speaking directly to a person</div>
+        <div class="finding-stat-source">Source: Legal Trends Report, Clio, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>High-value clients — the ones with complex situations and significant lifetime value — are also the ones most likely to disengage from an impersonal intake process. Their situation doesn't fit a form. They want to know they're talking to someone who will understand nuance. When the first touchpoint is a 12-question AI intake survey, they often don't complete it. They call someone else.</p>
+      <p>The firms with the highest intake conversion rates use AI to handle the administrative layer — scheduling, document collection, initial FAQ responses — while keeping the first substantive conversation human. The prospect feels heard immediately. The AI has already eliminated the back-and-forth on logistics. Both parties show up to the first real conversation with more clarity and less friction.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">AI should handle everything before the relationship starts — scheduling, reminders, document requests. The relationship itself starts with a human. Every minute you save on logistics is a minute you can spend on the conversation that actually converts the client.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 02</p>
+        <h3 class="finding-title">AI-generated client communications are eroding professional credibility</h3>
+        <p class="finding-summary">Dentists, attorneys, real estate agents, and financial advisors are using AI to draft client emails, follow-ups, and explanations of service. When clients notice — and they increasingly do — it doesn't read as efficient. It reads as indifferent.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num">4<span>×</span></div>
+        <div class="finding-stat-label">more likely to choose a competitor after receiving a communication that felt automated and impersonal</div>
+        <div class="finding-stat-source">Source: Salesforce Small Business Research, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The credibility damage is most acute in high-stakes contexts. A dental patient receives an AI-generated email explaining a treatment plan recommendation. A real estate client gets a follow-up after making an offer. A legal client receives an update on their case. These moments carry emotional weight. When the communication reads like a template — when it uses phrases like "as per our discussion" and "please don't hesitate to reach out" — the emotional signal is that this person didn't think about you specifically.</p>
+      <p>Local service professionals who use AI most effectively treat it as a first draft tool. They paste in the context — the patient's situation, the offer details, the case update — and ask AI to structure a response. Then they spend three minutes making it sound like them. The result is faster than writing from scratch and warmer than unedited AI output. That combination is where the efficiency gain is without the credibility cost.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">In professional services, the communication IS part of the service. A client who receives a generic email about their specific situation experiences that as a symptom of how you'll handle their case. AI-assisted is fine. AI-authored is a liability.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 03</p>
+        <h3 class="finding-title">Most local businesses are using AI for the wrong things</h3>
+        <p class="finding-summary">The majority of AI adoption in local service businesses focuses on content marketing — social posts, blog articles, email newsletters. That's the lowest-leverage application. The highest-leverage uses — intake, operations, follow-up — remain largely untouched.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>68</span>%</div>
+        <div class="finding-stat-label">of local businesses using AI report no measurable improvement in client satisfaction or retention</div>
+        <div class="finding-stat-source">Source: BrightLocal AI Adoption Survey, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>Producing more content faster is not a growth strategy for a local service business. A dental practice doesn't get more patients because it posts three times a week on Instagram. A law firm doesn't convert more clients because it publishes a weekly legal newsletter. Content can build awareness over time — but it rarely moves the needle on revenue the way operational improvements do.</p>
+      <p>The businesses seeing measurable ROI from AI are applying it to the work that happens between the first inquiry and the signed engagement: faster appointment confirmation, automated pre-appointment reminders with intake materials, AI-assisted case summaries before client meetings, post-appointment follow-up sequences. These applications touch the actual client experience. They reduce no-shows, improve preparation, and signal professionalism — all without a single social post.</p>
+      <div class="insight-box">
+        <p class="insight-label">The design principle</p>
+        <p class="insight-text">Before using AI to make noise, use it to improve the experience your paying clients are already having. The best marketing a local service business can do is make existing clients feel so well-served that they refer someone else. AI that improves that experience compounds.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Work with Breon.ai</p>
+    <h2 class="cta-title">You built your practice on trust.<br>Your AI should protect it.</h2>
+    <p class="cta-sub">The goal isn't to automate client relationships — it's to use AI to make the human parts of your practice more consistent, more personal, and more scalable. That's a design problem. And design problems are solvable.</p>
+    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your practice</a>
+    <p class="cta-note">No pitch. Just a conversation about what's working and what isn't.</p>
+  </div>
+</section>
+
+<div class="author-strip">
+  <div class="author-inner">
+    <div class="author-avatar">B</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-title">AI Design Researcher · CEO, Breon.ai</div>
+    </div>
+    <div class="author-divider"></div>
+    <p class="author-note">I research how AI shapes the relationship between businesses and their customers — and what to do when it gets in the way. This brief is part of an ongoing series covering AI experience design across small business verticals.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="https://research.breon.ai">research.breon.ai</a>
+  <a href="https://research.breon.ai/work-with-me.html">Work With Me</a>
+</footer>
+
+</body>
+</html>
