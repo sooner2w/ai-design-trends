@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & the Creator Economy 2026 | Breon.ai</title>
+<meta name="description" content="How independent creators, designers, and coaches are using AI to work smarter — and where most are getting it wrong. A practical briefing by Breon.ai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
+  --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
+  --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
+  --max-w: 1080px; --shadow-sm: 0 2px 8px rgba(10,37,64,0.06);
+  --shadow: 0 8px 32px rgba(10,37,64,0.10); --shadow-lg: 0 20px 64px rgba(10,37,64,0.14);
+}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 6px; }
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 16px; border-radius: 7px; font-weight: 600 !important; }
+.hero { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.80); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: 24px; max-width: 780px; }
+.hero h1 span { background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.70; max-width: 600px; margin-bottom: 40px; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
+.hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 18px; }
+.hero-stat-num { font-size: 34px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 600px; }
+.finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 40px; }
+.finding-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.finding-title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+.finding-lead { font-size: 16px; color: var(--muted); line-height: 1.75; }
+.finding-lead strong { color: var(--navy); font-weight: 600; }
+.stat-callout { background: var(--navy); border-radius: var(--radius-lg); padding: 32px; text-align: center; }
+.stat-callout-num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-callout-label { font-size: 14px; color: rgba(255,255,255,0.60); line-height: 1.6; }
+.stat-callout-source { font-size: 11px; color: rgba(255,255,255,0.30); margin-top: 10px; }
+.finding-body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.finding-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.finding-points li { font-size: 15px; color: var(--muted); line-height: 1.68; padding-left: 22px; position: relative; }
+.finding-points li::before { content: ''; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--purple); }
+.finding-points li strong { color: var(--navy); font-weight: 600; }
+.implication-box { background: linear-gradient(135deg, var(--navy), #0D3055); border-radius: var(--radius); padding: 28px; border: 1px solid rgba(99,91,255,0.20); }
+.implication-label { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.implication-text { font-size: 14.5px; color: rgba(255,255,255,0.75); line-height: 1.70; }
+.implication-text strong { color: var(--white); font-weight: 600; }
+.actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.action-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 26px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+.action-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--teal)); }
+.action-step { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.action-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+.action-desc { font-size: 14px; color: var(--muted); line-height: 1.68; }
+.cta-section { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 10% 50%, rgba(99,91,255,0.28) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 90% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.cta-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-inner h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); margin-bottom: 16px; line-height: 1.1; }
+.cta-inner p { font-size: 16px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 32px; }
+.btn-cta { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 15px 36px; border-radius: 8px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 20px rgba(255,107,53,0.40); }
+.btn-cta:hover { background: #E85A25; transform: translateY(-1px); }
+.cta-note { font-size: 12px; color: rgba(255,255,255,0.30); margin-top: 16px; }
+.author-bar { background: var(--surface); border-top: 1px solid var(--border); padding: 36px 32px; }
+.author-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--teal)); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: white; flex-shrink: 0; }
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-method { margin-left: auto; font-size: 12px; color: var(--subtle); max-width: 400px; text-align: right; line-height: 1.6; }
+.footer { border-top: 1px solid var(--border); padding: 28px 32px; }
+.footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-size: 15px; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 6px; }
+.footer-brand .dot { width: 7px; height: 7px; background: var(--purple); border-radius: 50%; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.footer-meta { font-size: 11px; color: var(--subtle); text-align: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); max-width: var(--max-w); margin-left: auto; margin-right: auto; }
+@media (max-width: 860px) { .hero-stats, .finding-header, .finding-body, .actions-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>Breon.ai</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Research</a></li>
+      <li><a href="work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Industry Briefing &nbsp;·&nbsp; Creators, Coaches &amp; Designers &nbsp;·&nbsp; May 2026</div>
+    <h1>AI Is Changing What<br><span>Clients Pay For</span></h1>
+    <p class="hero-sub">Independent creators, coaches, and designers are using AI to do more — but most are using it in ways that quietly erode what makes them valuable. This briefing explains where the opportunity actually is.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">73<span>%</span></div><div class="hero-stat-label">of independent creators now use AI tools weekly in their workflow</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4<span>×</span></div><div class="hero-stat-label">faster content production with AI — but engagement rates have dropped 31%</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">$<span>500B</span></div><div class="hero-stat-label">creator economy market size by 2027 — AI is reshaping who captures it</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);">
+  <div class="section-inner">
+    <p class="eyebrow">The Core Problem</p>
+    <h2 class="section-title">AI makes output faster.<br>It doesn't make it more valuable.</h2>
+    <p class="section-sub">The creators winning right now aren't the ones using AI the most. They're the ones using it in the right places — and staying human where it counts.</p>
+  </div>
+</section>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 01</div>
+        <div class="finding-title">The Commoditization Trap: AI Makes Your Output Look Like Everyone Else's</div>
+        <div class="finding-lead">When everyone uses the same AI tools to produce content, design, and copy — the outputs converge. <strong>Sameness is the enemy of a personal brand.</strong> The creators who rely on AI for their voice, not just their workflow, are quietly becoming invisible.</div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">31%</div>
+        <div class="stat-callout-label">drop in average engagement for AI-heavy creator content vs. human-led content in the same niche</div>
+        <div class="stat-callout-source">Creator Economy Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>Audiences can't always name what feels "off" about AI content — but they feel it. <strong>Engagement drops before unsubscribes do.</strong></li>
+        <li>The designers and coaches seeing AI lift are using it for research, scheduling, and admin — not for their core creative output.</li>
+        <li>Point of view is the one thing AI cannot replicate. It requires lived experience, failure, and a distinct perspective built over years.</li>
+        <li>The creators charging the highest rates in 2026 are the ones whose work is <strong>clearly, unmistakably theirs.</strong></li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for you</div>
+        <div class="implication-text">Use AI to remove the work that isn't you — admin, formatting, scheduling, first drafts. <strong>Protect the work that is you</strong> — your voice, your perspective, your creative decisions. That's what clients pay a premium for.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 02</div>
+        <div class="finding-title">The Pricing Squeeze: AI Is Driving Down Rates for Commodity Work</div>
+        <div class="finding-lead">Clients know AI exists. They're starting to ask why they're paying human rates for work AI could do. <strong>If you can't answer that question clearly, you'll feel the pressure in your next proposal.</strong> The designers and coaches who can articulate their human value are raising prices. Everyone else is defending them.</div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">40%</div>
+        <div class="stat-callout-label">of freelance designers report clients pushing back on rates citing AI alternatives in 2025</div>
+        <div class="stat-callout-source">Dribbble State of Design, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>Commodity deliverables — logo variations, social templates, generic copy — are being repriced by clients who've discovered Canva AI and ChatGPT.</li>
+        <li>Strategic deliverables — brand positioning, UX strategy, coaching frameworks — are <strong>holding price and growing demand.</strong></li>
+        <li>The shift is from selling outputs to selling outcomes. Clients pay for results, not files.</li>
+        <li>Creators who have repositioned toward strategy and judgment are reporting <strong>average rate increases of 35–60%</strong> in the last 12 months.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for you</div>
+        <div class="implication-text">Audit your service offering. Anything a client could do with AI in an afternoon is under pricing pressure. <strong>Move up the value chain</strong> toward the decisions and strategy that require your specific expertise and judgment.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <div class="finding-num">Finding 03</div>
+        <div class="finding-title">The Audience Trust Shift: People Are Paying More for Human Connection</div>
+        <div class="finding-lead">As AI content floods every platform, <strong>human connection has become scarce — and therefore more valuable.</strong> Coaches and creators who lead with authentic personal experience are seeing stronger community growth, higher conversion, and more loyal clients than at any point in the last five years.</div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">2.4×</div>
+        <div class="stat-callout-label">higher conversion to paid offers for creators who share personal experience vs. AI-optimized educational content</div>
+        <div class="stat-callout-source">ConvertKit Creator Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <ul class="finding-points">
+        <li>The most-followed creators on every platform in 2026 share one trait: they're <strong>clearly, visibly human</strong> — with opinions, mistakes, and a point of view.</li>
+        <li>Email newsletters written in a genuine personal voice are outperforming AI-optimized content on every engagement metric.</li>
+        <li>Coaching clients report that the primary reason they chose a specific coach over others was <strong>"they felt real"</strong> — not credentials, not price.</li>
+        <li>Community-based offers (membership, cohorts, mastermind) are growing 3× faster than one-to-one services — human connection at scale.</li>
+      </ul>
+      <div class="implication-box">
+        <div class="implication-label">What this means for you</div>
+        <div class="implication-text">Your lived experience is your competitive advantage — and AI cannot replicate it. <strong>Show your thinking, share your failures, take positions.</strong> In a world of AI-generated content, being unmistakably human is the highest-value differentiator you have.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">Action Plan</p>
+    <h2 class="section-title">Three moves to make this month</h2>
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-step">Move 01</div>
+        <div class="action-title">Audit where AI is in your workflow</div>
+        <div class="action-desc">List every place you're using AI. Mark each one: does this replace my thinking, or support it? Replace anything in the first category with your own judgment. Use AI freely in the second.</div>
+      </div>
+      <div class="action-card">
+        <div class="action-step">Move 02</div>
+        <div class="action-title">Reposition one offer toward outcomes</div>
+        <div class="action-desc">Pick your most commodity-feeling service. Rewrite it around the result the client gets — not the deliverable they receive. Price it accordingly. Test it with your next three proposals.</div>
+      </div>
+      <div class="action-card">
+        <div class="action-step">Move 03</div>
+        <div class="action-title">Add one human touchpoint per week</div>
+        <div class="action-desc">One piece of content per week that is 100% you — your opinion, your story, your experience. No AI drafts. This is what builds the trust that converts to clients and referrals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to think through how this applies to your work specifically?</h2>
+    <p>I work with independent creators, designers, and coaches who are navigating the AI shift — figuring out where to use it, where to resist it, and how to position themselves for what's coming. Drop me a note.</p>
+    <a href="work-with-me.html" class="btn-cta">Get in touch →</a>
+    <p class="cta-note">No pitch. Just a conversation.</p>
+  </div>
+</section>
+
+<div class="author-bar">
+  <div class="author-inner">
+    <div class="author-avatar">BB</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-role">Product Designer &amp; AI Researcher · Breon.ai · May 2026</div>
+    </div>
+    <div class="author-method">Based on industry surveys, platform data, and primary research. Sources include ConvertKit, Dribbble, Nielsen Norman Group, and the Breon.ai monthly AI design trends report.</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="dot"></span>Breon.ai</div>
+    <div class="footer-links"><a href="index.html">Research</a><a href="work-with-me.html">Work With Me</a></div>
+  </div>
+  <div class="footer-meta">© 2026 Breon.ai · Brandon Breon</div>
+</footer>
+</body>
+</html>
