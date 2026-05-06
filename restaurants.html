@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Independent Restaurants 2026 | Breon.ai</title>
+<meta name="description" content="The AI tools transforming independent restaurants — reducing no-shows, increasing average ticket, and turning reviews into reservations. A practical briefing by Brandon Breon, AI design leader.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A2540; --purple: #635BFF; --teal: #00D4FF; --orange: #FF6B35;
+  --white: #FFFFFF; --surface: #F6F9FC; --text: #0A2540; --muted: #425466;
+  --subtle: #8898AA; --border: #E6EBEF; --radius: 12px; --radius-lg: 20px;
+  --max-w: 1080px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-logo { font-size: 17px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; display: flex; align-items: center; gap: 6px; }
+.nav-logo-dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.nav-cta { background: var(--orange) !important; color: white !important; padding: 8px 16px; border-radius: 7px; font-weight: 600 !important; }
+.hero { background: var(--navy); position: relative; overflow: hidden; padding: 96px 32px 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 10% 40%, rgba(99,91,255,0.30) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 90% 20%, rgba(118,75,162,0.25) 0%, transparent 55%), radial-gradient(ellipse 40% 55% at 60% 90%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.80); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
+.hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+.hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--white); margin-bottom: 24px; max-width: 780px; }
+.hero h1 span { background: linear-gradient(135deg, #a78bfa, var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.70; max-width: 600px; margin-bottom: 40px; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
+.hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 18px; }
+.hero-stat-num { font-size: 34px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
+.section { padding: 80px 32px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.section-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); margin-bottom: 12px; line-height: 1.15; }
+.section-sub { font-size: 16px; color: var(--muted); line-height: 1.70; max-width: 640px; }
+.finding { padding: 72px 32px; border-bottom: 1px solid var(--border); }
+.finding:nth-child(even) { background: var(--surface); }
+.finding-inner { max-width: var(--max-w); margin: 0 auto; }
+.finding-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 40px; }
+.finding-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.finding-title { font-size: clamp(22px, 2.8vw, 32px); font-weight: 800; letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+.finding-summary { font-size: 16px; color: var(--muted); line-height: 1.75; }
+.finding-stat { background: var(--navy); border-radius: var(--radius-lg); padding: 36px 32px; }
+.finding-stat-num { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 10px; color: var(--white); }
+.finding-stat-num span { color: var(--orange); }
+.finding-stat-label { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.finding-stat-source { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+.finding-body { font-size: 15px; color: var(--muted); line-height: 1.80; }
+.finding-body p { margin-bottom: 18px; }
+.finding-body p:last-child { margin-bottom: 0; }
+.tool-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,91,255,0.08); border: 1px solid rgba(99,91,255,0.18); color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin: 4px 4px 4px 0; }
+.tools-row { margin-bottom: 20px; }
+.how-i-help { background: var(--navy); border-radius: var(--radius); padding: 24px 28px; margin-top: 16px; }
+.how-i-help-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.how-i-help-text { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.65; }
+.services { padding: 80px 32px; background: var(--surface); }
+.services-inner { max-width: var(--max-w); margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+.service-num { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.service-title { font-size: 20px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.70; }
+.cta-section { background: var(--navy); padding: 96px 32px; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(99,91,255,0.25) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 30%, rgba(0,212,255,0.12) 0%, transparent 55%); pointer-events: none; }
+.cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 20px; }
+.cta-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); line-height: 1.10; margin-bottom: 20px; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.60); line-height: 1.70; margin-bottom: 36px; }
+.cta-btn { display: inline-block; background: var(--orange); color: white; font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 10px; text-decoration: none; transition: background 0.15s; }
+.cta-btn:hover { background: #E85A25; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 18px; }
+.author-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 32px; }
+.author-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--purple), var(--teal)); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: white; }
+.author-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+.author-title { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.author-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
+.author-note { font-size: 13px; color: var(--subtle); line-height: 1.60; max-width: 540px; }
+footer { background: var(--navy); padding: 32px; text-align: center; }
+footer a { color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: rgba(255,255,255,0.70); }
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .finding-header { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .author-inner { flex-wrap: wrap; }
+  .author-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://research.breon.ai" class="nav-logo"><span class="nav-logo-dot"></span>breon.ai</a>
+    <ul class="nav-links">
+      <li><a href="https://research.breon.ai">Research</a></li>
+      <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Restaurant Research Brief — May 2026</div>
+    <h1>Independent Restaurants Are<br><span>Losing Revenue to Problems AI Already Solves</span></h1>
+    <p class="hero-sub">No-shows, unoptimized online ordering, and unanswered reviews are costing independent restaurants tens of thousands of dollars a year. The AI tools that fix all three cost less than one no-show table per month. Here's what they are and how they work.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>28</span>%</div>
+        <div class="hero-stat-label">average no-show rate for independent restaurants without AI-powered reservation confirmation systems</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>15</span>%</div>
+        <div class="hero-stat-label">increase in average ticket for restaurants using AI-optimized online ordering and menu design</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>94</span>%</div>
+        <div class="hero-stat-label">of diners read online reviews before choosing a restaurant — and 57% won't visit one with unanswered negative reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">The opportunity</p>
+    <h2 class="section-title">Restaurant margins are thin.<br>These three AI fixes go straight to the bottom line.</h2>
+    <p class="section-sub">The average independent restaurant operates on a 3–9% net margin. No-shows, missed online ordering revenue, and a damaged reputation from unanswered reviews each chip away at that margin silently. AI tools built specifically for restaurants address all three — and the ROI is measurable within the first month of implementation.</p>
+  </div>
+</section>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 01</p>
+        <h3 class="finding-title">No-shows are your most expensive problem — and the most solvable</h3>
+        <p class="finding-summary">A table of four that doesn't show on a Friday night doesn't just cost you one cover — it costs you the revenue from every guest you turned away to hold that reservation. At an average of $60 per cover, a 28% no-show rate on a 50-seat restaurant with full reservations is over $100,000 in annual lost revenue.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>28</span>%</div>
+        <div class="finding-stat-label">average no-show rate for independent restaurants — dropping to under 5% with AI reservation confirmation and deposit systems</div>
+        <div class="finding-stat-source">Source: SevenRooms Restaurant Technology Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>SevenRooms and Tock are the two leading AI-powered reservation platforms built specifically for independent restaurants. Both reduce no-shows through a combination of automated confirmation sequences, credit card holds, and AI-powered waitlist management that fills cancelled reservations automatically. SevenRooms clients average a no-show rate under 5% — compared to the industry average of 28%.</p>
+      <p>The mechanics: a guest books a reservation and receives an automated confirmation immediately, a reminder 48 hours out, and a final confirmation request 2 hours before their reservation with a one-tap confirm button. If they don't confirm, the system automatically releases the table to a waitlist and notifies the next guest. The restaurant fills the table. The no-show doesn't cost a penny. This runs completely automatically once set up.</p>
+      <div class="tools-row">
+        <span class="tool-tag">SevenRooms</span>
+        <span class="tool-tag">Tock</span>
+        <span class="tool-tag">Resy</span>
+        <span class="tool-tag">OpenTable AI</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I evaluate which reservation platform is right for your specific restaurant — size, cuisine type, service style — and configure the full confirmation sequence, waitlist system, and deposit flow. I also design the guest-facing experience so the confirmation process feels warm and on-brand, not corporate. Most implementations are complete in one week.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 02</p>
+        <h3 class="finding-title">Your online ordering menu is costing you 15% of every order</h3>
+        <p class="finding-summary">Online ordering now accounts for 30–40% of independent restaurant revenue. Most restaurants treat their online menu as a digital version of their print menu — same items, same descriptions, same structure. AI-optimized online menus that use proven design principles and dynamic item sequencing increase average ticket by 12–18% with no changes to the kitchen.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>15</span>%</div>
+        <div class="finding-stat-label">average increase in online order ticket size for restaurants using AI-powered menu optimization and smart item sequencing</div>
+        <div class="finding-stat-source">Source: Popmenu Restaurant Digital Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>Popmenu is the leading AI-powered menu platform built specifically for independent restaurants. Its AI analyzes which menu items drive the most revenue per square inch of screen, which descriptions generate the most clicks, and which item sequences lead to the highest add-on rates. It then automatically optimizes your online menu layout based on real ordering data — surfacing high-margin items, promoting seasonal specials, and suggesting add-ons at the right moment in the ordering flow.</p>
+      <p>For a restaurant doing $800K annually in online orders, a 15% ticket increase means $120K in additional revenue. The platform also handles AI-powered marketing — automatically generating promotional emails and SMS messages around your highest-margin items, slow periods, and seasonal opportunities. One platform replaces three separate tools most restaurants are either paying for separately or not using at all.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Popmenu</span>
+        <span class="tool-tag">Olo</span>
+        <span class="tool-tag">Toast AI</span>
+        <span class="tool-tag">Lightspeed</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I audit your current online ordering setup and menu structure, identify your highest-margin items and the gaps in how they're being presented, configure the AI optimization platform, and redesign your online menu experience from the ground up. The goal is a menu that sells your best items first — automatically, every time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-inner">
+    <div class="finding-header">
+      <div>
+        <p class="finding-num">Finding 03</p>
+        <h3 class="finding-title">94% of new diners check your reviews first — and most restaurants are losing them in the response</h3>
+        <p class="finding-summary">Review management is the highest-ROI marketing activity available to an independent restaurant. Responding to reviews within 24 hours increases new visitor conversion. Responding specifically — addressing what the guest actually said — converts readers into bookers. Most restaurants respond slowly, generically, or not at all.</p>
+      </div>
+      <div class="finding-stat">
+        <div class="finding-stat-num"><span>57</span>%</div>
+        <div class="finding-stat-label">of potential diners say they won't visit a restaurant that has unanswered negative reviews — regardless of the overall star rating</div>
+        <div class="finding-stat-source">Source: Yelp Restaurant Industry Report, 2025</div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <p>The math on review management is direct: a restaurant with a 4.2 rating that responds to every review within 24 hours outperforms a restaurant with a 4.5 rating that doesn't respond — because responsiveness signals to potential diners that the ownership cares. AI tools like Birdeye and Podium aggregate all your reviews across Google, Yelp, TripAdvisor, and OpenTable in one dashboard and draft responses for your approval.</p>
+      <p>The workflow that works: AI categorizes new reviews by sentiment and urgency, drafts a specific response for each, and surfaces them to you in a daily 10-minute review queue. You read, edit if needed, and approve. Every review gets a response within 24 hours. Negative reviews get a specific, genuine reply that shows other readers you take feedback seriously. That combination — speed plus specificity — is what converts review readers into first-time guests.</p>
+      <div class="tools-row">
+        <span class="tool-tag">Birdeye</span>
+        <span class="tool-tag">Podium</span>
+        <span class="tool-tag">GatherUp</span>
+        <span class="tool-tag">Reputation.com</span>
+      </div>
+      <div class="how-i-help">
+        <p class="how-i-help-label">How I help</p>
+        <p class="how-i-help-text">I set up your review management platform, connect all your review sources, build response templates that sound like your restaurant's specific voice, and train your team on the 10-minute daily review workflow. I also design the process for handling negative reviews so they become a demonstration of your hospitality rather than a liability.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="services">
+  <div class="services-inner">
+    <p class="eyebrow">How I work with independent restaurants</p>
+    <h2 class="section-title">Three ways to get started.</h2>
+    <p class="section-sub">I'm a product design leader with experience at Deloitte and a certificate from Harvard Business School, specializing in AI implementation and guest experience design. I work with independent restaurant operators to identify the right AI tools, implement them correctly, and make sure every guest touchpoint — from reservation to review — reflects the quality of your kitchen.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-num">Step 01</p>
+        <h3 class="service-title">Restaurant AI Audit</h3>
+        <p class="service-desc">A 2-hour working session covering your reservation system, online ordering setup, and review management. You leave with a prioritized implementation plan, a clear revenue projection for each fix, and a 60-day roadmap. Built around your specific restaurant — not a generic checklist.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 02</p>
+        <h3 class="service-title">AI Implementation</h3>
+        <p class="service-desc">Full setup of your reservation confirmation system, online menu optimization, and review management platform. Includes staff training, brand voice design for all automated guest communications, and a 30-day optimization period. You're operational — not experimenting.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-num">Step 03</p>
+        <h3 class="service-title">Ongoing Advisory</h3>
+        <p class="service-desc">Monthly check-ins reviewing your no-show rate, online ordering performance, and review metrics. As your restaurant evolves and new AI tools emerge, you have a dedicated expert keeping your operation ahead of the curve — not scrambling to catch up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Work with Brandon Breon</p>
+    <h2 class="cta-title">You built something worth coming back to.<br>AI makes sure more people find it — and return.</h2>
+    <p class="cta-sub">I bring a product design background from Deloitte and Harvard Business School to restaurant AI — which means I think about the guest experience first, the technology second. The goal isn't automating your restaurant. It's removing the operational gaps that are quietly costing you revenue every week.</p>
+    <a href="https://research.breon.ai/work-with-me.html" class="cta-btn">Let's talk about your restaurant</a>
+    <p class="cta-note">Start with a free 20-minute call. No pitch — just a conversation about what's possible.</p>
+  </div>
+</section>
+
+<div class="author-strip">
+  <div class="author-inner">
+    <div class="author-avatar">B</div>
+    <div>
+      <div class="author-name">Brandon Breon</div>
+      <div class="author-title">AI Design Leader · Product Strategy · CEO, Breon.ai</div>
+    </div>
+    <div class="author-divider"></div>
+    <p class="author-note">I'm a product design leader specializing in AI and human-AI collaboration, with experience at Deloitte and a certificate from Harvard Business School. I help independent restaurants implement AI tools that reduce no-shows, increase revenue per cover, and turn their online reputation into a consistent source of new guests.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="https://research.breon.ai">research.breon.ai</a>
+  <a href="https://research.breon.ai/work-with-me.html">Work With Me</a>
+</footer>
+
+</body>
+</html>
