@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnet — User Path Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #EFEFEF;
+      color: #1D1D1B;
+      min-height: 100vh;
+    }
+
+    /* ── Nav (matches breon.ai) ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E5E7EB;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 13px; font-weight: 700;
+      color: #1A1A2E;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo:hover { text-decoration: none; }
+
+    .nav-logo-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4F46E5;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex; align-items: center;
+      gap: 4px; list-style: none; flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 13px; font-weight: 500;
+      color: #6B7280;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #4F46E5;
+      background: #EEF2FF;
+      text-decoration: none;
+    }
+
+    .nav-badge {
+      font-size: 10px; font-weight: 700;
+      background: #4F46E5; color: #fff;
+      padding: 2px 7px; border-radius: 20px;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+
+    .nav-cta {
+      background: #FF6B35 !important;
+      color: #fff !important;
+      font-size: 13px !important; font-weight: 600 !important;
+      padding: 8px 16px !important;
+      border-radius: 7px !important;
+      transition: background .15s !important;
+      text-decoration: none !important;
+      margin-left: 16px !important;
+    }
+
+    .nav-cta:hover { background: #E85A25 !important; }
+
+    .date-pill {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 12px;
+      background: #F4F5F7;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      font-size: 12.5px; font-weight: 500; color: #374151;
+      cursor: pointer; user-select: none;
+    }
+
+    .date-pill:hover { border-color: #4F46E5; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 32px 40px;
+    }
+
+    /* ── Page header ── */
+    .page-header { margin-bottom: 18px; }
+    .page-title { font-size: 20px; font-weight: 700; color: #1D1D1B; }
+    .page-subtitle { font-size: 13px; color: #737373; margin-top: 3px; }
+
+    /* ── Controls ── */
+    .controls-card {
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 6px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+
+    .ctrl-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: #97999B;
+    }
+
+    .ctrl-select {
+      display: flex; align-items: center; gap: 7px;
+      padding: 8px 12px;
+      background: #F5F5F5;
+      border: 1.5px solid #E0E0E0;
+      border-radius: 4px;
+      font-size: 13px; font-weight: 500; color: #1D1D1B;
+      cursor: pointer; min-width: 200px; user-select: none;
+      transition: border-color .15s;
+    }
+
+    .ctrl-select:hover { border-color: #525252; }
+    .ctrl-arrow { margin-left: auto; color: #B0B0B0; }
+
+    .event-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot-start { background: #1D1D1B; }
+    .dot-end   { background: #525252; }
+
+    .arrow-sep { color: #D0D0CE; display: flex; align-items: center; padding-bottom: 1px; }
+
+    .apply-btn {
+      padding: 8px 20px;
+      background: #1D1D1B; color: #fff;
+      border: none; border-radius: 4px;
+      font-size: 13px; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background .15s; white-space: nowrap;
+    }
+
+    .apply-btn:hover { background: #86BC25; color: #1D1D1B; }
+
+    .controls-spacer { flex: 1; min-width: 16px; }
+
+    /* Conversion metric */
+    .conv-block { display: flex; flex-direction: column; align-items: flex-end; }
+    .conv-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: #97999B; margin-bottom: 3px;
+    }
+    .conv-row { display: flex; align-items: baseline; gap: 10px; }
+    .conv-rate { font-size: 28px; font-weight: 700; color: #1D1D1B; line-height: 1; }
+    .conv-detail { font-size: 11.5px; color: #737373; line-height: 1.5; }
+
+    /* ── Sankey card ── */
+    .sankey-card {
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 6px;
+      padding: 24px 24px 20px;
+      margin-bottom: 16px;
+    }
+
+    .sankey-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px; gap: 16px;
+    }
+
+    .sankey-title { font-size: 14px; font-weight: 600; color: #1D1D1B; }
+    .sankey-subtitle { font-size: 12px; color: #97999B; margin-top: 2px; }
+
+    .legend { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #737373; white-space: nowrap; }
+    .legend-swatch { width: 20px; height: 5px; border-radius: 2px; }
+
+    #sankey-svg { width: 100%; display: block; overflow: visible; }
+
+    /* ── Signals panel ── */
+    .signals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .signal-card {
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: #E0E0E0;
+    }
+
+    .signal-card.dominant::before { background: #86BC25; }
+    .signal-card.dropoff::before  { background: #1D1D1B; }
+    .signal-card.loop::before     { background: #737373; }
+
+    .signal-top {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .signal-icon {
+      width: 30px; height: 30px; border-radius: 4px;
+      background: #F5F5F5;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .signal-name {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: #97999B;
+    }
+
+    .signal-definition {
+      font-size: 12px; color: #737373;
+      line-height: 1.5; margin-bottom: 14px;
+    }
+
+    .signal-value {
+      font-size: 13.5px; font-weight: 600; color: #1D1D1B;
+      line-height: 1.5; margin-bottom: 8px;
+    }
+
+    .signal-path {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .path-node {
+      font-size: 11.5px; font-weight: 600;
+      background: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      border-radius: 3px;
+      padding: 2px 8px;
+      color: #1D1D1B;
+      white-space: nowrap;
+    }
+
+    .path-node.highlighted { background: #F0F7E0; border-color: #86BC25; color: #3A5C0A; }
+    .path-node.dropoff-node { background: #F0F0F0; border-color: #525252; }
+
+    .path-arrow {
+      font-size: 11px; color: #B0B0B0;
+    }
+
+    .signal-stat {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .stat-item { display: flex; flex-direction: column; gap: 1px; }
+    .stat-val { font-size: 18px; font-weight: 700; color: #1D1D1B; }
+    .stat-val.green { color: #86BC25; }
+    .stat-key { font-size: 11px; color: #97999B; }
+
+    /* Guardrail card */
+    .guardrail-card {
+      display: none; /* shown when sample < threshold */
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 6px;
+      padding: 28px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .guardrail-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #F5F5F5;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .guardrail-text { font-size: 13.5px; color: #525252; font-weight: 500; }
+
+    /* Empty state */
+    .empty-state {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      height: 380px; gap: 10px;
+    }
+
+    .empty-title { font-size: 14px; font-weight: 600; color: #525252; }
+    .empty-desc  { font-size: 12.5px; color: #97999B; text-align: center; max-width: 300px; line-height: 1.6; }
+
+    /* Tooltip */
+    .tip {
+      position: fixed;
+      background: #1D1D1B;
+      color: #F5F5F5;
+      padding: 10px 14px;
+      border-radius: 5px;
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 9999;
+      min-width: 160px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+
+    .tip-title { font-weight: 700; margin-bottom: 6px; font-size: 12.5px; }
+    .tip-row { display: flex; justify-content: space-between; gap: 18px; margin-top: 2px; }
+    .tip-key { color: #97999B; }
+    .tip-val { font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://research.breon.ai/index.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      Breon.ai
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://research.breon.ai/index.html">Home</a></li>
+      <li><a href="https://research.breon.ai/trends.html">Trends</a></li>
+      <li><a href="https://research.breon.ai/role-evolution.html">Role Evolution</a></li>
+      <li><a href="https://research.breon.ai/sources.html">Sources</a></li>
+      <li><span class="nav-badge">Updated Monthly</span></li>
+      <li><a href="https://research.breon.ai/work-with-me.html" class="nav-cta">Work With Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main -->
+<div class="container">
+
+  <div class="page-header">
+    <h1 class="page-title">User Path Analysis</h1>
+    <p class="page-subtitle">Trace how employees move through the seat booking flow — identify dominant routes, drop-offs, and loops.</p>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-card">
+
+    <div class="ctrl-group">
+      <div class="ctrl-label">Start Event</div>
+      <div class="ctrl-select">
+        <div class="event-dot dot-start"></div>
+        App Launch
+        <svg class="ctrl-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="arrow-sep">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </div>
+
+    <div class="ctrl-group">
+      <div class="ctrl-label">End Event</div>
+      <div class="ctrl-select">
+        <div class="event-dot dot-end"></div>
+        Booking Confirmed
+        <svg class="ctrl-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </div>
+
+    <button class="apply-btn">Apply</button>
+
+    <div class="controls-spacer"></div>
+
+    <div class="conv-block">
+      <div class="conv-label">Start → End Conversion</div>
+      <div class="conv-row">
+        <span class="conv-rate">22.0%</span>
+        <div class="conv-detail">2,200 of 10,000 sessions<br>completed a booking</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Guardrail (shown when sample too small) -->
+  <div class="guardrail-card" id="guardrail">
+    <div class="guardrail-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+    </div>
+    <span class="guardrail-text">Not enough data to compute signals for this selection. Try a wider date range or a different event pair.</span>
+  </div>
+
+  <!-- Sankey card -->
+  <div class="sankey-card">
+    <div class="sankey-header">
+      <div>
+        <div class="sankey-title">Seat Booking Flow</div>
+        <div class="sankey-subtitle">Link width = session volume &nbsp;·&nbsp; Apr 29 – May 6, 2026 &nbsp;·&nbsp; 10,000 sessions</div>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:#525252"></div>
+          Active path
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:#D0D0CE"></div>
+          Drop-off
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:#86BC25"></div>
+          Dominant path
+        </div>
+      </div>
+    </div>
+
+    <svg id="sankey-svg"></svg>
+
+    <div class="empty-state" id="empty-state">
+      <div class="empty-title">No paths found</div>
+      <div class="empty-desc">No paths found for this Start / End selection in the selected date range. Try a different event combination or expand the date range.</div>
+    </div>
+  </div>
+
+  <!-- Signals -->
+  <div class="signals-grid">
+
+    <!-- Signal 1: Dominant Path -->
+    <div class="signal-card dominant">
+      <div class="signal-top">
+        <div class="signal-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86BC25" stroke-width="2.2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="signal-name">Dominant Path</div>
+      </div>
+      <div class="signal-definition">The single highest-volume route from Start to End.</div>
+      <div class="signal-path">
+        <span class="path-node highlighted">App Launch</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Dashboard</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Office Directory</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Select Floor</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Select Seat</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Review</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node highlighted">Confirmed</span>
+      </div>
+      <div class="signal-stat">
+        <div class="stat-item">
+          <span class="stat-val green">2,200</span>
+          <span class="stat-key">users completed this path</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">22.0%</span>
+          <span class="stat-key">of all sessions</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signal 2: Biggest Drop-off -->
+    <div class="signal-card dropoff">
+      <div class="signal-top">
+        <div class="signal-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1D1D1B" stroke-width="2.2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </div>
+        <div class="signal-name">Biggest Drop-off Point</div>
+      </div>
+      <div class="signal-definition">The step where the highest share of users exit without continuing.</div>
+      <div class="signal-path">
+        <span class="path-node dropoff-node">Select Seat</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node" style="background:#F0F0F0;border-color:#B0B0B0;color:#737373;">exited</span>
+      </div>
+      <div class="signal-stat">
+        <div class="stat-item">
+          <span class="stat-val">1,200</span>
+          <span class="stat-key">users dropped off here</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">30.0%</span>
+          <span class="stat-key">of users who reached this step</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signal 3: Top Loop / Backtrack -->
+    <div class="signal-card loop">
+      <div class="signal-top">
+        <div class="signal-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2.2">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 1 0 .49-3.63"/>
+          </svg>
+        </div>
+        <div class="signal-name">Top Loop / Backtrack</div>
+      </div>
+      <div class="signal-definition">The most common repeated transition — users bouncing between steps.</div>
+      <div class="signal-path">
+        <span class="path-node">Select Seat</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node">Find a Space</span>
+        <span class="path-arrow">→</span>
+        <span class="path-node">Select Seat</span>
+      </div>
+      <div class="signal-stat">
+        <div class="stat-item">
+          <span class="stat-val">340</span>
+          <span class="stat-key">users looped on this transition</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">3.4%</span>
+          <span class="stat-key">of all sessions</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+// ── Magnet booking flow data ─────────────────────────────────────────────────
+
+const NODES = [
+  { id: 0, name: "App Launch"        },
+  { id: 1, name: "Dashboard"         },
+  { id: 2, name: "Find a Space"      },
+  { id: 3, name: "Office Directory"  },
+  { id: 4, name: "Search"            },
+  { id: 5, name: "Select Floor"      },
+  { id: 6, name: "Select Seat"       },
+  { id: 7, name: "Review Booking"    },
+  { id: 8, name: "Booking Confirmed" },
+  { id: 9, name: "Drop-off"          },
+];
+
+const LINKS = [
+  { source: 0, target: 1, value: 9200 },
+  { source: 0, target: 9, value: 800  },
+  { source: 1, target: 2, value: 7800 },
+  { source: 1, target: 9, value: 1400 },
+  { source: 2, target: 3, value: 4500 },
+  { source: 2, target: 4, value: 2600 },
+  { source: 2, target: 9, value: 700  },
+  { source: 3, target: 5, value: 3600 },
+  { source: 3, target: 9, value: 900  },
+  { source: 4, target: 5, value: 1800 },
+  { source: 4, target: 9, value: 800  },
+  { source: 5, target: 6, value: 4000 },
+  { source: 5, target: 9, value: 1400 },
+  { source: 6, target: 7, value: 2800 },
+  { source: 6, target: 9, value: 1200 },
+  { source: 7, target: 8, value: 2200 },
+  { source: 7, target: 9, value: 600  },
+];
+
+// Dominant path link IDs (source→target pairs on the primary route)
+const DOMINANT = new Set(['0-1','1-2','2-3','3-5','5-6','6-7','7-8']);
+
+// ── Grayscale color map ───────────────────────────────────────────────────────
+
+const COLOR = {
+  0: '#1D1D1B',  // App Launch       — near black
+  1: '#2E2E2E',  // Dashboard
+  2: '#3F3F3F',  // Find a Space
+  3: '#525252',  // Office Directory
+  4: '#525252',  // Search
+  5: '#626262',  // Select Floor
+  6: '#737373',  // Select Seat
+  7: '#525252',  // Review Booking
+  8: '#1D1D1B',  // Booking Confirmed — near black
+  9: '#D0D0CE',  // Drop-off          — light gray
+};
+
+const DOMINANT_COLOR = '#86BC25'; // Deloitte green for dominant path
+
+// ── Render ───────────────────────────────────────────────────────────────────
+
+const TOTAL  = 10000;
+const HEIGHT = 480;
+const ML = 6, MR = 200, MT = 22, MB = 20;
+
+const svgEl = document.getElementById('sankey-svg');
+
+function linkKey(lk) { return `${lk.source.id ?? lk.source}-${lk.target.id ?? lk.target}`; }
+
+function render() {
+  svgEl.innerHTML = '';
+
+  const cW = svgEl.parentElement.clientWidth - 48;
+  const W  = cW - ML - MR;
+  const H  = HEIGHT - MT - MB;
+
+  svgEl.setAttribute('height', HEIGHT);
+  svgEl.setAttribute('viewBox', `0 0 ${cW} ${HEIGHT}`);
+
+  const svg = d3.select('#sankey-svg');
+
+  const sankey = d3.sankey()
+    .nodeId(d => d.id)
+    .nodeAlign(d3.sankeyLeft)
+    .nodeWidth(11)
+    .nodePadding(16)
+    .extent([[ML, MT], [ML + W, MT + H]]);
+
+  const graph = sankey({
+    nodes: NODES.map(d => ({ ...d })),
+    links: LINKS.map(d => ({ ...d })),
+  });
+
+  // ── Gradients
+  const defs = svg.append('defs');
+
+  graph.links.forEach((lk, i) => {
+    const key = `${lk.source.id}-${lk.target.id}`;
+    const isDom = DOMINANT.has(key);
+    const gId = `g${i}`;
+    lk._gid = gId;
+    lk._dominant = isDom;
+
+    const gr = defs.append('linearGradient')
+      .attr('id', gId)
+      .attr('gradientUnits', 'userSpaceOnUse')
+      .attr('x1', lk.source.x1).attr('x2', lk.target.x0);
+
+    if (isDom) {
+      gr.append('stop').attr('offset', '0%').attr('stop-color', DOMINANT_COLOR).attr('stop-opacity', .55);
+      gr.append('stop').attr('offset', '100%').attr('stop-color', DOMINANT_COLOR).attr('stop-opacity', .35);
+    } else {
+      gr.append('stop').attr('offset', '0%').attr('stop-color', COLOR[lk.source.id]).attr('stop-opacity', .4);
+      gr.append('stop').attr('offset', '100%').attr('stop-color', COLOR[lk.target.id]).attr('stop-opacity', .25);
+    }
+  });
+
+  // ── Tooltip
+  const tip = document.getElementById('tip');
+  const fmt = n => n.toLocaleString();
+  const pct = v => ((v / TOTAL) * 100).toFixed(1) + '%';
+
+  function showTip(e, html) { tip.innerHTML = html; tip.style.opacity = '1'; posTip(e); }
+  function posTip(e) { tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 10) + 'px'; }
+  function hideTip() { tip.style.opacity = '0'; }
+
+  // ── Links
+  svg.append('g').selectAll('path')
+    .data(graph.links)
+    .join('path')
+      .attr('fill', 'none')
+      .attr('d', d3.sankeyLinkHorizontal())
+      .attr('stroke', d => `url(#${d._gid})`)
+      .attr('stroke-width', d => Math.max(1.5, d.width))
+      .attr('opacity', d => d._dominant ? .8 : .65)
+      .style('cursor', 'default')
+      .on('mouseover', function(e, d) {
+        d3.select(this).attr('opacity', 1);
+        showTip(e, `
+          <div class="tip-title">${d.source.name} → ${d.target.name}</div>
+          <div class="tip-row"><span class="tip-key">Users</span><span class="tip-val">${fmt(d.value)}</span></div>
+          <div class="tip-row"><span class="tip-key">Of total</span><span class="tip-val">${pct(d.value)}</span></div>
+        `);
+      })
+      .on('mousemove', posTip)
+      .on('mouseleave', function(e, d) {
+        d3.select(this).attr('opacity', d._dominant ? .8 : .65);
+        hideTip();
+      });
+
+  // ── Nodes
+  const nodeG = svg.append('g').selectAll('g')
+    .data(graph.nodes)
+    .join('g');
+
+  nodeG.append('rect')
+    .attr('x', d => d.x0).attr('y', d => d.y0)
+    .attr('width',  d => d.x1 - d.x0)
+    .attr('height', d => Math.max(2, d.y1 - d.y0))
+    .attr('fill', d => COLOR[d.id])
+    .attr('rx', 2)
+    .style('cursor', 'default')
+    .on('mouseover', function(e, d) {
+      showTip(e, `
+        <div class="tip-title">${d.name}</div>
+        <div class="tip-row"><span class="tip-key">Users</span><span class="tip-val">${fmt(d.value)}</span></div>
+        <div class="tip-row"><span class="tip-key">Reached</span><span class="tip-val">${pct(d.value)}</span></div>
+      `);
+    })
+    .on('mousemove', posTip)
+    .on('mouseleave', hideTip);
+
+  // ── Labels
+  const maxX1 = Math.max(...graph.nodes.map(n => n.x1));
+
+  nodeG.each(function(d) {
+    const g = d3.select(this);
+    const onRight = d.x1 < maxX1 - 2;
+    const lx = onRight ? d.x1 + 9 : d.x0 - 9;
+    const anchor = onRight ? 'start' : 'end';
+    const my = (d.y0 + d.y1) / 2;
+
+    g.append('text')
+      .attr('x', lx).attr('y', my - 6)
+      .attr('text-anchor', anchor)
+      .attr('font-size', '11.5').attr('font-weight', '600')
+      .attr('fill', '#1D1D1B')
+      .attr('font-family', 'Inter, sans-serif')
+      .text(d.name);
+
+    g.append('text')
+      .attr('x', lx).attr('y', my + 8)
+      .attr('text-anchor', anchor)
+      .attr('font-size', '10.5').attr('fill', '#97999B')
+      .attr('font-family', 'Inter, sans-serif')
+      .text(`${fmt(d.value)} · ${pct(d.value)}`);
+  });
+
+  // ── START / END badges
+  const sn = graph.nodes.find(n => n.id === 0);
+  const en = graph.nodes.find(n => n.id === 8);
+
+  [{ node: sn, label: 'START', color: '#1D1D1B' },
+   { node: en, label: 'END',   color: '#86BC25'  }].forEach(({ node, label, color }) => {
+    svg.append('text')
+      .attr('x', node.x0)
+      .attr('y', node.y0 - 7)
+      .attr('font-size', '9').attr('font-weight', '800')
+      .attr('letter-spacing', '.08em')
+      .attr('fill', color)
+      .attr('font-family', 'Inter, sans-serif')
+      .text(label);
+  });
+}
+
+render();
+window.addEventListener('resize', render);
+</script>
+</body>
+</html>
