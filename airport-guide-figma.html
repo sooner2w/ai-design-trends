@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1600">
+  <title>Airport Guide — Figma Export (All Screens)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:   #111111;
+      --gray1:   #333333;
+      --gray2:   #666666;
+      --gray3:   #999999;
+      --gray4:   #D1D5DB;
+      --gray5:   #F3F4F6;
+      --white:   #FFFFFF;
+      --blue:    #2563EB;
+      --blue-lt: #EFF6FF;
+      --blue-bd: #BFDBFE;
+      --green:   #16A34A;
+      --green-lt:#F0FDF4;
+      --green-bd:#BBF7D0;
+      --red:     #DC2626;
+      --red-lt:  #FEF2F2;
+      --yellow:  #F59E0B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: #CCCCCC;
+      padding: 40px;
+    }
+
+    /* ── Figma export layout: all screens side by side ── */
+    .phone {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 32px;
+      width: max-content;
+    }
+
+    /* ── Each screen is a phone frame ── */
+    .screen {
+      display: flex !important;
+      flex-direction: column;
+      width: 390px;
+      min-height: 844px;
+      background: var(--white);
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.18);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* Label above each frame */
+    .screen::before {
+      content: attr(data-label);
+      position: absolute;
+      top: -28px;
+      left: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    @keyframes fadeIn { from { opacity: 1; } to { opacity: 1; } }
+
+    /* ════════════════════════════════════════
+       SCREEN 0 — SMS Preview
+    ════════════════════════════════════════ */
+    .sms-screen {
+      background: #1C1C1E;
+      padding: 60px 0 40px;
+      align-items: center;
+    }
+
+    .sms-status {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px 20px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .sms-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .sms-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: #48484A;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+
+    .sms-name { color: var(--white); font-size: 15px; font-weight: 600; }
+    .sms-type { color: #98989F; font-size: 12px; }
+
+    .sms-bubble-wrap {
+      width: 100%;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sms-bubble {
+      background: #3A3A3C;
+      border-radius: 18px 18px 18px 4px;
+      padding: 14px 16px;
+      max-width: 85%;
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .sms-link {
+      color: #5AC8FA;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .sms-time { color: #98989F; font-size: 11px; margin-top: 4px; padding-left: 4px; }
+
+    .sms-tap-hint {
+      margin-top: 32px;
+      color: #98989F;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .sms-open-btn {
+      margin-top: 16px;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+
+    /* ════════════════════════════════════════
+       SCREEN 1 — Welcome
+    ════════════════════════════════════════ */
+    .welcome-screen {
+      background: var(--black);
+      padding: 64px 28px 40px;
+      justify-content: space-between;
+    }
+
+    .welcome-top { display: flex; flex-direction: column; gap: 32px; }
+
+    .welcome-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--white);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-text { color: var(--white); font-size: 18px; font-weight: 700; }
+
+    .welcome-copy { display: flex; flex-direction: column; gap: 12px; }
+
+    .welcome-greeting {
+      color: var(--white);
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .welcome-flight {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .wf-airline { color: #98989F; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+    .wf-flight  { color: var(--white); font-size: 22px; font-weight: 700; }
+    .wf-detail  { color: #C7C7CC; font-size: 14px; }
+
+    .welcome-tagline { color: #98989F; font-size: 17px; line-height: 1.5; }
+
+    .welcome-btn {
+      width: 100%;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 19px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ════════════════════════════════════════
+       SCREEN 2 — Accessibility Setup
+    ════════════════════════════════════════ */
+    .setup-screen { padding: 52px 24px 36px; gap: 0; }
+
+    .setup-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--blue); font-size: 16px; font-weight: 500;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 32px; padding: 0;
+    }
+
+    .setup-title {
+      font-size: 30px; font-weight: 800; color: var(--black);
+      line-height: 1.2; margin-bottom: 8px;
+    }
+
+    .setup-subtitle {
+      font-size: 16px; color: var(--gray2);
+      line-height: 1.5; margin-bottom: 32px;
+    }
+
+    .setup-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+    .setup-option {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 18px;
+      border: 2px solid var(--gray4);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+      background: var(--white);
+    }
+
+    .setup-option.selected {
+      border-color: var(--black);
+      background: var(--gray5);
+    }
+
+    .setup-option-icon {
+      width: 44px; height: 44px;
+      background: var(--gray5);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .setup-option.selected .setup-option-icon { background: var(--black); }
+
+    .setup-option-text { flex: 1; }
+    .setup-option-name { font-size: 17px; font-weight: 600; color: var(--black); }
+    .setup-option-desc { font-size: 13px; color: var(--gray2); margin-top: 2px; }
+
+    .setup-check {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--gray4);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .15s, border-color .15s;
+    }
+
+    .setup-option.selected .setup-check {
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .setup-continue {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+
+    /* ════════════════════════════════════════
+       SCREEN 3 — Journey Overview
+    ════════════════════════════════════════ */
+    .overview-screen { padding: 52px 24px 36px; }
+
+    .overview-title {
+      font-size: 28px; font-weight: 800; color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .overview-subtitle { font-size: 15px; color: var(--gray2); margin-bottom: 28px; }
+
+    .overview-steps { display: flex; flex-direction: column; margin-bottom: 28px; }
+
+    .overview-step {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray5);
+    }
+
+    .overview-step:last-child { border-bottom: none; }
+
+    .ov-indicator {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px; font-weight: 700;
+    }
+
+    .ov-indicator.done { background: var(--green); color: var(--white); }
+    .ov-indicator.active { background: var(--black); color: var(--white); }
+    .ov-indicator.pending { background: var(--gray5); color: var(--gray2); border: 2px solid var(--gray4); }
+
+    .ov-step-info { flex: 1; }
+    .ov-step-name { font-size: 16px; font-weight: 600; color: var(--black); }
+    .ov-step-detail { font-size: 13px; color: var(--gray2); margin-top: 2px; }
+
+    .ov-step-badge {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 8px; border-radius: 20px;
+      margin-top: 6px; display: inline-block;
+    }
+
+    .badge-done { background: var(--green-lt); color: var(--green); }
+    .badge-now  { background: var(--black); color: var(--white); }
+    .badge-soon { background: var(--gray5); color: var(--gray2); }
+
+    .overview-time {
+      background: var(--gray5);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .ov-time-text { font-size: 15px; color: var(--gray1); }
+    .ov-time-bold { font-weight: 700; color: var(--black); }
+
+    .overview-start {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+
+    /* ════════════════════════════════════════
+       NAVIGATION SCREENS (Steps 1–5)
+    ════════════════════════════════════════ */
+    .nav-screen { padding: 0; gap: 0; }
+
+    /* Header */
+    .nav-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--gray5);
+    }
+
+    .nav-header-left { display: flex; align-items: center; gap: 10px; }
+
+    .nav-header-icon {
+      width: 34px; height: 34px;
+      background: var(--black);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .nav-header-title { font-size: 16px; font-weight: 700; color: var(--black); }
+    .nav-header-sub   { font-size: 12px; color: var(--gray2); }
+
+    .live-badge {
+      display: flex; align-items: center; gap: 5px;
+      background: var(--green-lt);
+      border: 1px solid var(--green-bd);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px; font-weight: 600; color: var(--green);
+    }
+
+    .live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    /* Flight banner */
+    .flight-banner {
+      margin: 14px 16px 0;
+      background: var(--blue-lt);
+      border: 1px solid var(--blue-bd);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .fb-icon { flex-shrink: 0; margin-top: 2px; color: var(--blue); }
+    .fb-content { flex: 1; }
+    .fb-title { font-size: 15px; font-weight: 700; color: var(--blue); }
+    .fb-desc  { font-size: 13px; color: var(--gray1); line-height: 1.45; margin-top: 2px; }
+    .fb-close { background: none; border: none; color: var(--gray3); cursor: pointer; font-size: 18px; padding: 0; line-height: 1; }
+
+    /* Progress */
+    .progress-wrap { padding: 16px 20px 0; }
+    .progress-top  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .progress-label { font-size: 15px; font-weight: 600; color: var(--black); }
+    .progress-pct   { font-size: 15px; font-weight: 700; color: var(--black); }
+    .progress-bar   { height: 6px; background: var(--gray4); border-radius: 3px; overflow: hidden; }
+    .progress-fill  { height: 100%; background: var(--black); border-radius: 3px; transition: width .4s ease; }
+    .progress-meta  { display: flex; justify-content: space-between; margin-top: 6px; }
+    .progress-step  { font-size: 13px; color: var(--gray2); }
+    .progress-time  { font-size: 13px; color: var(--gray2); }
+
+    /* Direction card */
+    .direction-card {
+      margin: 16px 16px 0;
+      border: 1.5px solid var(--gray4);
+      border-radius: 18px;
+      padding: 28px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .dir-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--gray3); margin-bottom: 20px;
+    }
+
+    .dir-arrow {
+      width: 100px; height: 100px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .dir-arrow.arrived { background: var(--green); }
+
+    .dir-instruction {
+      font-size: 34px; font-weight: 800; color: var(--black);
+      text-align: center; letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .dir-detail {
+      font-size: 18px; font-weight: 600; color: var(--black);
+      text-align: center; margin-bottom: 14px;
+    }
+
+    .dir-location {
+      display: flex; align-items: center; gap: 5px;
+      color: var(--gray2); font-size: 14px;
+    }
+
+    /* Route list */
+    .route-card {
+      margin: 14px 16px 0;
+      border: 1.5px solid var(--gray4);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .route-title {
+      padding: 14px 16px;
+      font-size: 15px; font-weight: 700; color: var(--black);
+      border-bottom: 1px solid var(--gray5);
+    }
+
+    .route-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--gray5);
+    }
+
+    .route-item:last-child { border-bottom: none; }
+
+    .route-indicator {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 12px; font-weight: 700;
+    }
+
+    .ri-done   { background: var(--green); color: var(--white); }
+    .ri-active { background: var(--black); color: var(--white); }
+    .ri-next   { background: var(--gray5); color: var(--gray2); border: 1.5px solid var(--gray4); }
+
+    .route-item-content { flex: 1; }
+    .ri-name   { font-size: 14px; font-weight: 600; color: var(--black); }
+    .ri-name.muted { color: var(--gray3); }
+    .ri-sub    { font-size: 12px; color: var(--gray2); margin-top: 1px; }
+
+    .ri-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+
+    .ri-badge.progress { background: var(--blue-lt); color: var(--blue); }
+
+    /* Accessibility notice */
+    .access-notice {
+      margin: 12px 16px 0;
+      background: var(--green-lt);
+      border: 1px solid var(--green-bd);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .an-icon { flex-shrink: 0; color: var(--green); margin-top: 1px; }
+    .an-content { flex: 1; }
+    .an-title { font-size: 14px; font-weight: 700; color: var(--green); }
+    .an-desc  { font-size: 12px; color: var(--gray1); margin-top: 2px; line-height: 1.45; }
+    .an-close { background: none; border: none; color: var(--gray3); cursor: pointer; font-size: 18px; padding: 0; }
+
+    /* Action buttons */
+    .action-btns {
+      padding: 16px 16px 32px;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-primary {
+      width: 100%; padding: 19px;
+      background: var(--black); color: var(--white);
+      border: none; border-radius: 14px;
+      font-size: 18px; font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    .btn-danger {
+      width: 100%; padding: 19px;
+      background: var(--red); color: var(--white);
+      border: none; border-radius: 14px;
+      font-size: 18px; font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    .btn-ghost {
+      width: 100%; padding: 17px;
+      background: var(--gray5); color: var(--black);
+      border: none; border-radius: 14px;
+      font-size: 16px; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    /* ════════════════════════════════════════
+       SCREEN — I Need Help
+    ════════════════════════════════════════ */
+    .help-screen { padding: 52px 24px 36px; }
+
+    .help-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--blue); font-size: 16px; font-weight: 500;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 28px; padding: 0;
+    }
+
+    .help-title {
+      font-size: 30px; font-weight: 800; color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .help-subtitle { font-size: 16px; color: var(--gray2); margin-bottom: 28px; }
+
+    .help-options { display: flex; flex-direction: column; gap: 12px; }
+
+    .help-option {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 18px;
+      border: 1.5px solid var(--gray4);
+      border-radius: 16px;
+      cursor: pointer;
+      background: var(--white);
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      transition: background .15s, border-color .15s;
+    }
+
+    .help-option:active { background: var(--gray5); }
+
+    .help-option.urgent {
+      border-color: var(--red);
+      background: var(--red-lt);
+    }
+
+    .ho-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .ho-icon.red    { background: var(--red); }
+    .ho-icon.blue   { background: var(--blue-lt); }
+    .ho-icon.yellow { background: #FEF3C7; }
+
+    .ho-text { flex: 1; text-align: left; }
+    .ho-name { font-size: 17px; font-weight: 700; color: var(--black); }
+    .ho-desc { font-size: 13px; color: var(--gray2); margin-top: 3px; line-height: 1.4; }
+
+    .ho-arrow { color: var(--gray3); font-size: 20px; }
+
+    /* ════════════════════════════════════════
+       SCREEN — Success / Boarding
+    ════════════════════════════════════════ */
+    .success-screen {
+      background: var(--black);
+      padding: 64px 28px 48px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .success-icon {
+      width: 100px; height: 100px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .success-top { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+    .success-title {
+      font-size: 36px; font-weight: 800; color: var(--white);
+      line-height: 1.15; margin-bottom: 12px;
+    }
+
+    .success-sub { font-size: 17px; color: #98989F; line-height: 1.5; }
+
+    .success-card {
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 20px;
+      margin-top: 32px;
+    }
+
+    .sc-row {
+      display: flex; justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .sc-row:last-child { border-bottom: none; }
+    .sc-key { color: #98989F; font-size: 14px; }
+    .sc-val { color: var(--white); font-size: 14px; font-weight: 700; }
+
+    .success-alert {
+      width: 100%;
+      background: var(--yellow);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      text-align: center;
+    }
+
+    .success-help {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      margin-top: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    /* ── Scrollable content area ── */
+    .nav-scroll { flex: 1; overflow-y: auto; }
+
+  </style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- ═══════════════════════════════
+       SCREEN 0: SMS Preview
+  ═══════════════════════════════ -->
+  <div class="screen sms-screen" id="screen-sms" data-label="01 · SMS">
+    <div class="sms-status">
+      <span>9:41 AM</span>
+      <span>●●● 🔋</span>
+    </div>
+    <div class="sms-header">
+      <div class="sms-avatar">✈️</div>
+      <div class="sms-name">Airport Guide</div>
+      <div class="sms-type">Text Message</div>
+    </div>
+    <div class="sms-bubble-wrap">
+      <div>
+        <div class="sms-bubble">
+          Hi Dorothy! 👋<br><br>
+          Your flight <strong>UA 1247</strong> to Chicago departs at <strong>2:45 PM</strong> from Terminal B, Gate B12.<br><br>
+          Your personal step-by-step airport guide is ready — we'll walk you through every step of the way:<br><br>
+          <span class="sms-link" onclick="goTo('screen-welcome')">→ Open My Airport Guide</span>
+        </div>
+        <div class="sms-time">Today 9:41 AM · United Airlines</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <div class="sms-tap-hint">Tap the link above or the button below</div>
+      <button class="sms-open-btn" onclick="goTo('screen-welcome')">Open My Airport Guide →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SCREEN 1: Welcome
+  ═══════════════════════════════ -->
+  <div class="screen welcome-screen" id="screen-welcome" data-label="02 · Welcome">
+    <div class="welcome-top">
+      <div class="welcome-logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/>
+          </svg>
+        </div>
+        <span class="logo-text">Airport Guide</span>
+      </div>
+      <div class="welcome-copy">
+        <div class="welcome-greeting">Welcome,<br>Dorothy.</div>
+        <div class="welcome-flight">
+          <div class="wf-airline">United Airlines</div>
+          <div class="wf-flight">UA 1247 → Chicago O'Hare</div>
+          <div class="wf-detail">Today · 2:45 PM · Gate B12 · Terminal B</div>
+        </div>
+        <div class="welcome-tagline">We'll guide you through every step — from check-in to your gate. Take your time, we're with you.</div>
+      </div>
+    </div>
+    <button class="welcome-btn" onclick="goTo('screen-setup')">
+      Let's Get Started
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SCREEN 2: Accessibility Setup
+  ═══════════════════════════════ -->
+  <div class="screen setup-screen" id="screen-setup" data-label="03 · Accessibility Setup">
+    <button class="setup-back" onclick="goTo('screen-welcome')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="setup-title">Do you need any assistance?</div>
+    <div class="setup-subtitle">Select all that apply. We'll plan your route accordingly. You can skip this step.</div>
+
+    <div class="setup-options">
+      <div class="setup-option selected" onclick="toggleOption(this)">
+        <div class="setup-option-icon">♿</div>
+        <div class="setup-option-text">
+          <div class="setup-option-name">Wheelchair or Mobility Device</div>
+          <div class="setup-option-desc">Elevator routes, no stairs required</div>
+        </div>
+        <div class="setup-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="setup-option" onclick="toggleOption(this)">
+        <div class="setup-option-icon">🚶</div>
+        <div class="setup-option-text">
+          <div class="setup-option-name">I walk slowly / need extra time</div>
+          <div class="setup-option-desc">We'll add buffer time and rest stops</div>
+        </div>
+        <div class="setup-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="setup-option" onclick="toggleOption(this)">
+        <div class="setup-option-icon">👂</div>
+        <div class="setup-option-text">
+          <div class="setup-option-name">Hard of hearing</div>
+          <div class="setup-option-desc">Visual alerts only, no audio reliance</div>
+        </div>
+        <div class="setup-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="setup-option" onclick="toggleOption(this)">
+        <div class="setup-option-icon">👁️</div>
+        <div class="setup-option-text">
+          <div class="setup-option-name">Low vision</div>
+          <div class="setup-option-desc">Larger text, high contrast, audio readback</div>
+        </div>
+        <div class="setup-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <button class="setup-continue" onclick="goTo('screen-overview')">Continue →</button>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SCREEN 3: Journey Overview
+  ═══════════════════════════════ -->
+  <div class="screen setup-screen overview-screen" id="screen-overview" data-label="04 · Journey Overview">
+    <button class="setup-back" onclick="goTo('screen-setup')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="overview-title">Your Journey</div>
+    <div class="overview-subtitle">5 steps · ~22 min total · Wheelchair accessible</div>
+
+    <div class="overview-steps">
+      <div class="overview-step">
+        <div class="ov-indicator pending">1</div>
+        <div class="ov-step-info">
+          <div class="ov-step-name">Check-in Counter</div>
+          <div class="ov-step-detail">United Airlines · Departures Level</div>
+          <span class="ov-step-badge badge-now">Up first</span>
+        </div>
+      </div>
+      <div class="overview-step">
+        <div class="ov-indicator pending">2</div>
+        <div class="ov-step-info">
+          <div class="ov-step-name">Security Checkpoint</div>
+          <div class="ov-step-detail">TSA Pre✓ Lane 4 · ~5 min</div>
+          <span class="ov-step-badge badge-soon">~4 min walk</span>
+        </div>
+      </div>
+      <div class="overview-step">
+        <div class="ov-indicator pending">3</div>
+        <div class="ov-step-info">
+          <div class="ov-step-name">Elevator B — Floor 2</div>
+          <div class="ov-step-detail">Wheelchair accessible · No stairs</div>
+          <span class="ov-step-badge badge-soon">~2 min walk</span>
+        </div>
+      </div>
+      <div class="overview-step">
+        <div class="ov-indicator pending">4</div>
+        <div class="ov-step-info">
+          <div class="ov-step-name">Terminal B Corridor</div>
+          <div class="ov-step-detail">Follow signs to Gate B12</div>
+          <span class="ov-step-badge badge-soon">~3 min walk</span>
+        </div>
+      </div>
+      <div class="overview-step">
+        <div class="ov-indicator pending">5</div>
+        <div class="ov-step-info">
+          <div class="ov-step-name">Gate B12</div>
+          <div class="ov-step-detail">Final destination · Boards at 2:15 PM</div>
+          <span class="ov-step-badge badge-soon">You've made it!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="overview-time">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="ov-time-text">Estimated total time: <span class="ov-time-bold">~22 minutes</span></div>
+    </div>
+
+    <button class="overview-start" onclick="goTo('screen-step1')">Start Guiding Me →</button>
+  </div>
+
+  <!-- ═══════════════════════════════
+       STEP 1: Check-in
+  ═══════════════════════════════ -->
+  <div class="screen nav-screen" id="screen-step1" data-label="05 · Step 1: Check-in">
+    <div class="nav-scroll">
+      <div class="nav-header">
+        <div class="nav-header-left">
+          <div class="nav-header-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/>
+            </svg>
+          </div>
+          <div>
+            <div class="nav-header-title">Airport Guide</div>
+            <div class="nav-header-sub">Real-time Navigation</div>
+          </div>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <div class="flight-banner">
+        <div class="fb-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="fb-content">
+          <div class="fb-title">Gate B12 — Boarding at 2:15 PM</div>
+          <div class="fb-desc">Your flight UA 1247 to Chicago is on time. Let's start at check-in.</div>
+        </div>
+        <button class="fb-close">×</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <div class="progress-label">Journey Progress</div>
+          <div class="progress-pct">0%</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <div class="progress-meta">
+          <div class="progress-step">Step 1 of 5</div>
+          <div class="progress-time">~22 min remaining</div>
+        </div>
+      </div>
+
+      <div class="direction-card">
+        <div class="dir-label">Current Direction</div>
+        <div class="dir-arrow">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </div>
+        <div class="dir-instruction">Walk Straight</div>
+        <div class="dir-detail">Head to United Airlines check-in</div>
+        <div class="dir-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Departures Level, Entrance A
+        </div>
+      </div>
+
+      <div class="route-card">
+        <div class="route-title">Your Route</div>
+        <div class="route-item">
+          <div class="route-indicator ri-active">1</div>
+          <div class="route-item-content">
+            <div class="ri-name">Check-in Counter</div>
+            <div class="ri-sub"><span class="ri-badge progress">▶ In Progress</span></div>
+          </div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">2</div>
+          <div class="route-item-content">
+            <div class="ri-name muted">Security Checkpoint</div>
+            <div class="ri-sub">~4 min walk</div>
+          </div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">3</div>
+          <div class="route-item-content"><div class="ri-name muted">Elevator B — Floor 2</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">4</div>
+          <div class="route-item-content"><div class="ri-name muted">Terminal B Corridor</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">5</div>
+          <div class="route-item-content"><div class="ri-name muted">Gate B12 · Final destination</div></div>
+        </div>
+      </div>
+
+      <div class="access-notice">
+        <div class="an-icon">♿</div>
+        <div class="an-content">
+          <div class="an-title">Wheelchair accessible route selected</div>
+          <div class="an-desc">Elevators and ramps included. No stairs required.</div>
+        </div>
+        <button class="an-close">×</button>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-primary" onclick="goTo('screen-step2')">→ Next Step →</button>
+      <button class="btn-danger" onclick="goTo('screen-help')">📞 I Need Help</button>
+      <button class="btn-ghost" onclick="speak('Walk straight. Head to United Airlines check-in. Departures Level, Entrance A.')">🔊 Repeat Instructions</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       STEP 2: Security
+  ═══════════════════════════════ -->
+  <div class="screen nav-screen" id="screen-step2" data-label="06 · Step 2: Security">
+    <div class="nav-scroll">
+      <div class="nav-header">
+        <div class="nav-header-left">
+          <div class="nav-header-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/></svg>
+          </div>
+          <div>
+            <div class="nav-header-title">Airport Guide</div>
+            <div class="nav-header-sub">Real-time Navigation</div>
+          </div>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <div class="flight-banner">
+        <div class="fb-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="fb-content">
+          <div class="fb-title">Gate B12 — Boarding at 2:15 PM</div>
+          <div class="fb-desc">Flight UA 1247 is on time. You're doing great!</div>
+        </div>
+        <button class="fb-close">×</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <div class="progress-label">Journey Progress</div>
+          <div class="progress-pct">20%</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+        <div class="progress-meta">
+          <div class="progress-step">Step 2 of 5</div>
+          <div class="progress-time">~18 min remaining</div>
+        </div>
+      </div>
+
+      <div class="direction-card">
+        <div class="dir-label">Current Direction</div>
+        <div class="dir-arrow">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="dir-instruction">Turn Left</div>
+        <div class="dir-detail">Walk 30 meters to Security Lane 4</div>
+        <div class="dir-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Floor 1, Terminal B
+        </div>
+      </div>
+
+      <div class="route-card">
+        <div class="route-title">Your Route</div>
+        <div class="route-item">
+          <div class="route-indicator ri-done">✓</div>
+          <div class="route-item-content"><div class="ri-name muted">Check-in Counter</div><div class="ri-sub">Completed</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-active">2</div>
+          <div class="route-item-content"><div class="ri-name">Security Checkpoint</div><div class="ri-sub"><span class="ri-badge progress">▶ In Progress</span></div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">3</div>
+          <div class="route-item-content"><div class="ri-name muted">Elevator B — Floor 2</div><div class="ri-sub">~2 min walk</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">4</div>
+          <div class="route-item-content"><div class="ri-name muted">Terminal B Corridor</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">5</div>
+          <div class="route-item-content"><div class="ri-name muted">Gate B12 · Final destination</div></div>
+        </div>
+      </div>
+
+      <div class="access-notice">
+        <div class="an-icon">⚠️</div>
+        <div class="an-content">
+          <div class="an-title">TSA Pre✓ Lane — No shoes off required</div>
+          <div class="an-desc">Show your boarding pass. Wheelchair assistance is available at this checkpoint.</div>
+        </div>
+        <button class="an-close">×</button>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-primary" onclick="goTo('screen-step3')">→ Next Step →</button>
+      <button class="btn-danger" onclick="goTo('screen-help')">📞 I Need Help</button>
+      <button class="btn-ghost" onclick="speak('Turn left. Walk 30 meters to Security Lane 4. Floor 1, Terminal B. TSA PreCheck lane — no need to remove shoes.')">🔊 Repeat Instructions</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       STEP 3: Elevator (the mockup screen)
+  ═══════════════════════════════ -->
+  <div class="screen nav-screen" id="screen-step3" data-label="07 · Step 3: Elevator">
+    <div class="nav-scroll">
+      <div class="nav-header">
+        <div class="nav-header-left">
+          <div class="nav-header-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/></svg>
+          </div>
+          <div>
+            <div class="nav-header-title">Airport Guide</div>
+            <div class="nav-header-sub">Real-time Navigation</div>
+          </div>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <div class="flight-banner">
+        <div class="fb-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="fb-content">
+          <div class="fb-title">Gate B12 — Boarding in 35 min</div>
+          <div class="fb-desc">Your flight UA 1247 to Chicago is on time. Follow the directions below to reach your gate.</div>
+        </div>
+        <button class="fb-close">×</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <div class="progress-label">Journey Progress</div>
+          <div class="progress-pct">60%</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+        <div class="progress-meta">
+          <div class="progress-step">Step 3 of 5</div>
+          <div class="progress-time">~8 min remaining</div>
+        </div>
+      </div>
+
+      <div class="direction-card">
+        <div class="dir-label">Current Direction</div>
+        <div class="dir-arrow">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="dir-instruction">Turn Right</div>
+        <div class="dir-detail">Walk 50 meters to Elevator B</div>
+        <div class="dir-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Floor 1, Terminal B
+        </div>
+      </div>
+
+      <div class="route-card">
+        <div class="route-title">Your Route</div>
+        <div class="route-item">
+          <div class="route-indicator ri-done">✓</div>
+          <div class="route-item-content"><div class="ri-name muted">Check-in Counter</div><div class="ri-sub">Completed</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-done">✓</div>
+          <div class="route-item-content"><div class="ri-name muted">Security Checkpoint</div><div class="ri-sub">Completed</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-active">3</div>
+          <div class="route-item-content"><div class="ri-name">Elevator B — Floor 2</div><div class="ri-sub"><span class="ri-badge progress">▶ In Progress</span></div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">4</div>
+          <div class="route-item-content"><div class="ri-name muted">Terminal B Corridor</div><div class="ri-sub">~3 min walk</div></div>
+        </div>
+        <div class="route-item">
+          <div class="route-indicator ri-next">5</div>
+          <div class="route-item-content"><div class="ri-name muted">Gate B12 · Final destination</div></div>
+        </div>
+      </div>
+
+      <div class="access-notice">
+        <div class="an-icon">♿</div>
+        <div class="an-content">
+          <div class="an-title">Wheelchair accessible route selected</div>
+          <div class="an-desc">Elevators and ramps are included in your path. No stairs required.</div>
+        </div>
+        <button class="an-close">×</button>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-primary" onclick="goTo('screen-step4')">→ Next Step →</button>
+      <button class="btn-danger" onclick="goTo('screen-help')">📞 I Need Help</button>
+      <button class="btn-ghost" onclick="speak('Turn right. Walk 50 meters to Elevator B. Floor 1, Terminal B. Take the elevator to Floor 2.')">🔊 Repeat Instructions</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       STEP 4: Terminal Corridor
+  ═══════════════════════════════ -->
+  <div class="screen nav-screen" id="screen-step4" data-label="08 · Step 4: Corridor">
+    <div class="nav-scroll">
+      <div class="nav-header">
+        <div class="nav-header-left">
+          <div class="nav-header-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/></svg></div>
+          <div>
+            <div class="nav-header-title">Airport Guide</div>
+            <div class="nav-header-sub">Real-time Navigation</div>
+          </div>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <div class="flight-banner">
+        <div class="fb-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="fb-content">
+          <div class="fb-title">Gate B12 — Boarding in 20 min</div>
+          <div class="fb-desc">Almost there Dorothy! Keep going straight.</div>
+        </div>
+        <button class="fb-close">×</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top"><div class="progress-label">Journey Progress</div><div class="progress-pct">80%</div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+        <div class="progress-meta"><div class="progress-step">Step 4 of 5</div><div class="progress-time">~5 min remaining</div></div>
+      </div>
+
+      <div class="direction-card">
+        <div class="dir-label">Current Direction</div>
+        <div class="dir-arrow">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </div>
+        <div class="dir-instruction">Walk Straight</div>
+        <div class="dir-detail">Follow signs for Gate B12</div>
+        <div class="dir-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Floor 2, Terminal B Corridor
+        </div>
+      </div>
+
+      <div class="route-card">
+        <div class="route-title">Your Route</div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Check-in Counter</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Security Checkpoint</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Elevator B — Floor 2</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-active">4</div><div class="route-item-content"><div class="ri-name">Terminal B Corridor</div><div class="ri-sub"><span class="ri-badge progress">▶ In Progress</span></div></div></div>
+        <div class="route-item"><div class="route-indicator ri-next">5</div><div class="route-item-content"><div class="ri-name muted">Gate B12 · Final destination</div></div></div>
+      </div>
+
+      <div class="access-notice" style="background:#FEF3C7;border-color:#FDE68A;">
+        <div class="an-icon">💺</div>
+        <div class="an-content">
+          <div class="an-title" style="color:#92400E;">Rest seats available</div>
+          <div class="an-desc">Seating areas are available every 50 meters along this corridor if you need to rest.</div>
+        </div>
+        <button class="an-close">×</button>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-primary" onclick="goTo('screen-step5')">→ Next Step →</button>
+      <button class="btn-danger" onclick="goTo('screen-help')">📞 I Need Help</button>
+      <button class="btn-ghost" onclick="speak('Walk straight. Follow signs for Gate B12. Floor 2, Terminal B Corridor. Seating is available if you need to rest.')">🔊 Repeat Instructions</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       STEP 5: You've Arrived
+  ═══════════════════════════════ -->
+  <div class="screen nav-screen" id="screen-step5" data-label="09 · Step 5: Gate Arrived">
+    <div class="nav-scroll">
+      <div class="nav-header">
+        <div class="nav-header-left">
+          <div class="nav-header-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/></svg></div>
+          <div><div class="nav-header-title">Airport Guide</div><div class="nav-header-sub">Real-time Navigation</div></div>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top"><div class="progress-label">Journey Progress</div><div class="progress-pct">100%</div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--green)"></div></div>
+        <div class="progress-meta"><div class="progress-step">Step 5 of 5</div><div class="progress-time" style="color:var(--green);font-weight:600;">You made it! 🎉</div></div>
+      </div>
+
+      <div class="direction-card" style="border-color:var(--green-bd);background:var(--green-lt);">
+        <div class="dir-label" style="color:var(--green);">You've Arrived</div>
+        <div class="dir-arrow arrived">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="dir-instruction" style="color:var(--green);">Gate B12</div>
+        <div class="dir-detail">UA 1247 to Chicago O'Hare</div>
+        <div class="dir-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Floor 2, Terminal B
+        </div>
+      </div>
+
+      <div class="route-card">
+        <div class="route-title">Your Route</div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Check-in Counter</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Security Checkpoint</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Elevator B — Floor 2</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name muted">Terminal B Corridor</div><div class="ri-sub">Completed</div></div></div>
+        <div class="route-item"><div class="route-indicator ri-done">✓</div><div class="route-item-content"><div class="ri-name">Gate B12</div><div class="ri-sub" style="color:var(--green);font-weight:600;">Arrived!</div></div></div>
+      </div>
+
+      <div class="access-notice" style="background:#FEF3C7;border-color:#FDE68A;margin-bottom:4px;">
+        <div class="an-icon">🛫</div>
+        <div class="an-content">
+          <div class="an-title" style="color:#92400E;">Early boarding available</div>
+          <div class="an-desc">Let the gate agent know you need boarding assistance. Pre-board begins at 2:05 PM.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <button class="btn-primary" onclick="goTo('screen-boarding')">View Boarding Info</button>
+      <button class="btn-danger" onclick="goTo('screen-help')">📞 I Need Help</button>
+      <button class="btn-ghost" onclick="speak('You have arrived at Gate B12. Flight UA 1247 to Chicago. Early boarding is available. Please let the gate agent know you need assistance.')">🔊 Repeat Instructions</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SCREEN: I Need Help
+  ═══════════════════════════════ -->
+  <div class="screen help-screen" id="screen-help" data-label="10 · I Need Help">
+    <button class="help-back" onclick="history.back(); goBack()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="help-title">How can we help?</div>
+    <div class="help-subtitle">Choose an option and we'll take care of it right away.</div>
+
+    <div class="help-options">
+      <button class="help-option urgent" onclick="window.location.href='tel:+18007323872'">
+        <div class="ho-icon red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92"/></svg></div>
+        <div class="ho-text">
+          <div class="ho-name">Call Airport Assistance</div>
+          <div class="ho-desc">A real person will come to you immediately</div>
+        </div>
+        <div class="ho-arrow">›</div>
+      </button>
+
+      <button class="help-option">
+        <div class="ho-icon blue">📍</div>
+        <div class="ho-text">
+          <div class="ho-name">I'm Lost</div>
+          <div class="ho-desc">We'll restart your directions from your current location</div>
+        </div>
+        <div class="ho-arrow">›</div>
+      </button>
+
+      <button class="help-option">
+        <div class="ho-icon" style="background:#F3E8FF;">♿</div>
+        <div class="ho-text">
+          <div class="ho-name">I Need a Wheelchair or Cart</div>
+          <div class="ho-desc">Request mobility assistance at your location</div>
+        </div>
+        <div class="ho-arrow">›</div>
+      </button>
+
+      <button class="help-option">
+        <div class="ho-icon yellow">⏰</div>
+        <div class="ho-text">
+          <div class="ho-name">I Need More Time</div>
+          <div class="ho-desc">We'll notify the gate agent you're on your way</div>
+        </div>
+        <div class="ho-arrow">›</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════
+       SCREEN: Boarding
+  ═══════════════════════════════ -->
+  <div class="screen success-screen" id="screen-boarding" data-label="11 · Boarding">
+    <div class="success-top">
+      <div class="success-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+          <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+        </svg>
+      </div>
+      <div class="success-title">Ready to Board!</div>
+      <div class="success-sub">You've completed all steps. Relax — you're right where you need to be.</div>
+
+      <div class="success-card">
+        <div class="sc-row"><span class="sc-key">Flight</span><span class="sc-val">UA 1247</span></div>
+        <div class="sc-row"><span class="sc-key">Destination</span><span class="sc-val">Chicago O'Hare</span></div>
+        <div class="sc-row"><span class="sc-key">Gate</span><span class="sc-val">B12 · Terminal B</span></div>
+        <div class="sc-row"><span class="sc-key">Seat</span><span class="sc-val">12A · Window</span></div>
+        <div class="sc-row"><span class="sc-key">Boards at</span><span class="sc-val">2:15 PM</span></div>
+        <div class="sc-row"><span class="sc-key">Departs</span><span class="sc-val">2:45 PM · On Time</span></div>
+      </div>
+
+      <div class="success-alert">⚠️ Tell the gate agent you need boarding assistance</div>
+    </div>
+
+    <button class="success-help" onclick="goTo('screen-help')">📞 I Need Help</button>
+  </div>
+
+</div>
+
+<script>
+  let prevScreen = null;
+
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+      prevScreen = document.querySelector('.screen.active')?.id || null;
+      target.classList.add('active');
+      target.scrollTop = 0;
+    }
+  }
+
+  function goBack() {
+    if (prevScreen) goTo(prevScreen);
+  }
+
+  function toggleOption(el) {
+    el.classList.toggle('selected');
+  }
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.88;
+      u.pitch = 1;
+      window.speechSynthesis.speak(u);
+    }
+  }
+
+  // Close banners
+  document.querySelectorAll('.fb-close, .an-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.flight-banner, .access-notice').style.display = 'none';
+    });
+  });
+
+  // Auto-speak on step screens
+  const autoSpeak = {
+    'screen-step1': 'Walk straight ahead to the United Airlines check-in counter.',
+    'screen-step2': 'Turn left. Walk 30 meters to Security Lane 4.',
+    'screen-step3': 'Turn right. Walk 50 meters to Elevator B.',
+    'screen-step4': 'Walk straight. Follow the signs for Gate B12.',
+    'screen-step5': 'You have arrived at Gate B12. Well done!'
+  };
+
+  const origGoTo = goTo;
+</script>
+</body>
+</html>
