@@ -253,6 +253,32 @@ def inject_monthly_highlights(data: dict):
         f.write(html)
     print(f"Injected {len(highlights)} monthly highlight(s) into index.html")
 
+def update_trends_hero_banner(data: dict):
+    """Update the hero update banner at the top of trends.html."""
+    highlights = data.get("monthly_highlights", [])
+    if not highlights:
+        return
+    now = datetime.now()
+    date_label = f"{data['last_updated']} Update — Published {now.strftime('%B')} {now.day}"
+    body = " ".join(highlights)
+    path = os.path.join(os.path.dirname(__file__), "trends.html")
+    with open(path) as f:
+        html = f.read()
+    html = re.sub(
+        r'(<p style="font-size:12px;font-weight:700;letter-spacing:0\.08em;text-transform:uppercase;color:#059669;margin-bottom:6px;">)[^<]*(</p>)',
+        rf'\g<1>{date_label}\g<2>',
+        html
+    )
+    html = re.sub(
+        r'(<p style="font-size:13\.5px;color:#065F46;line-height:1\.6;margin:0;">).*?(</p>)',
+        rf'\g<1>{body}\g<2>',
+        html,
+        flags=re.DOTALL
+    )
+    with open(path, "w") as f:
+        f.write(html)
+    print(f"Updated trends.html hero banner for {data['last_updated']}")
+
 
 def main():
     print("=" * 50)
