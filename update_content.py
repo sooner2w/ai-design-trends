@@ -75,7 +75,6 @@ Keep JSON valid — no trailing commas, no comments."""
     )
 
     raw = message.content[0].text
-    # Extract JSON from the response
     match = re.search(r'\{.*\}', raw, re.DOTALL)
     if not match:
         raise ValueError(f"No JSON found in Claude response:\n{raw}")
@@ -86,12 +85,10 @@ Keep JSON valid — no trailing commas, no comments."""
 
 
 def pct_to_width(pct: int) -> int:
-    """Convert percentage to CSS width percentage (max 100)."""
     return min(int(pct), 100)
 
 
 def hours_to_width(hours: float, max_hours: float = 6.0) -> int:
-    """Convert hours to percentage of max for bar chart."""
     return min(int((hours / max_hours) * 100), 100)
 
 
@@ -129,7 +126,6 @@ def build_cbar_html(task_times: list) -> str:
 
 
 def update_html_file(path: str, replacements: dict):
-    """Apply regex-based replacements to an HTML file."""
     with open(path, "r") as f:
         content = f.read()
     for pattern, replacement in replacements.items():
@@ -140,7 +136,6 @@ def update_html_file(path: str, replacements: dict):
 
 
 def update_footer_dates(data: dict):
-    """Update 'Last updated' and 'Next update' in all HTML footers."""
     footer_pattern = r'Last updated:.*?Next update:.*?(?=&nbsp;·&nbsp;)'
     footer_replace = f'Last updated: {data["last_updated"]} &nbsp;·&nbsp; Next update: {data["next_update"]} '
 
@@ -155,13 +150,11 @@ def update_footer_dates(data: dict):
 
 
 def update_hero_stats(data: dict):
-    """Update the 4 hero stat cards on index.html."""
     s = data["hero_stats"]
     path = os.path.join(os.path.dirname(__file__), "index.html")
     with open(path) as f:
         html = f.read()
 
-    # Replace stat numbers using surrounding context
     html = re.sub(
         r'(<span class="stat-num">)\d+(%</span>\s*<span class="stat-label">of designers already use)',
         rf'\g<1>{s["using_ai"]}%</span>\n      <span class="stat-label">of designers already use',
@@ -189,7 +182,6 @@ def update_hero_stats(data: dict):
 
 
 def update_tool_adoption_chart(data: dict):
-    """Replace the hbar rows in the trends page tool adoption chart."""
     hbar_html = build_hbar_html(data["tool_adoption"])
     path = os.path.join(os.path.dirname(__file__), "trends.html")
     with open(path) as f:
@@ -207,7 +199,6 @@ def update_tool_adoption_chart(data: dict):
 
 
 def update_task_times_chart(data: dict):
-    """Replace the cbar content in trends.html."""
     cbar_html = build_cbar_html(data["task_times"])
     path = os.path.join(os.path.dirname(__file__), "trends.html")
     with open(path) as f:
@@ -225,7 +216,6 @@ def update_task_times_chart(data: dict):
 
 
 def inject_monthly_highlights(data: dict):
-    """Add monthly highlights callout near the top of index.html if highlights exist."""
     highlights = data.get("monthly_highlights", [])
     if not highlights:
         return
@@ -242,7 +232,6 @@ def inject_monthly_highlights(data: dict):
     with open(path) as f:
         html = f.read()
 
-    # Insert before exec summary
     html = re.sub(
         r'(<!-- Monthly highlights.*?-->\s*<div[^>]*>.*?</div>\s*)?(<ol class="exec-list">)',
         callout + r'\2',
@@ -253,8 +242,8 @@ def inject_monthly_highlights(data: dict):
         f.write(html)
     print(f"Injected {len(highlights)} monthly highlight(s) into index.html")
 
+
 def update_trends_hero_banner(data: dict):
-    """Update the hero update banner at the top of trends.html."""
     highlights = data.get("monthly_highlights", [])
     if not highlights:
         return
@@ -292,6 +281,7 @@ def main():
     update_tool_adoption_chart(data)
     update_task_times_chart(data)
     inject_monthly_highlights(data)
+    update_trends_hero_banner(data)
 
     print("=" * 50)
     print("Refresh complete. Changes staged for commit.")
