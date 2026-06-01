@@ -1,0 +1,46 @@
+name: Monthly Content Refresh
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Run monthly content refresh
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python update_content.py
+
+      - name: Commit updated files
+        run: |
+          git config user.name "AlphaStack Bot"
+          git config user.email "bot@alphastackapp.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Monthly content refresh — $(date +'%B %Y')"
+          git push
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --prod --dir=. --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+Paste that exactly. Remember the filename must be:
+.github/workflows/monthly-update.yml
+
