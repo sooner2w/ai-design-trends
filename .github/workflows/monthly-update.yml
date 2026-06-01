@@ -30,8 +30,10 @@ jobs:
         run: |
           git config user.name "AlphaStack Bot"
           git config user.email "bot@alphastackapp.com"
-          git pull --rebase
           git add -A
+          git stash
+          git pull --rebase
+          git stash pop
           git diff --staged --quiet || git commit -m "Monthly content refresh"
           git push
 
