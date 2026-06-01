@@ -230,7 +230,7 @@ def inject_monthly_highlights(data: dict):
     if not highlights:
         return
 
-    items = "".join(f"<li>{h}</li>" for h in highlights)
+    items = "".join(f"<li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>{h}</li>" for h in highlights)
     callout = f"""
   <!-- Monthly highlights injected by update_content.py -->
   <div style="background:#F0FDF4;border-left:4px solid #10B981;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:28px;">
