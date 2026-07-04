@@ -2,8 +2,11 @@ name: Monthly Content Refresh
 
 on:
   schedule:
-    - cron: '0 9 1 * *'
-  workflow_dispatch:
+    - cron: '7 9 1 * *'   # 09:07 UTC on the 1st of each month (off-peak minute)
+  workflow_dispatch:        # allow manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write           # let the built-in GITHUB_TOKEN push the refreshed content
 
 jobs:
   refresh:
@@ -26,13 +29,14 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python update_content.py
 
-      - name: Commit updated files
+      - name: Commit and push updated files
         run: |
           git config user.name "AlphaStack Bot"
           git config user.email "bot@alphastackapp.com"
           git add -A
-          git stash
-          git pull --rebase
-          git stash pop
-          git diff --staged --quiet || git commit -m "Monthly content refresh"
+          if git diff --staged --quiet; then
+            echo "No content changes this month — nothing to commit."
+            exit 0
+          fi
+          git commit -m "Monthly content refresh — $(date +'%B %Y')"
           git push
