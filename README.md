@@ -2,14 +2,15 @@
 
 A research report website covering how AI is reshaping the UX and product design profession. Updated automatically every 30 days via GitHub Actions.
 
+**July 2026:** redesigned as a single-page report (`index.html`) — dark/light mode, interactive charts with table views, refreshed 2026 content.
+
 ## Pages
 
 | Page | URL |
 |------|-----|
-| Home + Executive Summary | `/index.html` |
-| 6 AI Design Trends | `/trends.html` |
-| Role Evolution | `/role-evolution.html` |
-| Sources | `/sources.html` |
+| Full report (trends, data, role evolution, sources) | `/index.html` (sections: `#trends`, `#data`, `#roles`, `#sources`) |
+| Work With Me | `/work-with-me.html` |
+| Legacy URLs (`/trends.html`, `/role-evolution.html`, `/sources.html`) | redirect to the matching section of `index.html` |
 
 ## 30-Day Auto-Update
 
@@ -18,7 +19,7 @@ Content is refreshed automatically on the **1st of each month** via GitHub Actio
 ### How it works
 1. GitHub Actions runs `.github/workflows/monthly-update.yml` on a cron schedule
 2. It calls `update_content.py`, which uses the Claude API to re-research current trends
-3. Updated stats, tool adoption rates, and monthly highlights are written back to the HTML files
+3. Updated stats, survey figures, and monthly highlights are written back into `index.html` via stable markers (`<!-- SURVEY_CHART_START -->`, `<!-- HIGHLIGHTS_START -->`, element IDs like `#stat-using-ai`)
 4. Changes are committed and pushed automatically — GitHub Pages redeploys in ~1 minute
 
 ### Setup (one-time)

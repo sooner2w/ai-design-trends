@@ -3,322 +3,732 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Design Trends in UX for 2026 | Breon.ai</title>
-<meta name="description" content="How artificial intelligence is reshaping the UX and product designer's role in 2026. Research report by Breon.ai, updated monthly.">
-<meta property="og:title" content="AI Design Trends in UX for 2026 | Breon.ai">
-<meta property="og:description" content="How AI is reshaping the product designer's role. 6 major trends, role evolution data, and in-demand skills for 2026.">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="styles.css">
+<title>AI Design Trends in UX for 2026 — Breon.ai Research</title>
+<link rel="canonical" href="https://research.breon.ai/">
+<meta name="description" content="A living research report on how artificial intelligence is reshaping UX and product design — trends, data, and role evolution. Updated monthly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Index-specific overrides */
-  .exec-section { padding: 72px 0; }
-  .exec-intro {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 560px;
-    margin-bottom: 36px;
+  :root{
+    color-scheme: light;
+    --page:#f9f9f7;
+    --surface:#fcfcfb;
+    --ink:#0b0b0b;
+    --ink-2:#52514e;
+    --muted:#898781;
+    --grid:#e1e0d9;
+    --baseline:#c3c2b7;
+    --border:rgba(11,11,11,0.10);
+    --accent:#2a78d6;
+    --accent-soft:rgba(42,120,214,0.08);
+    --accent-soft-2:rgba(42,120,214,0.14);
+    --good:#006300;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --display:'Space Grotesk','Inter',system-ui,sans-serif;
   }
-  .subscribe-section {
-    background: var(--dark2);
-    padding: 72px 0;
-    margin-top: 80px;
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --page:#0d0d0d;
+    --surface:#1a1a19;
+    --ink:#ffffff;
+    --ink-2:#c3c2b7;
+    --muted:#898781;
+    --grid:#2c2c2a;
+    --baseline:#383835;
+    --border:rgba(255,255,255,0.10);
+    --accent:#3987e5;
+    --accent-soft:rgba(57,135,229,0.12);
+    --accent-soft-2:rgba(57,135,229,0.20);
+    --good:#0ca30c;
   }
-  .subscribe-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-    flex-wrap: wrap;
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --page:#0d0d0d;
+      --surface:#1a1a19;
+      --ink:#ffffff;
+      --ink-2:#c3c2b7;
+      --muted:#898781;
+      --grid:#2c2c2a;
+      --baseline:#383835;
+      --border:rgba(255,255,255,0.10);
+      --accent:#3987e5;
+      --accent-soft:rgba(57,135,229,0.12);
+      --accent-soft-2:rgba(57,135,229,0.20);
+      --good:#0ca30c;
+    }
   }
-  .subscribe-copy { max-width: 420px; }
-  .subscribe-copy h2 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--page);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease,color .25s ease;
   }
-  .subscribe-copy p {
-    font-size: 14px;
-    color: #C7D2FE;
-    line-height: 1.6;
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--page);
+    background:color-mix(in srgb, var(--page) 86%, transparent);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
   }
-  .subscribe-form { flex: 1; min-width: 280px; max-width: 440px; }
-  .form-row { display: flex; gap: 10px; }
-  .form-row input[type="email"] {
-    flex: 1;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.07);
-    color: var(--white);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.15s;
+  .nav{display:flex;align-items:center;gap:28px;height:64px}
+  .brand{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block}
+  .nav nav{display:flex;gap:22px;margin-left:auto}
+  .nav nav a{font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color .15s}
+  .nav nav a:hover{color:var(--ink)}
+  .pill{
+    font-size:12px;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);border:1px solid transparent;
+    padding:4px 10px;border-radius:999px;white-space:nowrap;
   }
-  .form-row input[type="email"]:focus { border-color: var(--accent2); }
-  .form-row input[type="email"]::placeholder { color: #6B7280; }
-  .btn-subscribe {
-    background: var(--accent);
-    color: white;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s;
+  .cta{
+    font-size:14px;font-weight:600;text-decoration:none;
+    background:var(--ink);color:var(--page);
+    padding:8px 16px;border-radius:8px;white-space:nowrap;
+    transition:opacity .15s;
   }
-  .btn-subscribe:hover { background: #4338CA; }
-  .form-note {
-    font-size: 11px;
-    color: #4B5563;
-    margin-top: 8px;
+  .cta:hover{opacity:.85}
+  .theme-btn{
+    border:1px solid var(--border);background:var(--surface);color:var(--ink-2);
+    width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:15px;
+    display:grid;place-items:center;
   }
-  .form-success {
-    display: none;
-    background: rgba(16,185,129,0.15);
-    border: 1px solid rgba(16,185,129,0.3);
-    border-radius: 8px;
-    padding: 14px 18px;
-    color: #34D399;
-    font-size: 13px;
-    font-weight: 600;
+  @media (max-width:840px){ .nav nav{display:none} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:88px 0 56px;position:relative;overflow:hidden}
+  .hero .eyebrow{
+    font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px;
   }
-  @media (max-width: 680px) {
-    .subscribe-inner { flex-direction: column; }
-    .form-row { flex-direction: column; }
+  .hero .eyebrow::before{content:'';width:28px;height:2px;background:var(--accent);display:inline-block}
+  .hero h1{
+    font-family:var(--display);font-size:clamp(38px,6vw,64px);
+    line-height:1.05;letter-spacing:-0.025em;font-weight:700;max-width:14ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero .lede{
+    margin-top:24px;font-size:18px;color:var(--ink-2);max-width:56ch;font-weight:450;
+  }
+  .hero .meta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero .meta .stamp{font-size:13px;color:var(--muted)}
+
+  /* ---------- KPI row ---------- */
+  .kpis{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+    margin:40px 0 0;
+  }
+  @media (max-width:840px){ .kpis{grid-template-columns:repeat(2,1fr)} }
+  .tile{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px 20px 18px;
+  }
+  .tile .label{font-size:13px;color:var(--ink-2);font-weight:500}
+  .tile .value{
+    font-family:var(--sans);font-weight:600;font-size:40px;letter-spacing:-0.02em;
+    line-height:1.1;margin-top:6px;
+  }
+  .tile .note{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .tile .delta{font-size:13px;font-weight:600;color:var(--good);margin-left:6px}
+
+  /* ---------- Monthly highlights (injected by update_content.py) ---------- */
+  .highlights{
+    margin-top:24px;background:var(--accent-soft);border:1px solid var(--border);
+    border-radius:14px;padding:18px 22px;
+  }
+  .highlights .hl-kicker{
+    font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:8px;
+  }
+  .highlights ul{list-style:none}
+  .highlights li{font-size:14px;color:var(--ink-2);padding:6px 0;border-bottom:1px solid var(--grid)}
+  .highlights li:last-child{border-bottom:none}
+
+  /* ---------- Sections ---------- */
+  section{padding:72px 0}
+  .sec-head{margin-bottom:36px;max-width:60ch}
+  .sec-head .kicker{
+    font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-family:var(--display);font-size:clamp(26px,3.6vw,36px);
+    letter-spacing:-0.02em;line-height:1.15;font-weight:700;
+  }
+  .sec-head p{margin-top:12px;color:var(--ink-2);font-size:16px}
+
+  /* ---------- Trend cards ---------- */
+  .trends{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:900px){ .trends{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:600px){ .trends{grid-template-columns:1fr} }
+  .trend{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:24px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .trend:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+  .trend .num{
+    font-family:var(--display);font-size:13px;font-weight:600;color:var(--accent);
+    letter-spacing:.08em;
+  }
+  .trend h3{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.25}
+  .trend p{font-size:14.5px;color:var(--ink-2);flex:1}
+  .trend .signal{
+    font-size:13px;color:var(--ink-2);border-top:1px solid var(--border);
+    padding-top:12px;display:flex;align-items:baseline;gap:8px;
+  }
+  .trend .signal b{font-size:17px;font-weight:600;color:var(--ink)}
+
+  /* ---------- Charts ---------- */
+  .charts{display:grid;grid-template-columns:1.15fr 1fr;gap:14px}
+  @media (max-width:900px){ .charts{grid-template-columns:1fr} }
+  .chart-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:24px;
+  }
+  .chart-card h3{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-0.01em}
+  .chart-card .sub{font-size:13px;color:var(--muted);margin-top:3px;margin-bottom:22px}
+
+  /* horizontal bars */
+  .hbar-row{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:12px;margin-bottom:14px}
+  @media (max-width:600px){ .hbar-row{grid-template-columns:1fr;gap:4px} }
+  .hbar-row .cat{font-size:13.5px;color:var(--ink-2);text-align:right;line-height:1.3}
+  @media (max-width:600px){ .hbar-row .cat{text-align:left} }
+  .hbar-track{position:relative;height:24px;display:flex;align-items:center}
+  .hbar{
+    height:18px;background:var(--accent);
+    border-radius:0 4px 4px 0;  /* rounded data-end, square baseline */
+    position:relative;min-width:2px;
+    transition:width .8s cubic-bezier(.2,.7,.3,1);
+    outline:none;
+  }
+  .hbar:hover,.hbar:focus-visible{filter:brightness(1.12)}
+  .hbar:focus-visible{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--accent)}
+  .hbar-val{
+    position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);
+    font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;
+  }
+  .axis-note{font-size:12px;color:var(--muted);margin-top:10px;border-top:1px solid var(--grid);padding-top:8px}
+
+  /* columns */
+  .cols{
+    display:flex;align-items:flex-end;gap:10px;height:220px;
+    border-bottom:1px solid var(--baseline);padding:0 4px;position:relative;
+  }
+  .colwrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:0;position:relative}
+  .col{
+    width:100%;max-width:24px;background:var(--accent);
+    border-radius:4px 4px 0 0;   /* rounded data-end, square baseline */
+    transition:height .8s cubic-bezier(.2,.7,.3,1), filter .15s;
+    outline:none;
+  }
+  .col.proj{background:var(--accent-soft-2)}
+  .col.proj{background:color-mix(in srgb, var(--accent) 38%, var(--surface))}
+  .col:hover,.col:focus-visible{filter:brightness(1.12)}
+  .col:focus-visible{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--accent)}
+  .col-cap{
+    position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+    font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;
+  }
+  .col-x{display:flex;gap:10px;padding:8px 4px 0}
+  .col-x span{flex:1;text-align:center;font-size:12px;color:var(--muted)}
+  .legend{display:flex;gap:18px;margin-top:14px;font-size:12.5px;color:var(--ink-2)}
+  .legend .key{display:flex;align-items:center;gap:7px}
+  .legend .sw{width:12px;height:12px;border-radius:3px;background:var(--accent);display:inline-block}
+  .legend .sw.proj{background:color-mix(in srgb, var(--accent) 38%, var(--surface))}
+
+  /* table view */
+  details.tbl{margin-top:16px}
+  details.tbl summary{
+    font-size:13px;font-weight:500;color:var(--accent);cursor:pointer;list-style:none;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  details.tbl summary::before{content:'▸';font-size:11px;transition:transform .15s}
+  details.tbl[open] summary::before{transform:rotate(90deg)}
+  details.tbl table{
+    width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px;
+  }
+  details.tbl th{
+    text-align:left;font-weight:600;color:var(--ink-2);border-bottom:1px solid var(--grid);
+    padding:6px 8px;font-size:12.5px;
+  }
+  details.tbl td{padding:6px 8px;border-bottom:1px solid var(--grid);color:var(--ink-2)}
+  details.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+  details.tbl th.num{text-align:right}
+
+  /* tooltip */
+  #tip{
+    position:fixed;z-index:100;pointer-events:none;
+    background:var(--ink);color:var(--page);
+    font-size:12.5px;line-height:1.4;padding:8px 11px;border-radius:8px;
+    box-shadow:0 8px 24px rgba(0,0,0,.18);
+    opacity:0;transition:opacity .12s;max-width:240px;
+  }
+  #tip b{font-size:14px;display:block}
+  #tip .tl{opacity:.75}
+
+  /* ---------- Role evolution ---------- */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:840px){ .roles{grid-template-columns:1fr} }
+  .role{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;
+  }
+  .role .era{
+    font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+  .role.now{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .role.now .era{color:var(--accent)}
+  .role h3{font-family:var(--display);font-size:18px;font-weight:600;margin:8px 0 10px}
+  .role ul{list-style:none}
+  .role li{
+    font-size:14px;color:var(--ink-2);padding:7px 0 7px 18px;position:relative;
+    border-bottom:1px solid var(--grid);
+  }
+  .role li:last-child{border-bottom:none}
+  .role li::before{content:'·';position:absolute;left:4px;color:var(--accent);font-weight:700}
+
+  /* ---------- Concepts strip ---------- */
+  .concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:840px){ .concepts{grid-template-columns:1fr} }
+  .concept{
+    border:1px solid var(--border);border-radius:14px;padding:22px;background:var(--accent-soft);
+  }
+  .concept .tag{
+    font-family:var(--display);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.02em;
+  }
+  .concept h3{font-family:var(--display);font-size:17px;font-weight:600;margin:6px 0 8px}
+  .concept p{font-size:14px;color:var(--ink-2)}
+
+  /* ---------- Sources ---------- */
+  .sources ol{list-style:none;counter-reset:src}
+  .sources li{
+    counter-increment:src;
+    display:flex;gap:16px;align-items:baseline;
+    padding:12px 0;border-bottom:1px solid var(--grid);font-size:14.5px;
+  }
+  .sources li::before{
+    content:counter(src,decimal-leading-zero);
+    font-family:var(--display);font-size:12.5px;font-weight:600;color:var(--muted);
+  }
+  .sources a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid var(--baseline)}
+  .sources a:hover{color:var(--accent);border-color:var(--accent)}
+  .sources .src-note{color:var(--muted);font-size:13px}
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    border-top:1px solid var(--border);padding:56px 0 40px;margin-top:24px;
+  }
+  .foot-grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+  .newsletter h3{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-0.01em}
+  .newsletter p{color:var(--ink-2);font-size:14px;margin:6px 0 16px;max-width:44ch}
+  .nl-form{display:flex;gap:8px;max-width:400px}
+  .nl-form input{
+    flex:1;font:inherit;font-size:14px;padding:10px 14px;border-radius:8px;
+    border:1px solid var(--border);background:var(--surface);color:var(--ink);
+  }
+  .nl-form button{
+    font:inherit;font-size:14px;font-weight:600;padding:10px 18px;border-radius:8px;
+    border:none;background:var(--accent);color:#fff;cursor:pointer;
+  }
+  .nl-form button:hover{filter:brightness(1.1)}
+  .foot-meta{font-size:13px;color:var(--muted);margin-top:36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .hbar,.col{transition:none}
   }
 </style>
 </head>
 <body>
 
-<!-- ── Navigation ───────────────────────────────────────────── -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="https://breon.ai" class="nav-logo">
-      <span class="nav-logo-dot"></span>
-      Breon.ai
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="trends.html">Trends</a></li>
-      <li><a href="role-evolution.html">Role Evolution</a></li>
-      <li><a href="sources.html">Sources</a></li>
-      <li><span class="nav-badge">Updated Monthly</span></li>
-      <li><a href="work-with-me.html" class="nav-cta">Work With Me</a></li>
-    </ul>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="dot"></span>breon.ai<span style="color:var(--muted);font-weight:500">/research</span></a>
+    <nav aria-label="Primary">
+      <a href="#trends">Trends</a>
+      <a href="#data">Data</a>
+      <a href="#roles">Role Evolution</a>
+      <a href="#sources">Sources</a>
+    </nav>
+    <span class="pill">Updated Monthly</span>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5 A6.5 6.5 0 0 1 8 14.5 Z" fill="currentColor"/></svg></button>
+    <a class="cta" href="work-with-me.html">Work With Me</a>
   </div>
-</nav>
+</header>
 
-<!-- ── Hero ─────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-accent-bar"></div>
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Research Report &nbsp;·&nbsp; Updated June 1, 2026</p>
-    <h1>AI Design Trends<br>in UX for <span>2026</span></h1>
-    <p class="hero-sub">How Artificial Intelligence Is Reshaping the Product Designer's Role</p>
-    <p class="hero-meta">For the UX &amp; Product Design Community &nbsp;·&nbsp; 7 Trends &nbsp;·&nbsp; 20 Sources &nbsp;·&nbsp; Updated Every 30 Days</p>
+<main id="top">
 
-    <div class="hero-stats">
-      <div class="stat-card">
-        <span class="stat-num">94%</span>
-      <span class="stat-label">of designers already use generative AI tools</span>
+  <!-- HERO -->
+  <div class="wrap hero">
+    <p class="eyebrow">2026 Mid-Year Report</p>
+    <h1>UX in the age of <em>AI</em> is a different job.</h1>
+    <p class="lede">A living research report on how artificial intelligence is reshaping the product designer's role — from production to curation, from screens to systems, from interfaces to agents. Refreshed every 30 days.</p>
+    <div class="meta">
+      <span class="stamp" id="updated-stamp">Last updated July 2026 · Next update August 2026 · <a href="#sources" style="color:inherit">8 sources</a></span>
+    </div>
+
+    <div class="kpis">
+      <div class="tile reveal">
+        <div class="label">Designers using generative AI</div>
+        <div class="value" id="stat-using-ai">94%</div>
+        <div class="note">AI is a collaborator now, not a novelty</div>
       </div>
-      <div class="stat-card">
-        <span class="stat-num">73%</span>
-        <span class="stat-label">of hiring managers now require AI tool fluency</span>
+      <div class="tile reveal">
+        <div class="label">Hiring managers requiring AI fluency</div>
+        <div class="value" id="stat-ai-fluency">73%</div>
+        <div class="note">Prompt literacy is a core skill on job specs</div>
       </div>
-      <div class="stat-card">
-        <span class="stat-num">14%</span>
-      <span class="stat-label">projected growth in UX roles through 2034</span>
+      <div class="tile reveal">
+        <div class="label">Enterprise apps with AI agents by EOY</div>
+        <div class="value" id="stat-agent-apps">40%</div>
+        <div class="note">Up from under 5% in 2025 — Gartner</div>
       </div>
-      <div class="stat-card">
-        <span class="stat-num">Aug 2</span>
-        <span class="stat-label">EU AI Act full enforcement deadline — 89 days away</span>
+      <div class="tile reveal">
+        <div class="label">Projected UX role growth</div>
+        <div class="value" id="stat-job-growth">16%<span class="delta">↑</span></div>
+        <div class="note">Through 2034 — the role grows as it changes</div>
       </div>
     </div>
 
-    <a href="trends.html" class="hero-cta">Read the Report &nbsp;&#8594;</a>
-  </div>
-</section>
-
-<!-- ── Explore the Report ─────────────────────────────────────── -->
-<div class="page">
-  <div style="padding: 64px 0 0;">
-    <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">What's inside</p>
-    <h2 style="font-size:24px;font-weight:800;color:var(--dark2);margin-bottom:4px;">Explore the Report</h2>
-    <p style="font-size:14px;color:var(--muted);">Six trends shaping the field, the role evolution data, and sources — refreshed every 30 days.</p>
+    <!-- HIGHLIGHTS_START -->
+    <!-- HIGHLIGHTS_END -->
   </div>
 
-  <div class="section-cards">
-    <a href="trends.html#trend-1" class="section-card">
-      <span class="section-card-num">Trend 01</span>
-      <span class="section-card-title">AI as Co-Designer</span>
-      <span class="section-card-desc">73% of designers say this will have the most impact in 2026.</span>
-    </a>
-    <a href="trends.html#trend-2" class="section-card">
-      <span class="section-card-num">Trend 02</span>
-      <span class="section-card-title">Prompt-Driven Prototyping</span>
-      <span class="section-card-desc">What took 4 hours now takes 45 minutes. The tools reshaping your workflow.</span>
-    </a>
-    <a href="trends.html#trend-3" class="section-card">
-      <span class="section-card-num">Trend 03</span>
-      <span class="section-card-title">Personalization at Scale</span>
-      <span class="section-card-desc">90% of interfaces will use AI to customize experiences by 2030.</span>
-    </a>
-    <a href="trends.html#trend-4" class="section-card">
-      <span class="section-card-num">Trend 04</span>
-      <span class="section-card-title">Multimodal Interfaces</span>
-      <span class="section-card-desc">Voice, gesture, and ambient design are now core competencies.</span>
-    </a>
-    <a href="trends.html#trend-5" class="section-card">
-      <span class="section-card-num">Trend 05</span>
-      <span class="section-card-title">Ethical AI Design</span>
-      <span class="section-card-desc">The EU AI Act is in effect. Bias auditing is now part of your design brief.</span>
-    </a>
-    <a href="trends.html#trend-6" class="section-card">
-      <span class="section-card-num">Trend 06</span>
-      <span class="section-card-title">AI-Augmented Research</span>
-      <span class="section-card-desc">Synthesis that took weeks now takes days. What still needs a human.</span>
-    </a>
-    <a href="role-evolution.html" class="section-card">
-      <span class="section-card-num">Deep Dive</span>
-      <span class="section-card-title">The Evolving Role</span>
-      <span class="section-card-desc">Side-by-side: what the job looked like in 2023 vs. 2026. Skills shift data.</span>
-    </a>
-    <a href="sources.html" class="section-card">
-      <span class="section-card-num">Research</span>
-      <span class="section-card-title">Sources &amp; Citations</span>
-      <span class="section-card-desc">14 sources including Nielsen Norman Group, Designlab, Smashing Magazine.</span>
-    </a>
-  </div>
-</div>
-
-<!-- ── Executive Summary ──────────────────────────────────────── -->
-<div class="page">
-  <div class="exec-section">
-    <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">TL;DR</p>
-    <h2 style="font-size:24px;font-weight:800;color:var(--dark2);margin-bottom:6px;">Executive Summary</h2>
-    <p class="exec-intro">The eight things every UX and product designer needs to know about AI in 2026.</p>
-
-    
-  
-  
-  <!-- Monthly highlights injected by update_content.py -->
-  <div style="background:#F0FDF4;border-left:4px solid #10B981;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:28px;">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#065F46;margin-bottom:8px;">What changed this month (July 2026)</p>
-    <ul style="list-style:none;padding:0;margin:0;"><li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>Figma's Config 2026 features began rolling out this month, led by Code Layers — which lets designers write and preview real code directly in the canvas — alongside Figma Motion (a native animation timeline), AI-generated shader fills, and generative plugins built by prompting the Figma agent.</li><li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>Figma passed roughly 13 million monthly active users, with about 82% of UI designers now using it weekly — cementing it as most designers' default starting point for AI-assisted work.</li><li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>The job-market signal sharpened: AI is cutting fastest into wireframing and low-fidelity prototyping (~30% of the mechanical hours juniors used to log), shifting open roles away from junior generalists toward mid- and senior seats where research and systems judgment are the premium.</li><li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>The quality gap is now the headline tension: 78% of designers say AI boosts their efficiency, but 62% cite inconsistent, unreliable output as their biggest blocker, and 80% say dependable output is what makes an AI tool stick.</li><li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>UX research is re-pricing upward — teams that cut dedicated researchers are folding the function back into design roles and paying more for it, because AI-generated designs still need human validation to be trustworthy.</li></ul>
-  </div>
-<ol class="exec-list">
-      <li>
-        <span class="num">1</span>
-        <strong>AI is now a design collaborator, not a novelty.</strong> 93% of designers are already using generative AI tools. The debate has shifted from "Should we?" to "How do we use it responsibly?"
-      </li>
-      <li>
-        <span class="num">2</span>
-        <strong>The job is moving from production to curation.</strong> When AI generates 100 options in 30 minutes, your value is in deciding what's good, what's safe, and what ships.
-      </li>
-      <li>
-        <span class="num">3</span>
-        <strong>Prompt engineering is the new Figma shortcut.</strong> Writing precise, structured prompts is now a core design skill — vague prompts produce vague outputs.
-      </li>
-      <li>
-        <span class="num">4</span>
-        <strong>Multimodal interfaces are mainstream.</strong> Voice, gesture, and ambient interaction are expected competencies for product teams in 2026, not niche specializations.
-      </li>
-      <li>
-        <span class="num">5</span>
-        <strong>Ethical AI is a legal requirement, not a nice-to-have.</strong> The EU AI Act is active. Bias auditing, transparency, and accountability are now part of the design brief.
-      </li>
-      <li>
-        <span class="num">6</span>
-        <strong>UX roles are growing, not disappearing.</strong> Projected to grow 16% through 2034. AI reshapes the job — it doesn't eliminate it.
-      </li>
-      <li>
-        <span class="num">7</span>
-        <strong>Machine Experience (MX) design is emerging.</strong> Designers now create experiences for both humans and AI agents navigating interfaces.
-      </li>
-      <li>
-        <span class="num">8</span>
-        <strong>"Design Deeper to Differentiate."</strong> Nielsen Norman Group's 2026 thesis: as UI becomes cheaper to produce, strategic depth and research quality become the real competitive advantage.
-      </li>
-      <li>
-        <span class="num">9</span>
-        <strong>The hiring market is senior-skewing fast.</strong> 56% of open UX roles target senior candidates vs. 25% for junior. 79% of hiring managers require experience designing AI products. AI fluency is now a hard filter, not a nice-to-have. <em>(Added May 2026)</em>
-      </li>
-      <li>
-        <span class="num">10</span>
-        <strong>Agentic UX is the next frontier.</strong> Interfaces generated in real time from user intent. Users as delegators, not operators. Trust, handoff design, and machine-readable UX are the next core competencies. <em>(Added May 2026)</em>
-      </li>
-    </ol>
-  </div>
-</div>
-
-<!-- ── Subscribe ─────────────────────────────────────────────── -->
-<section class="subscribe-section">
-  <div class="subscribe-inner">
-    <div class="subscribe-copy">
-      <div class="update-ribbon">Updated Monthly</div>
-      <h2>Stay current on AI &amp; design.</h2>
-      <p>This report refreshes every 30 days with new stats, emerging trends, and the latest tools shaping the UX profession. Get the update in your inbox.</p>
-      <p style="margin-top:10px;font-size:12px;color:#4B5563;">A project by <strong style="color:#818CF8;">Breon.ai</strong> &nbsp;·&nbsp; No spam, unsubscribe anytime.</p>
+  <!-- TRENDS -->
+  <section id="trends">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The Six Trends</p>
+        <h2>What's actually changing</h2>
+        <p>Six shifts with enough evidence behind them to plan a career around. Each card carries the signal that earned it a place in the report.</p>
+      </div>
+      <div class="trends">
+        <article class="trend reveal">
+          <span class="num">01</span>
+          <h3>AI as Co-Designer</h3>
+          <p>Generative tools moved from party trick to seat at the table. Designers now brief, direct, and edit machine output the way a creative director works with a team — the job is curation, not production.</p>
+          <div class="signal"><b>94%</b> of designers use generative AI tools</div>
+        </article>
+        <article class="trend reveal">
+          <span class="num">02</span>
+          <h3>Generative &amp; Adaptive UI</h3>
+          <p>Interfaces that assemble themselves per user — layout, content depth, and interaction model generated from role, behavior, and context instead of one static screen for everyone.</p>
+          <div class="signal"><b>30%</b> of new apps adaptive by end of 2026 — Gartner</div>
+        </article>
+        <article class="trend reveal">
+          <span class="num">03</span>
+          <h3>Agentic UX</h3>
+          <p>Designing for software that acts, not just responds: plan-and-execute previews, confidence signaling, progressive delegation. Trust is the interface now.</p>
+          <div class="signal"><b>40%</b> of enterprise apps ship task agents this year</div>
+        </article>
+        <article class="trend reveal">
+          <span class="num">04</span>
+          <h3>Prompt-Driven Prototyping</h3>
+          <p>Idea to interactive prototype in a sitting. Prompting is the new sketching — and prompt literacy is showing up as a line item on design job specs.</p>
+          <div class="signal"><b>35%</b> faster prototyping reported with AI tools</div>
+        </article>
+        <article class="trend reveal">
+          <span class="num">05</span>
+          <h3>Multimodal Interfaces</h3>
+          <p>Voice, vision, gesture, and text converging into single fluid experiences. The screen is one surface among several, and flows must survive the handoff between them.</p>
+          <div class="signal"><b>Mainstream</b> — no longer a specialist niche</div>
+        </article>
+        <article class="trend reveal">
+          <span class="num">06</span>
+          <h3>Ethical &amp; Transparent AI</h3>
+          <p>Explainability and consent moved from principle to legal requirement. Designers own the disclosure layer: what the AI did, why, and how to override it.</p>
+          <div class="signal"><b>2,000+</b> AI liability claims forecast by end of 2026</div>
+        </article>
+      </div>
     </div>
-    <div class="subscribe-form">
-      <form id="subscribe-form" action="https://breon.us5.list-manage.com/subscribe/post?u=e75153f5d1ff220ba71d9ca7f&amp;id=9311297276&amp;f_id=008963e2f0" method="POST" novalidate target="_blank">
-        <input type="hidden" name="u" value="e75153f5d1ff220ba71d9ca7f">
-        <input type="hidden" name="id" value="9311297276">
-        <!-- real people should not fill this in -->
-        <div aria-hidden="true" style="position:absolute;left:-5000px;">
-          <input type="text" name="b_e75153f5d1ff220ba71d9ca7f_9311297276" tabindex="-1" value="">
+  </section>
+
+  <!-- DATA -->
+  <section id="data" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The Data</p>
+        <h2>The numbers behind the shift</h2>
+        <p>Every chart has a table view, keyboard-reachable values, and hover detail — the way charts should ship.</p>
+      </div>
+      <div class="charts">
+
+        <div class="chart-card" style="background:var(--page)">
+          <h3>How AI shows up in design work</h3>
+          <p class="sub">Share of respondents, industry surveys 2025–26</p>
+
+          <!-- SURVEY_CHART_START -->
+          <div class="hbar-row">
+            <span class="cat">Use generative AI in their workflow</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="94%" tabindex="0" role="img" aria-label="Use generative AI in their workflow: 94 percent" data-tip-value="94%" data-tip-label="Use generative AI in their workflow"><span class="hbar-val">94%</span></div></div>
+          </div>
+          <div class="hbar-row">
+            <span class="cat">Say AI boosts their efficiency</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="78%" tabindex="0" role="img" aria-label="Say AI boosts their efficiency: 78 percent" data-tip-value="78%" data-tip-label="Say AI boosts their efficiency"><span class="hbar-val">78%</span></div></div>
+          </div>
+          <div class="hbar-row">
+            <span class="cat">Hiring managers requiring AI fluency</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="73%" tabindex="0" role="img" aria-label="Hiring managers requiring AI fluency: 73 percent" data-tip-value="73%" data-tip-label="Hiring managers requiring AI fluency"><span class="hbar-val">73%</span></div></div>
+          </div>
+          <div class="hbar-row">
+            <span class="cat">Cite unreliable output as top blocker</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="62%" tabindex="0" role="img" aria-label="Cite unreliable output as top blocker: 62 percent" data-tip-value="62%" data-tip-label="Cite unreliable output as top blocker"><span class="hbar-val">62%</span></div></div>
+          </div>
+          <div class="hbar-row">
+            <span class="cat">Use AI for wireframing</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="58%" tabindex="0" role="img" aria-label="Use AI for wireframing: 58 percent, up from 32 percent in 2021" data-tip-value="58%" data-tip-label="Use AI for wireframing — up from 32% in 2021"><span class="hbar-val">58%</span></div></div>
+          </div>
+          <!-- SURVEY_CHART_END -->
+          <p class="axis-note" id="survey-note">Wireframing adoption nearly doubled from 32% in 2021.</p>
+
+          <details class="tbl">
+            <summary>View data as table</summary>
+            <table>
+              <thead><tr><th>Measure</th><th class="num">Share</th></tr></thead>
+              <tbody>
+                <!-- SURVEY_TABLE_START -->
+                <tr><td>Use generative AI in their workflow</td><td class="num">94%</td></tr>
+                <tr><td>Say AI boosts their efficiency</td><td class="num">78%</td></tr>
+                <tr><td>Hiring managers requiring AI fluency</td><td class="num">73%</td></tr>
+                <tr><td>Cite unreliable output as top blocker</td><td class="num">62%</td></tr>
+                <tr><td>Use AI for wireframing</td><td class="num">58%</td></tr>
+                <!-- SURVEY_TABLE_END -->
+              </tbody>
+            </table>
+          </details>
         </div>
-        <div class="form-row">
-          <input type="email" name="EMAIL" placeholder="your@email.com" required>
-          <button type="submit" class="btn-subscribe">Subscribe</button>
+
+        <div class="chart-card" style="background:var(--page)">
+          <h3>AI design tooling market</h3>
+          <p class="sub">USD billions · 2023 actual, then projected at 44% CAGR</p>
+
+          <div class="cols" role="img" aria-label="Column chart: AI design market grows from 1.2 billion dollars in 2023 to a projected 15.7 billion by 2030">
+            <div class="colwrap"><div class="col" style="height:0" data-h="8%" tabindex="0" data-tip-value="$1.2B" data-tip-label="2023 · actual"><span class="col-cap">$1.2B</span></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="11%" tabindex="0" data-tip-value="$1.7B" data-tip-label="2024 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="16%" tabindex="0" data-tip-value="$2.5B" data-tip-label="2025 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="23%" tabindex="0" data-tip-value="$3.6B" data-tip-label="2026 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="33%" tabindex="0" data-tip-value="$5.2B" data-tip-label="2027 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="47%" tabindex="0" data-tip-value="$7.4B" data-tip-label="2028 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="68%" tabindex="0" data-tip-value="$10.7B" data-tip-label="2029 · projected"></div></div>
+            <div class="colwrap"><div class="col proj" style="height:0" data-h="100%" tabindex="0" data-tip-value="$15.7B" data-tip-label="2030 · projected"><span class="col-cap">$15.7B</span></div></div>
+          </div>
+          <div class="col-x">
+            <span>'23</span><span>'24</span><span>'25</span><span>'26</span><span>'27</span><span>'28</span><span>'29</span><span>'30</span>
+          </div>
+          <div class="legend">
+            <span class="key"><span class="sw"></span>Actual</span>
+            <span class="key"><span class="sw proj"></span>Projected</span>
+          </div>
+
+          <details class="tbl">
+            <summary>View data as table</summary>
+            <table>
+              <thead><tr><th>Year</th><th class="num">Market (USD B)</th><th>Basis</th></tr></thead>
+              <tbody>
+                <tr><td>2023</td><td class="num">1.2</td><td>Actual</td></tr>
+                <tr><td>2024</td><td class="num">1.7</td><td>Projected</td></tr>
+                <tr><td>2025</td><td class="num">2.5</td><td>Projected</td></tr>
+                <tr><td>2026</td><td class="num">3.6</td><td>Projected</td></tr>
+                <tr><td>2027</td><td class="num">5.2</td><td>Projected</td></tr>
+                <tr><td>2028</td><td class="num">7.4</td><td>Projected</td></tr>
+                <tr><td>2029</td><td class="num">10.7</td><td>Projected</td></tr>
+                <tr><td>2030</td><td class="num">15.7</td><td>Projected</td></tr>
+              </tbody>
+            </table>
+          </details>
         </div>
-        <p class="form-note">Free. Monthly update. Unsubscribe anytime.</p>
-      </form>
-      <div class="form-success" id="form-success">
-        You're in! Expect your first update within the next 30 days.
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── Footer ────────────────────────────────────────────────── -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">Breon.ai</div>
-      <div class="footer-sub">AI Design Trends in UX for 2026</div>
+  <!-- ROLE EVOLUTION -->
+  <section id="roles">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Role Evolution</p>
+        <h2>From production to curation to orchestration</h2>
+        <p>The role isn't shrinking — it's climbing the stack. The hiring market is already senior-skewing: 56% of open UX roles are senior, only 25% junior.</p>
+      </div>
+      <div class="roles">
+        <div class="role reveal">
+          <p class="era">2020 — Then</p>
+          <h3>The Producer</h3>
+          <ul>
+            <li>Pushes pixels: wireframes, comps, redlines</li>
+            <li>Hand-runs usability tests, synthesizes manually</li>
+            <li>Owns screens; hands off specs to engineering</li>
+            <li>Portfolio = polished mockups</li>
+          </ul>
+        </div>
+        <div class="role now reveal">
+          <p class="era">2026 — Now</p>
+          <h3>The Curator</h3>
+          <ul>
+            <li>Directs AI output: briefs, edits, quality-controls</li>
+            <li>Prompt-drives prototypes; AI synthesizes research</li>
+            <li>Owns systems and taste, not individual screens</li>
+            <li>Portfolio = judgment, process, outcomes</li>
+          </ul>
+        </div>
+        <div class="role reveal">
+          <p class="era">2030 — Next</p>
+          <h3>The Orchestrator</h3>
+          <ul>
+            <li>Designs rules and signals for adaptive, generative UI</li>
+            <li>Shapes agent behavior: delegation, trust, recovery</li>
+            <li>Owns experience across human and machine actors</li>
+            <li>Portfolio = systems that design themselves well</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="trends.html">Trends</a>
-      <a href="role-evolution.html">Role Evolution</a>
-      <a href="sources.html">Sources</a>
+  </section>
+
+  <!-- EMERGING CONCEPTS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Watch List</p>
+        <h2>Three terms you'll hear a lot more</h2>
+      </div>
+      <div class="concepts">
+        <div class="concept reveal">
+          <span class="tag">AGENTIC UX</span>
+          <h3>Interfaces for software that acts</h3>
+          <p>Plan previews before execution, visible confidence, override at any step. The failure mode is the black box — visibility drives adoption more than accuracy does.</p>
+        </div>
+        <div class="concept reveal">
+          <span class="tag">MX DESIGN</span>
+          <h3>Machine Experience</h3>
+          <p>Designing for AI as the user: making products legible to agents that browse, buy, and book on humans' behalf. Your next "user interview" might be with a model.</p>
+        </div>
+        <div class="concept reveal">
+          <span class="tag">GENERATIVE UI</span>
+          <h3>Interfaces that build themselves</h3>
+          <p>Beginners get 3–5 essential widgets and inline guidance; power users get density and shortcuts — same product, generated per person. Designers define the rules, not the screens.</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="footer-updated">
-    Last updated: July 2026 &nbsp;·&nbsp; Next update: August 2026 &nbsp;·&nbsp; <a href="sources.html" style="color:#6B7280;">20 sources</a>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources" style="padding-top:0">
+    <div class="wrap sources">
+      <div class="sec-head">
+        <p class="kicker">Sources</p>
+        <h2>Where the numbers come from</h2>
+      </div>
+      <ol>
+        <li><a href="https://research.breon.ai" target="_blank" rel="noopener">Breon.ai Research — AI Design Trends Report</a> <span class="src-note">baseline report &amp; key insights</span></li>
+        <li><a href="https://fuselabcreative.com/ui-design-for-ai-agents/" target="_blank" rel="noopener">Fuselab — Agent UX: UI Design for AI Agents in 2026</a> <span class="src-note">agent patterns, Gartner projections</span></li>
+        <li><a href="https://zeeframes.com/insights/generative-ui-2026-interfaces-that-build-themselves-around-each-user" target="_blank" rel="noopener">ZeeFrames — Generative UI 2026</a> <span class="src-note">adaptive interface mechanics &amp; case studies</span></li>
+        <li><a href="https://gitnux.org/ai-in-the-design-industry-statistics/" target="_blank" rel="noopener">Gitnux — AI in the Design Industry Statistics</a> <span class="src-note">adoption, productivity &amp; market figures</span></li>
+        <li><a href="https://www.nngroup.com" target="_blank" rel="noopener">Nielsen Norman Group</a> <span class="src-note">"Design Deeper to Differentiate" thesis</span></li>
+        <li><a href="https://mockflow.com/blog/ui-design-trends" target="_blank" rel="noopener">MockFlow — UI/UX Design Trends 2026</a> <span class="src-note">interface trend survey</span></li>
+        <li><a href="https://www.stan.vision/journal/ux-ui-trends-shaping-digital-products" target="_blank" rel="noopener">Stan Vision — UX/UI Trends 2026</a> <span class="src-note">generative UI &amp; personalization</span></li>
+        <li><a href="https://branex.com/blog/ai-driven-ui-ux-design-trends-2026/" target="_blank" rel="noopener">Branex — AI-Driven UI/UX Design Trends 2026</a> <span class="src-note">AI-driven design patterns</span></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site" id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="newsletter">
+        <h3>Get the monthly refresh</h3>
+        <p>One email when the report updates. New data, new trends, zero filler.</p>
+        <form class="nl-form" action="https://breon.us5.list-manage.com/subscribe/post?u=e75153f5d1ff220ba71d9ca7f&amp;id=9311297276&amp;f_id=008963e2f0" method="POST" novalidate target="_blank">
+          <input type="hidden" name="u" value="e75153f5d1ff220ba71d9ca7f">
+          <input type="hidden" name="id" value="9311297276">
+          <!-- real people should not fill this in -->
+          <div aria-hidden="true" style="position:absolute;left:-5000px;">
+            <input type="text" name="b_e75153f5d1ff220ba71d9ca7f_9311297276" tabindex="-1" value="">
+          </div>
+          <input type="email" name="EMAIL" placeholder="your@email.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px">Free. Monthly update. Unsubscribe anytime.</p>
+      </div>
+      <div>
+        <a class="cta" href="work-with-me.html">Work With Me</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span>A project by <strong>Breon.ai</strong> · How AI is reshaping the product designer's role</span>
+      <span id="footer-updated">Updated July 2026 · Refreshed every 30 days</span>
+    </div>
   </div>
 </footer>
 
+<div id="tip" role="status" aria-hidden="true"></div>
+
 <script>
-  const form = document.getElementById('subscribe-form');
-  const success = document.getElementById('form-success');
-  if (form) {
-    form.addEventListener('submit', function() {
-      setTimeout(function() {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      }, 600);
-    });
+/* ---------- theme toggle ---------- */
+const root = document.documentElement;
+const btn = document.getElementById('themeBtn');
+btn.addEventListener('click', () => {
+  const dark = root.dataset.theme === 'dark' ||
+    (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  root.dataset.theme = dark ? 'light' : 'dark';
+});
+
+/* ---------- scroll reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- shared tooltip (enhances, never gates) ---------- */
+const tip = document.getElementById('tip');
+function showTip(target, x, y){
+  const v = target.dataset.tipValue, l = target.dataset.tipLabel;
+  if (!v) return;
+  tip.textContent = '';
+  const b = document.createElement('b'); b.textContent = v;
+  const s = document.createElement('span'); s.className='tl'; s.textContent = l;
+  tip.append(b, s);
+  tip.style.opacity = 1;
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(x + 14, innerWidth - r.width - 12) + 'px';
+  tip.style.top  = Math.max(y - r.height - 12, 8) + 'px';
+}
+function hideTip(){ tip.style.opacity = 0; }
+document.querySelectorAll('[data-tip-value]').forEach(el => {
+  el.addEventListener('pointermove', e => showTip(el, e.clientX, e.clientY));
+  el.addEventListener('pointerleave', hideTip);
+  el.addEventListener('focus', () => {
+    const r = el.getBoundingClientRect();
+    showTip(el, r.left + r.width/2, r.top);
+  });
+  el.addEventListener('blur', hideTip);
+});
+
+/* ---------- animate bars/columns on reveal ---------- */
+const grow = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){
+    e.target.querySelectorAll('[data-w]').forEach(b => b.style.width = b.dataset.w);
+    e.target.querySelectorAll('[data-h]').forEach(c => c.style.height = c.dataset.h);
+    grow.unobserve(e.target);
   }
+}), {threshold:.3});
+document.querySelectorAll('.chart-card').forEach(el => grow.observe(el));
 </script>
 </body>
 </html>

@@ -2,6 +2,14 @@
 Monthly content refresh script for Breon.ai AI Design Trends site.
 Called by GitHub Actions on the 1st of each month.
 Requires: ANTHROPIC_API_KEY environment variable.
+
+Targets the single-page index.html (redesign, July 2026). Stable hooks:
+  - #updated-stamp / #footer-updated  — date stamps
+  - #stat-using-ai, #stat-ai-fluency, #stat-agent-apps, #stat-job-growth — KPI tiles
+  - <!-- SURVEY_CHART_START/END -->   — horizontal bar chart rows
+  - <!-- SURVEY_TABLE_START/END -->   — the chart's table-view rows
+  - #survey-note                      — one-line note under the chart
+  - <!-- HIGHLIGHTS_START/END -->     — "what changed this month" card
 """
 
 import os
@@ -14,6 +22,7 @@ client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 CURRENT_MONTH = datetime.now().strftime("%B %Y")
 NEXT_MONTH    = (datetime.now().replace(day=1) + timedelta(days=32)).strftime("%B %Y")
+INDEX = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
 
 
 def research_trends() -> dict:
@@ -22,47 +31,39 @@ def research_trends() -> dict:
 
     prompt = f"""You are a design industry researcher. Today is {CURRENT_MONTH}.
 
-Research and return the most current data on these topics for UX and product designers:
-1. AI design tool adoption rates (percentage of designers using each tool)
-2. Task time savings with AI (wireframing, prototyping, research, assets, handoff)
-3. Key emerging trends in AI + UX design this month
-4. New tools or major tool updates released this month
-5. Updated statistics on UX job market and AI impact
-6. Any new regulations or industry standards relevant to ethical AI design
+Research and return the most current data on how AI is reshaping UX and product design.
 
 Return your findings as a JSON object with this exact structure:
 {{
   "last_updated": "{CURRENT_MONTH}",
   "next_update": "{NEXT_MONTH}",
-  "tool_adoption": [
-    {{"tool": "ChatGPT / LLMs", "pct": 93}},
-    {{"tool": "Figma AI / Make", "pct": 78}},
-    {{"tool": "Midjourney / DALL-E", "pct": 61}},
-    {{"tool": "Adobe Firefly", "pct": 54}},
-    {{"tool": "GitHub Copilot", "pct": 42}},
-    {{"tool": "Google Stitch", "pct": 38}},
-    {{"tool": "UX Pilot / Flowstep", "pct": 29}},
-    {{"tool": "Runway (video AI)", "pct": 22}}
-  ],
   "hero_stats": {{
-    "using_ai": 93,
-    "say_collab_impactful": 73,
-    "job_growth_pct": 16,
-    "distrust_ai_output": 40
+    "using_ai": 94,
+    "ai_fluency_req": 73,
+    "agent_apps_pct": 40,
+    "job_growth_pct": 16
   }},
-  "task_times": [
-    {{"task": "Wireframing", "before_h": 4.0, "after_h": 0.75}},
-    {{"task": "Research Synthesis", "before_h": 6.0, "after_h": 2.0}},
-    {{"task": "Asset Creation", "before_h": 3.5, "after_h": 0.5}},
-    {{"task": "Prototyping", "before_h": 5.0, "after_h": 1.5}},
-    {{"task": "Handoff Docs", "before_h": 2.5, "after_h": 0.75}}
+  "survey_stats": [
+    {{"label": "Use generative AI in their workflow", "pct": 94}},
+    {{"label": "Say AI boosts their efficiency", "pct": 78}},
+    {{"label": "Hiring managers requiring AI fluency", "pct": 73}},
+    {{"label": "Cite unreliable output as top blocker", "pct": 62}},
+    {{"label": "Use AI for wireframing", "pct": 58}}
   ],
+  "survey_note": "One short sentence of context for the survey chart.",
   "monthly_highlights": [
     "One key development or change this month (1-2 sentences)",
     "Another notable update (1-2 sentences)"
-  ],
-  "new_sources": []
+  ]
 }}
+
+Field meanings:
+- hero_stats.using_ai: % of designers using generative AI tools
+- hero_stats.ai_fluency_req: % of hiring managers requiring AI fluency
+- hero_stats.agent_apps_pct: % of enterprise apps expected to ship task-specific AI agents this year
+- hero_stats.job_growth_pct: projected UX role growth (currently through 2034)
+- survey_stats: exactly 5 rows, each a survey measure with an integer percentage,
+  ordered largest to smallest
 
 Update any numbers that have changed based on newly published research.
 Add to monthly_highlights any notable AI+design news from this month.
@@ -84,189 +85,121 @@ Keep JSON valid — no trailing commas, no comments."""
     return data
 
 
-def pct_to_width(pct: int) -> int:
-    return min(int(pct), 100)
+def read_index() -> str:
+    with open(INDEX) as f:
+        return f.read()
 
 
-def hours_to_width(hours: float, max_hours: float = 6.0) -> int:
-    return min(int((hours / max_hours) * 100), 100)
+def write_index(html: str):
+    with open(INDEX, "w") as f:
+        f.write(html)
 
 
-def build_hbar_html(tool_adoption: list) -> str:
-    rows = []
-    for item in tool_adoption:
-        tool = item["tool"]
-        pct  = item["pct"]
-        css_class = "hbar-fill" if pct >= 50 else "hbar-fill dim"
-        rows.append(f"""      <div class="hbar-row">
-        <span class="hbar-label">{tool}</span>
-        <div class="hbar-track"><div class="{css_class}" style="width:{pct_to_width(pct)}%"></div></div>
-        <span class="hbar-val">{pct}%</span>
-      </div>""")
-    return "\n".join(rows)
+def esc(text: str) -> str:
+    return (str(text).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
 
 
-def build_cbar_html(task_times: list) -> str:
-    max_h = max(t["before_h"] for t in task_times)
-    rows = []
-    for item in task_times:
-        task     = item["task"]
-        before_h = item["before_h"]
-        after_h  = item["after_h"]
-        before_w = hours_to_width(before_h, max_h)
-        after_w  = hours_to_width(after_h, max_h)
-        before_label = f"{int(before_h)}h" if before_h == int(before_h) else f"{before_h}h"
-        after_label  = f"{int(after_h)}h"  if after_h  == int(after_h)  else f"{after_h}h"
-        rows.append(f"""        <div>
-          <p class="cbar-group-label">{task}</p>
-          <div class="cbar-row"><span class="cbar-year">2024</span><div class="cbar-track"><div class="cbar-fill-24" style="width:{before_w}%"></div></div><span class="cbar-val">{before_label}</span></div>
-          <div class="cbar-row"><span class="cbar-year">2026</span><div class="cbar-track"><div class="cbar-fill-26" style="width:{after_w}%"></div></div><span class="cbar-val">{after_label}</span></div>
-        </div>""")
-    return "\n".join(rows)
+def replace_between(html: str, start: str, end: str, body: str) -> str:
+    pattern = re.compile(re.escape(start) + r'.*?' + re.escape(end), re.DOTALL)
+    if not pattern.search(html):
+        print(f"WARNING: markers {start} .. {end} not found — skipped")
+        return html
+    return pattern.sub(start + "\n" + body + "\n" + end, html)
 
 
-def update_html_file(path: str, replacements: dict):
-    with open(path, "r") as f:
-        content = f.read()
-    for pattern, replacement in replacements.items():
-        content = re.sub(pattern, replacement, content, flags=re.DOTALL)
-    with open(path, "w") as f:
-        f.write(content)
-    print(f"Updated: {path}")
+def update_dates(html: str, data: dict) -> str:
+    html = re.sub(
+        r'(<span class="stamp" id="updated-stamp">)Last updated [^·<]+· Next update [^·<]+·',
+        rf'\g<1>Last updated {data["last_updated"]} · Next update {data["next_update"]} ·',
+        html
+    )
+    html = re.sub(
+        r'(<span id="footer-updated">)Updated [^·<]+·',
+        rf'\g<1>Updated {data["last_updated"]} ·',
+        html
+    )
+    print("Updated date stamps")
+    return html
 
 
-def update_footer_dates(data: dict):
-    footer_pattern = r'Last updated:.*?Next update:.*?(?=&nbsp;·&nbsp;)'
-    footer_replace = f'Last updated: {data["last_updated"]} &nbsp;·&nbsp; Next update: {data["next_update"]} '
-
-    for fname in ["index.html", "trends.html", "role-evolution.html", "sources.html"]:
-        path = os.path.join(os.path.dirname(__file__), fname)
-        if os.path.exists(path):
-            with open(path) as f:
-                html = f.read()
-            html = re.sub(footer_pattern, footer_replace, html)
-            with open(path, "w") as f:
-                f.write(html)
-
-
-def update_hero_stats(data: dict):
+def update_hero_stats(html: str, data: dict) -> str:
     s = data["hero_stats"]
-    path = os.path.join(os.path.dirname(__file__), "index.html")
-    with open(path) as f:
-        html = f.read()
-
+    subs = [
+        ('stat-using-ai',   f'{s["using_ai"]}%'),
+        ('stat-ai-fluency', f'{s["ai_fluency_req"]}%'),
+        ('stat-agent-apps', f'{s["agent_apps_pct"]}%'),
+    ]
+    for el_id, value in subs:
+        html = re.sub(
+            rf'(<div class="value" id="{el_id}">)[^<]*(</div>)',
+            rf'\g<1>{value}\g<2>',
+            html
+        )
     html = re.sub(
-        r'(<span class="stat-num">)\d+(%</span>\s*<span class="stat-label">of designers already use)',
-        rf'\g<1>{s["using_ai"]}%</span>\n      <span class="stat-label">of designers already use',
+        r'(<div class="value" id="stat-job-growth">)[^<]*(<span class="delta">)',
+        rf'\g<1>{s["job_growth_pct"]}%\g<2>',
         html
     )
-    html = re.sub(
-        r'(<span class="stat-num">)\d+(%</span>\s*<span class="stat-label">say AI collaboration)',
-        rf'\g<1>{s["say_collab_impactful"]}%</span>\n      <span class="stat-label">say AI collaboration',
-        html
+    print("Updated hero KPI tiles")
+    return html
+
+
+def build_survey_rows(survey_stats: list) -> str:
+    rows = []
+    for item in survey_stats:
+        label = esc(item["label"])
+        pct = int(item["pct"])
+        rows.append(
+            f'''          <div class="hbar-row">
+            <span class="cat">{label}</span>
+            <div class="hbar-track"><div class="hbar" style="width:0" data-w="{pct}%" tabindex="0" role="img" aria-label="{label}: {pct} percent" data-tip-value="{pct}%" data-tip-label="{label}"><span class="hbar-val">{pct}%</span></div></div>
+          </div>'''
+        )
+    return "\n".join(rows)
+
+
+def build_survey_table(survey_stats: list) -> str:
+    return "\n".join(
+        f'                <tr><td>{esc(i["label"])}</td><td class="num">{int(i["pct"])}%</td></tr>'
+        for i in survey_stats
     )
-    html = re.sub(
-        r'(<span class="stat-num">)\d+(%</span>\s*<span class="stat-label">projected growth)',
-        rf'\g<1>{s["job_growth_pct"]}%</span>\n      <span class="stat-label">projected growth',
-        html
-    )
-    html = re.sub(
-        r'(<span class="stat-num">)\d+(%</span>\s*<span class="stat-label">don)',
-        rf'\g<1>{s["distrust_ai_output"]}%</span>\n      <span class="stat-label">don',
-        html
-    )
-
-    with open(path, "w") as f:
-        f.write(html)
-    print("Updated hero stats on index.html")
 
 
-def update_tool_adoption_chart(data: dict):
-    hbar_html = build_hbar_html(data["tool_adoption"])
-    path = os.path.join(os.path.dirname(__file__), "trends.html")
-    with open(path) as f:
-        html = f.read()
-
-    html = re.sub(
-        r'(<div class="hbar">\s*).*?(\s*</div>\s*<div class="chart-legend">)',
-        rf'\g<1>\n{hbar_html}\n    \g<2>',
-        html,
-        flags=re.DOTALL
-    )
-    with open(path, "w") as f:
-        f.write(html)
-    print("Updated tool adoption chart in trends.html")
-
-
-def update_task_times_chart(data: dict):
-    cbar_html = build_cbar_html(data["task_times"])
-    path = os.path.join(os.path.dirname(__file__), "trends.html")
-    with open(path) as f:
-        html = f.read()
-
-    html = re.sub(
-        r'(<div class="cbar">\s*).*?(\s*</div>\s*<div class="chart-legend">.*?Task Time)',
-        rf'\g<1>\n{cbar_html}\n      \g<2>',
-        html,
-        flags=re.DOTALL
-    )
-    with open(path, "w") as f:
-        f.write(html)
-    print("Updated task time chart in trends.html")
+def update_survey_chart(html: str, data: dict) -> str:
+    stats = data.get("survey_stats") or []
+    if len(stats) != 5:
+        print(f"WARNING: expected 5 survey_stats, got {len(stats)} — chart left unchanged")
+        return html
+    html = replace_between(html, "<!-- SURVEY_CHART_START -->", "<!-- SURVEY_CHART_END -->",
+                           build_survey_rows(stats))
+    html = replace_between(html, "<!-- SURVEY_TABLE_START -->", "<!-- SURVEY_TABLE_END -->",
+                           build_survey_table(stats))
+    note = data.get("survey_note")
+    if note:
+        html = re.sub(
+            r'(<p class="axis-note" id="survey-note">)[^<]*(</p>)',
+            rf'\g<1>{esc(note)}\g<2>',
+            html
+        )
+    print("Updated survey chart, table view, and note")
+    return html
 
 
-def inject_monthly_highlights(data: dict):
+def update_highlights(html: str, data: dict) -> str:
     highlights = data.get("monthly_highlights", [])
     if not highlights:
-        return
-
-    items = "".join(f"<li style='margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #D1FAE5;'>{h}</li>" for h in highlights)
-    callout = f"""
-  <!-- Monthly highlights injected by update_content.py -->
-  <div style="background:#F0FDF4;border-left:4px solid #10B981;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:28px;">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#065F46;margin-bottom:8px;">What changed this month ({data['last_updated']})</p>
-    <ul style="list-style:none;padding:0;margin:0;">{items}</ul>
-  </div>
-"""
-    path = os.path.join(os.path.dirname(__file__), "index.html")
-    with open(path) as f:
-        html = f.read()
-
-    html = re.sub(
-        r'(<!-- Monthly highlights.*?-->\s*<div[^>]*>.*?</div>\s*)?(<ol class="exec-list">)',
-        callout + r'\2',
-        html,
-        flags=re.DOTALL
-    )
-    with open(path, "w") as f:
-        f.write(html)
-    print(f"Injected {len(highlights)} monthly highlight(s) into index.html")
-
-
-def update_trends_hero_banner(data: dict):
-    highlights = data.get("monthly_highlights", [])
-    if not highlights:
-        return
-    now = datetime.now()
-    date_label = f"{data['last_updated']} Update — Published {now.strftime('%B')} {now.day}"
-    body = " ".join(highlights)
-    path = os.path.join(os.path.dirname(__file__), "trends.html")
-    with open(path) as f:
-        html = f.read()
-    html = re.sub(
-        r'(<p style="font-size:12px;font-weight:700;letter-spacing:0\.08em;text-transform:uppercase;color:#059669;margin-bottom:6px;">)[^<]*(</p>)',
-        rf'\g<1>{date_label}\g<2>',
-        html
-    )
-    html = re.sub(
-        r'(<p style="font-size:13\.5px;color:#065F46;line-height:1\.6;margin:0;">).*?(</p>)',
-        rf'\g<1>{body}\g<2>',
-        html,
-        flags=re.DOTALL
-    )
-    with open(path, "w") as f:
-        f.write(html)
-    print(f"Updated trends.html hero banner for {data['last_updated']}")
+        return html
+    items = "\n".join(f"        <li>{esc(h)}</li>" for h in highlights)
+    card = f'''    <div class="highlights">
+      <p class="hl-kicker">What changed this month · {esc(data["last_updated"])}</p>
+      <ul>
+{items}
+      </ul>
+    </div>'''
+    html = replace_between(html, "<!-- HIGHLIGHTS_START -->", "<!-- HIGHLIGHTS_END -->", card)
+    print(f"Injected {len(highlights)} monthly highlight(s)")
+    return html
 
 
 def main():
@@ -276,12 +209,12 @@ def main():
 
     data = research_trends()
 
-    update_footer_dates(data)
-    update_hero_stats(data)
-    update_tool_adoption_chart(data)
-    update_task_times_chart(data)
-    inject_monthly_highlights(data)
-    update_trends_hero_banner(data)
+    html = read_index()
+    html = update_dates(html, data)
+    html = update_hero_stats(html, data)
+    html = update_survey_chart(html, data)
+    html = update_highlights(html, data)
+    write_index(html)
 
     print("=" * 50)
     print("Refresh complete. Changes staged for commit.")
