@@ -1,9 +1,12 @@
 name: Monthly Content Refresh
 
+# Superseded 2026-08-31 by the scheduled Claude cloud routine
+# "research.breon.ai monthly refresh" (1st of month, 15:00 UTC), which follows
+# REFRESH.md and does sourced research rather than unsourced generation.
+# The cron trigger is removed so this stops failing monthly on the missing
+# ANTHROPIC_API_KEY secret. Still runnable by hand from the Actions tab.
 on:
-  schedule:
-    - cron: '7 9 1 * *'   # 09:07 UTC on the 1st of each month (off-peak minute)
-  workflow_dispatch:        # allow manual "Run workflow" from the Actions tab
+  workflow_dispatch:        # manual "Run workflow" from the Actions tab only
 
 permissions:
   contents: write           # let the built-in GITHUB_TOKEN push the refreshed content
